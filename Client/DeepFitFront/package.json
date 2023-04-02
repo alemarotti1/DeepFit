@@ -10,8 +10,10 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.2.96",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
+    "vuetify": "^3.1.12",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
@@ -19,6 +21,7 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
     "eslint": "^8.34.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
     "vite": "^4.1.4"
