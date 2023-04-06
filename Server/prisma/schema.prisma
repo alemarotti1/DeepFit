@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,99 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model aluno {
+  id_aluno          Int       @id
+  //corrigir token acesso
+  token_acesso      Int       @id
+  nome              String?   @db.VarChar(45)
+  nascimento        DateTime? @db.Date
+  objetivo          String?   @db.VarChar(255)
+  Treinador_usuario String?   @db.VarChar(255)
+
+  @@index([Treinador_usuario], map: "fk_Aluno_Treinador1")
+}
+
+model conjunto_serie {
+  id_exercicio   Int
+  id_treino      Int
+  qtd_series     Int?
+  tempo_descanso Int?
+  qtd_repeticoes Int?
+
+  @@id([id_exercicio, id_treino])
+  @@index([id_treino], map: "fk_Exercicio_has_Treino_Treino1")
+}
+
+model dado_sono {
+  id_dado_relogio Int       @id
+  token_acesso    Int
+  tipo            String?   @db.VarChar(45)
+  valor           String?   @db.VarChar(45)
+  data_coleta     DateTime? @db.Timestamp(0)
+
+  @@index([token_acesso], map: "fk_dado_relogio_Aluno1")
+}
+
+model dados_corporais_aluno {
+  data_medicao                 DateTime @db.Date
+  token_acesso                 Int
+  outros_dados_corporais_aqui_ String?  @map("(outros dados corporais aqui)") @db.VarChar(45)
+
+  @@id([data_medicao, token_acesso])
+  @@index([token_acesso], map: "fk_Dados_corporais_Aluno_Aluno1")
+}
+
+model exercicio {
+  id_exercicio      Int     @id
+  nome              String? @db.VarChar(255)
+  tipo              String? @db.VarChar(255)
+  grupo_muscular    String? @db.VarChar(45)
+  Treinador_usuario String  @db.VarChar(255)
+
+  @@index([Treinador_usuario], map: "fk_Exercicio_Treinador1")
+}
+
+model performance_treino_serie {
+  id_treino       Int
+  dia_execucao    DateTime @db.Date
+  id_exercicio    Int
+  Serie_id_treino Int
+  n_execucao      Int
+
+  @@id([id_treino, dia_execucao, id_exercicio, Serie_id_treino, n_execucao])
+  @@index([id_exercicio, Serie_id_treino], map: "fk_Performance_Treino_Serie_Conjunto_Serie1")
+}
+
+model rotina {
+  nome_rotina  Int
+  token_acesso Int
+
+  @@id([nome_rotina, token_acesso])
+  @@index([token_acesso], map: "fk_Rotina_Aluno1")
+}
+
+model secao_treino {
+  id_treino    Int
+  dia_execucao DateTime @db.Date
+
+  @@id([id_treino, dia_execucao])
+}
+
+model treinador {
+  usuario                               String  @id @db.VarChar(255)
+  senha                                 String? @db.VarChar(64)
+  email                                 String? @db.VarChar(45)
+  informacoes_extras_sobre_o_treinador_ String? @map("(informacoes extras sobre o treinador)") @db.VarChar(45)
+}
+
+model treino {
+  id_treino         Int     @id
+  nome_rotina       Int
+  token_acesso      Int
+  treinador_usuario String  @db.VarChar(255)
+  dias_atribuidos   String? @db.VarChar(255)
+
+  @@index([nome_rotina, token_acesso], map: "fk_Treino_Rotina1")
 }

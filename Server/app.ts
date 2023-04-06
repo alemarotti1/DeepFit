@@ -1,5 +1,7 @@
 const express = require('express');
 
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 
 
@@ -20,3 +22,5 @@ app.use('/auth', authRouter);
 app.use('/insights', insightsRouter);
 
 module.exports = app;
+export default app;
+export { prisma }
