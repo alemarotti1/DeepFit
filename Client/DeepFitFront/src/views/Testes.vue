@@ -11,17 +11,30 @@
     <v-row class="my-5">
       <BaseButton buttonText="Home" viewDestino="home" />
     </v-row>
+    <p>InsightMenu</p>
+    <v-row class="my-5">
+      <InsightMenu tipoInsight='sono' viewDestino="insight"/>
+    </v-row>
+    <v-row class="my-5">
+      <InsightMenu tipoInsight='intensidade' viewDestino="insight"/>
+    </v-row>
+    <v-row class="my-5">
+      <InsightMenu tipoInsight='frequencia' viewDestino="insight"/>
+    </v-row>
+
   </template>
 
 <script>
 import TopToolbar from '@/components/TopToolbar.vue';
 import BaseButton from '@/components/BaseButton.vue';
+import InsightMenu from '@/components/InsightMenu.vue';
 
 
 export default {
   components: {
     TopToolbar,
-    BaseButton
+    BaseButton,
+    InsightMenu
   }
 }
 </script>
