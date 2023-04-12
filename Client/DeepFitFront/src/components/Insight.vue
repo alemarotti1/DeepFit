@@ -50,7 +50,7 @@ export default {
 <style scoped>
 .insight-header {
     border-radius: 28px;
-    background: linear-gradient(90deg, #62DBC8, #03989E);
+    background: var(--gradient-green);
     color: white;
     padding-top: 8px;
     padding-left: 12px;
@@ -60,8 +60,8 @@ export default {
 
 .insight-body {
     border-radius: 28px;
-    background: #D2EFEBff;
-    color: #03989E;
+    background: var(--green100);
+    color: var(--green-top);
     padding: 12px;
 }
 </style>

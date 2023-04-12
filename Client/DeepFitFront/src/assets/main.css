@@ -1,5 +1,21 @@
 @import './base.css';
 
+/*Paleta DeepFit*/
+:root{
+--green300: #01DBC7ff;
+--green200: #94E9E1ff;
+--green100: #D2EFEBff;
+--grey300: #3E3D39ff;
+--grey100: #9CCFC9ff;
+--red-top: #7F0800;
+--red-bottom: #FF6F6F;
+--green-top: #03989E;
+--green-bottom: #62DBC8;
+
+--gradient-green: linear-gradient(90deg, var(--green-bottom), var(--green-top));
+--gradient-red: linear-gradient(45deg, var(--red-top), var(--red-bottom));
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;

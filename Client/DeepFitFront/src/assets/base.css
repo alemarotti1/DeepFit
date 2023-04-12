@@ -33,19 +33,6 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 
-  /*Paleta DeepFit*/
-  --green300: #01DBC7ff;
-  --green200: #94E9E1ff;
-  --green100: #D2EFEBff;
-  --grey300: #3E3D39ff;
-  --grey100: #9CCFC9ff;
-  --red-top: #7F0800;
-  --red-bottom: #FF6F6F;
-  --green-top: #03989E;
-  --green-bottom: #62DBC8;
-
-  --gradient-green: linear-gradient(45deg, var(--green-top), var(--green-bottom));
-  --gradient-red: linear-gradient(45deg, var(--red-top), var(--red-bottom));
 
   --section-gap: 160px;
 }
