@@ -4,6 +4,9 @@ const Home = () => import('../views/Home/Home.vue')
 const About = () => import('../views/AboutView.vue')
 const Insight = () => import('../components/Insight.vue')
 const Testes = () => import('../views/Testes.vue')
+const Insights = () => import('../views/Insights.vue')
+const Sono = () => import('../views/Sono.vue')
+const Aluno = () => import('../views/Aluno.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +25,21 @@ const router = createRouter({
       path: '/insight',
       name: 'insight',
       component: Insight
+    },
+    {
+      path: '/insights',
+      name: 'insights',
+      component: Insights
+    },
+    {
+      path: '/sono',
+      name: 'sono',
+      component: Sono
+    },
+    {
+      path: '/aluno',
+      name: 'aluno',
+      component: Aluno
     },
     {
       path: '/about',
