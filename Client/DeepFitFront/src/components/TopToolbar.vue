@@ -4,7 +4,7 @@
       <v-icon size="100%">mdi-chevron-left</v-icon>
     </v-btn>
     <v-spacer></v-spacer>
-    <v-toolbar-title class="text-subtitle-2 text-center font-weight-medium">{{title}}</v-toolbar-title>
+    <v-toolbar-title class="text-subtitle-2 text-center">{{title}}</v-toolbar-title>
     <v-spacer></v-spacer>
     
     <v-menu>

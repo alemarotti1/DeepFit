@@ -4,6 +4,14 @@
     <v-row class="my-5">
         <TopToolbar title="Testes"/>
     </v-row>
+    <p>ProfileCard</p>
+    <v-row class="my-5">
+        <ProfileCard nome="Nome do Aluno" fotoUrl="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"/>
+    </v-row>
+    <p>TreinoList</p>
+    <v-row class="my-5">
+        <TreinoList/>
+    </v-row>
     <p>BaseButton</p>
     <v-row class="my-5">
       <BaseButton buttonText="Insights" viewDestino="insight" />
@@ -26,15 +34,19 @@
 
 <script>
 import TopToolbar from '@/components/TopToolbar.vue';
+import ProfileCard from '@/components/ProfileCard.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import InsightMenu from '@/components/InsightMenu.vue';
+import TreinoList from '@/components/TreinoList.vue';
 
 
 export default {
   components: {
     TopToolbar,
+    ProfileCard,
     BaseButton,
-    InsightMenu
+    InsightMenu,
+    TreinoList
   }
 }
 </script>
