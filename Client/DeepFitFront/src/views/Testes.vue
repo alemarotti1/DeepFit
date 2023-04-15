@@ -1,5 +1,9 @@
 <template>
     <h1>Teste de Componentes</h1>
+    <p>ChartFC</p>
+    <v-row class="my-5">
+        <ChartFC/>
+    </v-row>
     <p>TopToolbar</p>
     <v-row class="my-5">
         <TopToolbar title="Testes"/>
@@ -38,6 +42,7 @@ import ProfileCard from '@/components/ProfileCard.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import InsightMenu from '@/components/InsightMenu.vue';
 import TreinoList from '@/components/TreinoList.vue';
+import ChartFC from '@/components/ChartFC.vue';
 
 
 export default {
@@ -46,7 +51,8 @@ export default {
     ProfileCard,
     BaseButton,
     InsightMenu,
-    TreinoList
+    TreinoList,
+    ChartFC
   }
 }
 </script>
