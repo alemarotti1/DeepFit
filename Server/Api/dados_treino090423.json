@@ -1,0 +1,2153 @@
+{
+    "bucket": [
+        {
+            "startTimeMillis": "1681050054000",
+            "endTimeMillis": "1681050114000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": []
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050114000",
+            "endTimeMillis": "1681050174000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050120000000000",
+                            "endTimeNanos": "1681050120000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 99,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 99,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 99,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050174000",
+            "endTimeMillis": "1681050234000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050180000000000",
+                            "endTimeNanos": "1681050180000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 110,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 110,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 110,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050234000",
+            "endTimeMillis": "1681050294000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050240000000000",
+                            "endTimeNanos": "1681050240000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 81,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 81,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 81,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050294000",
+            "endTimeMillis": "1681050354000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050300000000000",
+                            "endTimeNanos": "1681050300000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 90,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 90,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 90,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050354000",
+            "endTimeMillis": "1681050414000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050360000000000",
+                            "endTimeNanos": "1681050360000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 92,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 92,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 92,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050414000",
+            "endTimeMillis": "1681050474000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050420000000000",
+                            "endTimeNanos": "1681050420000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 86,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 86,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 86,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050474000",
+            "endTimeMillis": "1681050534000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050480000000000",
+                            "endTimeNanos": "1681050480000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 90,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 90,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 90,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050534000",
+            "endTimeMillis": "1681050594000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050540000000000",
+                            "endTimeNanos": "1681050540000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 96,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 96,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 96,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050594000",
+            "endTimeMillis": "1681050654000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050600000000000",
+                            "endTimeNanos": "1681050600000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 99,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 99,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 99,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050654000",
+            "endTimeMillis": "1681050714000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050660000000000",
+                            "endTimeNanos": "1681050660000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 103,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 103,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 103,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050714000",
+            "endTimeMillis": "1681050774000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050720000000000",
+                            "endTimeNanos": "1681050720000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 109,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 109,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 109,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050774000",
+            "endTimeMillis": "1681050834000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050780000000000",
+                            "endTimeNanos": "1681050780000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 114,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 114,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 114,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050834000",
+            "endTimeMillis": "1681050894000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050840000000000",
+                            "endTimeNanos": "1681050840000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 114,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 114,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 114,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050894000",
+            "endTimeMillis": "1681050954000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050900000000000",
+                            "endTimeNanos": "1681050900000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 130,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 130,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 130,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681050954000",
+            "endTimeMillis": "1681051014000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681050960000000000",
+                            "endTimeNanos": "1681050960000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 125,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 125,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 125,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051014000",
+            "endTimeMillis": "1681051074000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051020000000000",
+                            "endTimeNanos": "1681051020000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051074000",
+            "endTimeMillis": "1681051134000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051080000000000",
+                            "endTimeNanos": "1681051080000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051134000",
+            "endTimeMillis": "1681051194000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051140000000000",
+                            "endTimeNanos": "1681051140000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 130,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 130,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 130,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051194000",
+            "endTimeMillis": "1681051254000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051200000000000",
+                            "endTimeNanos": "1681051200000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 131,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 131,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 131,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051254000",
+            "endTimeMillis": "1681051314000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051260000000000",
+                            "endTimeNanos": "1681051260000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 135,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 135,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 135,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051314000",
+            "endTimeMillis": "1681051374000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051320000000000",
+                            "endTimeNanos": "1681051320000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 126,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 126,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 126,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051374000",
+            "endTimeMillis": "1681051434000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051380000000000",
+                            "endTimeNanos": "1681051380000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 125,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 125,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 125,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051434000",
+            "endTimeMillis": "1681051494000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051440000000000",
+                            "endTimeNanos": "1681051440000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051494000",
+            "endTimeMillis": "1681051554000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051500000000000",
+                            "endTimeNanos": "1681051500000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051554000",
+            "endTimeMillis": "1681051614000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051560000000000",
+                            "endTimeNanos": "1681051560000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051614000",
+            "endTimeMillis": "1681051674000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051620000000000",
+                            "endTimeNanos": "1681051620000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051674000",
+            "endTimeMillis": "1681051734000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051680000000000",
+                            "endTimeNanos": "1681051680000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051734000",
+            "endTimeMillis": "1681051794000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051740000000000",
+                            "endTimeNanos": "1681051740000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051794000",
+            "endTimeMillis": "1681051854000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051800000000000",
+                            "endTimeNanos": "1681051800000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051854000",
+            "endTimeMillis": "1681051914000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051860000000000",
+                            "endTimeNanos": "1681051860000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 123,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 123,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 123,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051914000",
+            "endTimeMillis": "1681051974000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051920000000000",
+                            "endTimeNanos": "1681051920000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 122,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 122,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 122,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681051974000",
+            "endTimeMillis": "1681052034000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681051980000000000",
+                            "endTimeNanos": "1681051980000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 119,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 119,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 119,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052034000",
+            "endTimeMillis": "1681052094000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052040000000000",
+                            "endTimeNanos": "1681052040000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052094000",
+            "endTimeMillis": "1681052154000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052100000000000",
+                            "endTimeNanos": "1681052100000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 116,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 116,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 116,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052154000",
+            "endTimeMillis": "1681052214000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052160000000000",
+                            "endTimeNanos": "1681052160000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052214000",
+            "endTimeMillis": "1681052274000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052220000000000",
+                            "endTimeNanos": "1681052220000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052274000",
+            "endTimeMillis": "1681052334000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052280000000000",
+                            "endTimeNanos": "1681052280000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052334000",
+            "endTimeMillis": "1681052394000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052340000000000",
+                            "endTimeNanos": "1681052340000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 122,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 122,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 122,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052394000",
+            "endTimeMillis": "1681052454000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052400000000000",
+                            "endTimeNanos": "1681052400000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052454000",
+            "endTimeMillis": "1681052514000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052460000000000",
+                            "endTimeNanos": "1681052460000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052514000",
+            "endTimeMillis": "1681052574000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052520000000000",
+                            "endTimeNanos": "1681052520000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052574000",
+            "endTimeMillis": "1681052634000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052580000000000",
+                            "endTimeNanos": "1681052580000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 111,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052634000",
+            "endTimeMillis": "1681052694000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052640000000000",
+                            "endTimeNanos": "1681052640000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 104,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 104,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 104,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052694000",
+            "endTimeMillis": "1681052754000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052700000000000",
+                            "endTimeNanos": "1681052700000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 101,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 101,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 101,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052754000",
+            "endTimeMillis": "1681052814000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052760000000000",
+                            "endTimeNanos": "1681052760000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 112,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 112,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 112,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052814000",
+            "endTimeMillis": "1681052874000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052820000000000",
+                            "endTimeNanos": "1681052820000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 117,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052874000",
+            "endTimeMillis": "1681052934000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052880000000000",
+                            "endTimeNanos": "1681052880000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 116,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 116,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 116,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052934000",
+            "endTimeMillis": "1681052994000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681052940000000000",
+                            "endTimeNanos": "1681052940000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681052994000",
+            "endTimeMillis": "1681053054000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053000000000000",
+                            "endTimeNanos": "1681053000000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053054000",
+            "endTimeMillis": "1681053114000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053060000000000",
+                            "endTimeNanos": "1681053060000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 118,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053114000",
+            "endTimeMillis": "1681053174000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053120000000000",
+                            "endTimeNanos": "1681053120000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053174000",
+            "endTimeMillis": "1681053234000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053180000000000",
+                            "endTimeNanos": "1681053180000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 115,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053234000",
+            "endTimeMillis": "1681053294000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053240000000000",
+                            "endTimeNanos": "1681053240000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 97,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 97,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 97,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053294000",
+            "endTimeMillis": "1681053354000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053300000000000",
+                            "endTimeNanos": "1681053300000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 91,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 91,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 91,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053354000",
+            "endTimeMillis": "1681053414000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053360000000000",
+                            "endTimeNanos": "1681053360000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 88,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 88,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 88,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053414000",
+            "endTimeMillis": "1681053474000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053420000000000",
+                            "endTimeNanos": "1681053420000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 84,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 84,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 84,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053474000",
+            "endTimeMillis": "1681053534000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053480000000000",
+                            "endTimeNanos": "1681053480000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 75,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 75,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 75,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053534000",
+            "endTimeMillis": "1681053594000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053540000000000",
+                            "endTimeNanos": "1681053540000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 80,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 80,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 80,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053594000",
+            "endTimeMillis": "1681053654000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053600000000000",
+                            "endTimeNanos": "1681053600000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 83,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 83,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 83,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053654000",
+            "endTimeMillis": "1681053714000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053660000000000",
+                            "endTimeNanos": "1681053660000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 84,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 84,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 84,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053714000",
+            "endTimeMillis": "1681053774000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053720000000000",
+                            "endTimeNanos": "1681053720000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 80,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 80,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 80,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053774000",
+            "endTimeMillis": "1681053834000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053780000000000",
+                            "endTimeNanos": "1681053780000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 95,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 95,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 95,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053834000",
+            "endTimeMillis": "1681053894000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053840000000000",
+                            "endTimeNanos": "1681053840000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 102,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 102,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 102,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053894000",
+            "endTimeMillis": "1681053954000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053900000000000",
+                            "endTimeNanos": "1681053900000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 110,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 110,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 110,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681053954000",
+            "endTimeMillis": "1681054014000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681053960000000000",
+                            "endTimeNanos": "1681053960000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 113,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681054014000",
+            "endTimeMillis": "1681054074000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681054020000000000",
+                            "endTimeNanos": "1681054020000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 120,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681054074000",
+            "endTimeMillis": "1681054134000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681054080000000000",
+                            "endTimeNanos": "1681054080000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 128,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 128,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 128,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681054134000",
+            "endTimeMillis": "1681054194000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681054140000000000",
+                            "endTimeNanos": "1681054140000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 136,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 136,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 136,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "startTimeMillis": "1681054194000",
+            "endTimeMillis": "1681054254000",
+            "dataset": [
+                {
+                    "dataSourceId": "derived:com.google.heart_rate.summary:com.google.android.gms:aggregated",
+                    "point": [
+                        {
+                            "startTimeNanos": "1681054200000000000",
+                            "endTimeNanos": "1681054200000000000",
+                            "dataTypeName": "com.google.heart_rate.summary",
+                            "originDataSourceId": "raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate",
+                            "value": [
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                },
+                                {
+                                    "fpVal": 124,
+                                    "mapVal": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
