@@ -60,7 +60,5 @@
   </script>
   
   <style>
-  #app {
-    color: var(--green300)
-  }
+ 
   </style>
