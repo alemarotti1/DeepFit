@@ -42,7 +42,7 @@ class HeartRateInsightController {
     static getInsight(desired_day, user_id, client_token, token_relogio) {
         return __awaiter(this, void 0, void 0, function* () {
             //const heart_rate_data = await db.
-            let token_acesso_relogio = "ya29.a0Ael9sCPGjOE4GU8Ii6w7v30R7MNSdfdXKqp1Rk4S1P2YWo9eMc-qFHGkMKMy8HLRXnUzw0bJK3j2OHJ2HQ-wTO1abBbKuUp_ypos5GiQ2P1TD77l1dyJ3UuwRLJd7hE6JDcKcoSG94fp-q1JEdKM8dgOFHKDaCgYKAdoSARISFQF4udJhEzZkFGhugR67Da8LDtS7UQ0163";
+            let token_acesso_relogio = "ya29.a0Ael9sCNOA2ukcv8hVyw122lld24Urv3ziKIKYlAe2Ca_9Ok21hkHvyq5er2WYt-IeyhIwqtD_5Oh0lL1oLBrJzboAH6bklR1eqLG-C3O5Nba80ekhJM8EsKl6wTZW4XLRYIsJlcO6q7SYaKKmYHvw0-s37hXaCgYKAUwSARISFQF4udJhlzxQrgdnS-MK07BsdwkGZQ0163";
             let data;
             return new Promise((resolve, reject) => {
                 getDataFromGoogleFit.getDataFromGoogleFit(token_acesso_relogio, 1680318000000, 1681141293355, 86400000, 'raw:com.google.heart_rate.bpm:com.xiaomi.hm.health:GoogleFitSyncHelper - heartrate').then((returned_data) => {

@@ -46,6 +46,25 @@ async function getDataFromGoogleFit(access_token, startTimeMillis, endTimeMillis
             return error;
         });
 
+        let return_data = [];
+
+
+        for (const bucket of response.data.bucket) {
+            let obj = {
+                startTimeMillis: bucket.startTimeMillis,
+                endTimeMillis: bucket.endTimeMillis,
+                value: []
+            }
+            for (const dataset of bucket.dataset) {
+                for (const point of dataset.point) {
+                    for (const value of point.value) {
+                        obj.value.push(value.intVal);
+                    }
+                }
+            }
+            return_data.push(obj);
+        }
+        return return_data;
 
         //console.log(response.data.bucket[0].dataset[0].point[0].value[0].intVal)       
     } catch (error) {
