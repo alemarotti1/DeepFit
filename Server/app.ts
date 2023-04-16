@@ -1,4 +1,8 @@
-import express from 'express';
+import express, { json, NextFunction, Request, Response, Router, urlencoded } from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 import TreinadorRouter from './routes/treinador';
 import InsightsRouter from './routes/insights';
@@ -8,10 +12,11 @@ import AuthRouter from './routes/auth';
 import IndexRouter from './routes';
 
 
-
-
 const app = express();
 app.use(express.json());
+app.get('/', (req : Request, res : Response) => {
+    res.send('Hello World!');
+  });
 
 
 //defining the standard routes
@@ -20,6 +25,15 @@ app.use('/auth', AuthRouter);
 app.use('/insights', InsightsRouter);
 app.use('/treinador', TreinadorRouter);
 app.use('/aluno', AlunoRouter);
+
+
+
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => {
+  console.log(`[server]: Server is running at http://localhost:${port}`);
+});
+
 
 module.exports = app;
 export default app;

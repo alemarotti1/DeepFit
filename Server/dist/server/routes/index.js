@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const IndexRouter = express.Router();
 /* do nothing */
-IndexRouter.get('/', function (req, res) {
+IndexRouter.post('/', function (req, res) {
     res.send('');
 });
 exports.default = IndexRouter;

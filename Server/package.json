@@ -3,7 +3,9 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "node ./dist/server/app.js"
+        "build": "npx tsc",
+        "start": "node dist/server/app.js",
+        "dev": "concurrently \"npx tsc --watch\" \"nodemon dist/server/app.js\""
     },
     "dependencies": {
         "@prisma/client": "^4.12.0",
@@ -18,8 +20,10 @@
         "debug": "~2.6.9",
         "express": "^4.18.2",
         "express-session": "^1.17.3",
+        "googleapis": "^118.0.0",
         "morgan": "~1.9.1",
-        "mysql": "^2.18.1"
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.22"
     },
     "devDependencies": {
         "@types/node": "^18.15.11",

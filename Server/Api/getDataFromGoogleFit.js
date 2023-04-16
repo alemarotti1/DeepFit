@@ -1,18 +1,18 @@
 //npm install googleapis
 const { google } = require('googleapis');
 
-async function getDataFromGoogleFit(access_token, startTimeMillis, endTimeMillis,bucketByTimeMillis,dataSourceId) {
-  const fitness = google.fitness('v1');
+async function getDataFromGoogleFit(access_token, startTimeMillis, endTimeMillis, bucketByTimeMillis, dataSourceId) {
+    const fitness = google.fitness('v1');
     try {
         const response = await fitness.users.dataset.aggregate({
             userId: 'me',
             requestBody: {
                 "aggregateBy": [{
-                // The dataSourceID to be get. Change this value to obtain diferents datas
-                "dataSourceId": dataSourceId
+                    // The dataSourceID to be get. Change this value to obtain diferents datas
+                    "dataSourceId": dataSourceId
                 }],
                 //Slice of time to be get
-                "bucketByTime": { "durationMillis": bucketByTimeMillis},
+                "bucketByTime": { "durationMillis": bucketByTimeMillis },
                 //Start and End time to be get in miliseconds
                 "startTimeMillis": startTimeMillis,
                 "endTimeMillis": endTimeMillis
@@ -20,21 +20,37 @@ async function getDataFromGoogleFit(access_token, startTimeMillis, endTimeMillis
             //Token generated from de Auth2 autentication.
             access_token: access_token,
             headers: { 'Content-Type': 'application/json' }
-        });
-        for (const bucket of response.data.bucket){
-            console.log(bucket.startTimeMillis);
-            console.log(bucket.endTimeMillis);
-            for(const dataset of bucket.dataset){
-                for(const point of dataset.point){
-                    for(const value of point.value){
-                        console.log(value.intVal);
+        }).then((response) => {
+            return response;
+
+            let return_data = [];
+
+
+            for (const bucket of response.data.bucket) {
+                let obj = {
+                    startTimeMillis: bucket.startTimeMillis,
+                    endTimeMillis: bucket.endTimeMillis,
+                    value: []
+                }
+                for (const dataset of bucket.dataset) {
+                    for (const point of dataset.point) {
+                        for (const value of point.value) {
+                            obj.value.push(value.intVal);
+                        }
                     }
                 }
             }
-        }
+            return return_data;
+        }).catch((error) => {
+            console.log(error);
+            return error;
+        });
+
+
         //console.log(response.data.bucket[0].dataset[0].point[0].value[0].intVal)       
-    }catch (error) {
+    } catch (error) {
         console.error(error);
+        return error;
     }
 }
 
@@ -44,4 +60,4 @@ const endTime = 1681054254000;
 const bucketByTime = 60000;
 const dataSourceId = "derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas";
 
-getDataFromGoogleFit(access_token,startTime,endTime,bucketByTime,dataSourceId);
+exports.getDataFromGoogleFit = getDataFromGoogleFit;

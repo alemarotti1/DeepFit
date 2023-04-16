@@ -1,5 +1,5 @@
 import { google, fitness_v1 } from 'googleapis';
-
+/*
 async function getDataFromGoogleFit(
   access_token: string,
   startTimeMillis: number,
@@ -23,7 +23,12 @@ async function getDataFromGoogleFit(
       },
       access_token: access_token,
       headers: { 'Content-Type': 'application/json' },
+    }).then((response) => {
+      return response;
+    }).catch((error) => {
+      return error;
     });
+
     for (const bucket of response.data.bucket || []) {
       console.log(bucket.startTimeMillis);
       console.log(bucket.endTimeMillis);
@@ -48,4 +53,6 @@ const bucketByTime = 86400000;
 const dataSourceId =
   'derived:com.google.step_count.delta:com.google.android.gms:merge_step_deltas';
 
-getDataFromGoogleFit(access_token, startTime, endTime, bucketByTime, dataSourceId);
+
+export default getDataFromGoogleFit;
+*/
