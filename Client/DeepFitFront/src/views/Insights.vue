@@ -6,7 +6,7 @@
       <InsightMenu tipoInsight='sono' viewDestino="sono"/>
     </v-row>
     <v-row class="my-5">
-      <InsightMenu tipoInsight='intensidade' viewDestino="insight"/>
+      <InsightMenu tipoInsight='intensidade' viewDestino="intensidadefc"/>
     </v-row>
     <v-row class="my-5">
       <InsightMenu tipoInsight='frequencia' viewDestino="insight"/>

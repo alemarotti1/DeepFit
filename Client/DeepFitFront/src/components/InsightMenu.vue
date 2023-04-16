@@ -56,7 +56,8 @@ export default {
       const images = {
         sono: tripleStripe,
         intensidade: heartRate,
-        frequencia: singleStripe
+        frequencia: singleStripe,
+        todos: tripleStripe,
       };
       return images[this.tipoInsight];
     },
@@ -64,7 +65,8 @@ export default {
       const logos = {
         sono: moon,
         intensidade: bpm,
-        frequencia: calendar
+        frequencia: calendar,
+        todos: ''
       };
       return logos[this.tipoInsight];
     },
@@ -72,7 +74,8 @@ export default {
       const titulos = {
         sono: "Sono",
         intensidade: "Intensidade",
-        frequencia: "Frequência"
+        frequencia: "Frequência",
+        todos: "Ver Insights",
       };
       return titulos[this.tipoInsight];
     },

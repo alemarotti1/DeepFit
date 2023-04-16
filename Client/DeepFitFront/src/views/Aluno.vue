@@ -3,9 +3,10 @@
     <v-row class="my-5">
         <ProfileCard nome="Pedro Santos" fotoUrl="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"/>
     </v-row>
-    <v-row class="my-5">
-      <BaseButton buttonText="Ver Insights" viewDestino="insights" />
+    <v-row class="mt-10 mb-5">
+      <InsightMenu tipoInsight='todos' viewDestino="insights"/>
     </v-row>
+   
     <h3>Próximo treino:</h3>
     <v-row class="my-1">
         <TreinoList/>
@@ -18,6 +19,7 @@ import TopToolbar from '@/components/TopToolbar.vue';
 import ProfileCard from '@/components/ProfileCard.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import TreinoList from '@/components/TreinoList.vue';
+import InsightMenu from '@/components/InsightMenu.vue';
 
 
 export default {
@@ -25,7 +27,8 @@ export default {
     TopToolbar,
     ProfileCard,
     BaseButton,
-    TreinoList
+    TreinoList,
+    InsightMenu
   }
 }
 </script>

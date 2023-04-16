@@ -13,7 +13,7 @@
 --green-bottom: #62DBC8;
 
 --gradient-green: linear-gradient(90deg, var(--green-bottom), var(--green-top));
---gradient-red: linear-gradient(45deg, var(--red-top), var(--red-bottom));
+--gradient-red: linear-gradient(90deg, var(--red-bottom), var(--red-top));
 }
 
 #app {

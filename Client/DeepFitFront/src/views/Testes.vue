@@ -3,7 +3,7 @@
     <h1>Teste de Componentes</h1>
     <p>Charts.js  LineChart</p>
     <v-row class="my-5">
-        <LineChart :chartData="chartData" />
+        <LineChart  :chartData="chartDataFc"/>
     </v-row>
     <p>vue3-charts  ChartFC</p>
     <v-row class="my-5">
@@ -51,6 +51,7 @@ import ChartFC from '@/components/ChartFC.vue';
 //import Chart from 'https://cdn.jsdelivr.net/npm/chart.js';
 //import Chart from 'chart.js/auto'
 import LineChart from '@/components/LineChart.vue';
+import { chartDataFc } from '@/assets/dadosStub.js';
 
 
 export default {
@@ -66,29 +67,7 @@ export default {
   },
   data() {
     return {
-      chartData: [
-          { time: '00', value: 75 },
-          { time: '01', value: 80 },
-          { time: '02', value: 85 },
-          { time: '03', value: 97 },
-          { time: '04', value: 123 },
-          { time: '05', value: 135 },
-          { time: '06', value: 142 },
-          { time: '07', value: 137 },
-          { time: '08', value: 120 },
-          { time: '09', value: 115 },
-          { time: '10', value: 100 },
-          { time: '11', value: 123 },
-          { time: '12', value: 135 },
-          { time: '13', value: 142 },
-          { time: '14', value: 152 },
-          { time: '15', value: 121 },
-          { time: '16', value: 116 },
-          { time: '17', value: 109 },
-          { time: '18', value: 103 },
-          { time: '19', value: 95 },
-          { time: '20', value: 87 }
-        ]
+      chartDataFc
       }
     }
   

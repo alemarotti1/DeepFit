@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const Home = () => import('../views/Home/Home.vue')
 const About = () => import('../views/AboutView.vue')
-const Insight = () => import('../components/Insight.vue')
+const InsightCard = () => import('../components/InsightCard.vue')
 const Testes = () => import('../views/Testes.vue')
 const Insights = () => import('../views/Insights.vue')
 const Sono = () => import('../views/Sono.vue')
 const Aluno = () => import('../views/Aluno.vue')
+const IntensidadeFC = () => import('../views/IntensidadeFC.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,9 +23,9 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/insight',
-      name: 'insight',
-      component: Insight
+      path: '/insightcard',
+      name: 'insightcard',
+      component: InsightCard
     },
     {
       path: '/insights',
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/sono',
       name: 'sono',
       component: Sono
+    },
+    {
+      path: '/intensidadefc',
+      name: 'intensidadefc',
+      component: IntensidadeFC
     },
     {
       path: '/aluno',
