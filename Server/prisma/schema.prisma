@@ -8,34 +8,41 @@ datasource db {
 }
 
 model aluno {
-  id_aluno          Int       @id
-  //corrigir token acesso
-  token_acesso      Int       @id
-  nome              String?   @db.VarChar(45)
-  nascimento        DateTime? @db.Date
-  objetivo          String?   @db.VarChar(255)
-  Treinador_usuario String?   @db.VarChar(255)
+  token_acesso Int
+  nome         String?   @db.VarChar(45)
+  nascimento   DateTime? @db.Date
+  objetivo     String?   @db.VarChar(255)
 
-  @@index([Treinador_usuario], map: "fk_Aluno_Treinador1")
+  professor_usuario treinador   @relation(fields: [treinador_usuario], references: [usuario])
+  treinador_usuario String      @db.VarChar(255)
+  treino            treino[]
+  dado_sono         dado_sono[]
+
+  @@id([token_acesso, treinador_usuario])
 }
 
 model conjunto_serie {
-  id_exercicio   Int
+  exercicio    exercicio @relation(fields: [id_exercicio], references: [id_exercicio])
+  id_exercicio Int
+
   id_treino      Int
   qtd_series     Int?
   tempo_descanso Int?
   qtd_repeticoes Int?
 
   @@id([id_exercicio, id_treino])
-  @@index([id_treino], map: "fk_Exercicio_has_Treino_Treino1")
 }
 
 model dado_sono {
-  id_dado_relogio Int       @id
-  token_acesso    Int
-  tipo            String?   @db.VarChar(45)
-  valor           String?   @db.VarChar(45)
-  data_coleta     DateTime? @db.Timestamp(0)
+  id_dado_relogio Int @id
+
+  token_acesso      Int
+  treinador_usuario String @db.VarChar(255)
+  aluno             aluno  @relation(fields: [token_acesso, treinador_usuario], references: [token_acesso, treinador_usuario])
+
+  tipo        String?   @db.VarChar(45)
+  valor       String?   @db.VarChar(45)
+  data_coleta DateTime? @db.Timestamp(0)
 
   @@index([token_acesso], map: "fk_dado_relogio_Aluno1")
 }
@@ -50,11 +57,12 @@ model dados_corporais_aluno {
 }
 
 model exercicio {
-  id_exercicio      Int     @id
-  nome              String? @db.VarChar(255)
-  tipo              String? @db.VarChar(255)
-  grupo_muscular    String? @db.VarChar(45)
-  Treinador_usuario String  @db.VarChar(255)
+  id_exercicio      Int              @id @default(autoincrement())
+  nome              String?          @db.VarChar(255)
+  tipo              String?          @db.VarChar(255)
+  grupo_muscular    String?          @db.VarChar(45)
+  Treinador_usuario String           @db.VarChar(255)
+  conjunto_serie    conjunto_serie[]
 
   @@index([Treinador_usuario], map: "fk_Exercicio_Treinador1")
 }
@@ -82,22 +90,34 @@ model secao_treino {
   id_treino    Int
   dia_execucao DateTime @db.Date
 
+  treino treino @relation(fields: [id_treino], references: [id_treino])
+
   @@id([id_treino, dia_execucao])
 }
 
 model treinador {
-  usuario                               String  @id @db.VarChar(255)
-  senha                                 String? @db.VarChar(64)
-  email                                 String? @db.VarChar(45)
-  informacoes_extras_sobre_o_treinador_ String? @map("(informacoes extras sobre o treinador)") @db.VarChar(45)
+  usuario String  @id @db.VarChar(255)
+  senha   String  @db.VarChar(64)
+  email   String? @db.VarChar(45)
+
+  CPF  String? @db.VarChar(11)
+  nome String? @db.VarChar(255)
+  CREF String? @db.VarChar(255)
+
+  aluno aluno[]
 }
 
 model treino {
-  id_treino         Int     @id
-  nome_rotina       Int
+  id_treino   Int    @id @default(autoincrement())
+  nome_rotina String @db.VarChar(255)
+
+  aluno             aluno  @relation(fields: [token_acesso, treinador_usuario], references: [token_acesso, treinador_usuario])
   token_acesso      Int
-  treinador_usuario String  @db.VarChar(255)
-  dias_atribuidos   String? @db.VarChar(255)
+  treinador_usuario String @db.VarChar(255)
+
+  dias_atribuidos String?        @db.VarChar(255)
+  
+  secao_treino    secao_treino[]
 
   @@index([nome_rotina, token_acesso], map: "fk_Treino_Rotina1")
 }

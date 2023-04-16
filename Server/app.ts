@@ -1,14 +1,12 @@
-const express = require('express');
+import express from 'express';
 
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import TreinadorRouter from './routes/treinador';
+import InsightsRouter from './routes/insights';
+import AlunoRouter from './routes/aluno';
 
+import AuthRouter from './routes/auth';
+import IndexRouter from './routes';
 
-
-//importing the routes
-const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth');
-const insightsRouter = require('./routes/insights');
 
 
 
@@ -17,10 +15,11 @@ app.use(express.json());
 
 
 //defining the standard routes
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/insights', insightsRouter);
+app.use('/', IndexRouter);
+app.use('/auth', AuthRouter);
+app.use('/insights', InsightsRouter);
+app.use('/treinador', TreinadorRouter);
+app.use('/aluno', AlunoRouter);
 
 module.exports = app;
 export default app;
-export { prisma }

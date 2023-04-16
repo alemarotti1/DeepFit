@@ -1,12 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const db = require("mysql");
+import * as express from 'express';
 
-
+const IndexRouter = express.Router();
 
 /* do nothing */
-router.get('/', function(req : any, res : any) {
+IndexRouter.get('/', function(req : any, res : any) {
   res.send('');
 });
 
-module.exports = router;
+export default IndexRouter;
