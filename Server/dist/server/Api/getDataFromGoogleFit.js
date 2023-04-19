@@ -14,44 +14,46 @@ function getDataFromGoogleFit(access_token, startTimeMillis, endTimeMillis, buck
     return __awaiter(this, void 0, void 0, function* () {
         const fitness = google.fitness('v1');
         try {
-            const response = yield fitness.users.dataset.aggregate({
-                userId: 'me',
-                requestBody: {
-                    "aggregateBy": [{
-                            // The dataSourceID to be get. Change this value to obtain diferents datas
-                            "dataSourceId": dataSourceId
-                        }],
-                    //Slice of time to be get
-                    "bucketByTime": { "durationMillis": bucketByTimeMillis },
-                    //Start and End time to be get in miliseconds
-                    "startTimeMillis": startTimeMillis,
-                    "endTimeMillis": endTimeMillis
-                },
-                //Token generated from de Auth2 autentication.
-                access_token: access_token,
-                headers: { 'Content-Type': 'application/json' }
-            }).then((response) => {
-                return response;
-                let return_data = [];
-                for (const bucket of response.data.bucket) {
-                    let obj = {
-                        startTimeMillis: bucket.startTimeMillis,
-                        endTimeMillis: bucket.endTimeMillis,
-                        value: []
-                    };
-                    for (const dataset of bucket.dataset) {
-                        for (const point of dataset.point) {
-                            for (const value of point.value) {
-                                obj.value.push(value.intVal);
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                const response = yield fitness.users.dataset.aggregate({
+                    userId: 'me',
+                    requestBody: {
+                        "aggregateBy": [{
+                                // The dataSourceID to be get. Change this value to obtain diferents datas
+                                "dataSourceId": dataSourceId
+                            }],
+                        //Slice of time to be get
+                        "bucketByTime": { "durationMillis": bucketByTimeMillis },
+                        //Start and End time to be get in miliseconds
+                        "startTimeMillis": startTimeMillis,
+                        "endTimeMillis": endTimeMillis
+                    },
+                    //Token generated from de Auth2 autentication.
+                    access_token: access_token,
+                    headers: { 'Content-Type': 'application/json' }
+                }).then((response) => {
+                    let return_data = [];
+                    for (const bucket of response.data.bucket) {
+                        let obj = {
+                            startTimeMillis: bucket.startTimeMillis,
+                            endTimeMillis: bucket.endTimeMillis,
+                            value: []
+                        };
+                        for (const dataset of bucket.dataset) {
+                            for (const point of dataset.point) {
+                                for (const value of point.value) {
+                                    obj.value.push(value);
+                                }
                             }
                         }
+                        return_data.push(obj);
                     }
-                }
-                return return_data;
-            }).catch((error) => {
-                console.log(error);
-                return error;
-            });
+                    resolve(return_data);
+                }).catch((error) => {
+                    console.log(error);
+                    return error;
+                });
+            }));
             let return_data = [];
             for (const bucket of response.data.bucket) {
                 let obj = {
@@ -62,7 +64,7 @@ function getDataFromGoogleFit(access_token, startTimeMillis, endTimeMillis, buck
                 for (const dataset of bucket.dataset) {
                     for (const point of dataset.point) {
                         for (const value of point.value) {
-                            obj.value.push(value.intVal);
+                            obj.value.push(value);
                         }
                     }
                 }

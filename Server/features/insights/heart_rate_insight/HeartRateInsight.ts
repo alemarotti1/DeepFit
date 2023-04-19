@@ -5,7 +5,7 @@ class HeartRateInsight {
     public date : string;
     public user_id : string;
     public client_token : string;
-    public data : string[];
+    public data : any;
 
     //constructor that recieves the date the user_id and the client_token
     constructor(date : string, user_id : string, client_token: string, data : any) {

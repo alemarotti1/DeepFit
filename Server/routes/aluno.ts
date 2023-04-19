@@ -22,4 +22,5 @@ AlunoRouter.put('/', async (req, res) => {
 });
 
 
+
 export default AlunoRouter;
