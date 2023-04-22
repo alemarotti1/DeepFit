@@ -35,6 +35,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.validateJWT = void 0;
 const Treinador_1 = __importDefault(require("../../../general_classes/Treinador"));
 const config_1 = __importDefault(require("../../config"));
 const bcrypt = __importStar(require("bcrypt"));
@@ -135,22 +136,11 @@ class TreinadorController {
             return true;
         });
     }
-    static validateJWT(username, password, token) {
-        return __awaiter(this, void 0, void 0, function* () {
-            /*return new Promise((resolve, reject) => {
-                jwt.verify(token, secret_key, (err, decoded) => {
-                    if (err) resolve(false);
-                    else {
-                        if(!decoded) resolve(false);
-                        
-    
-                    }
-                });
-            });*/
-            //TODO: implementar
-            return true;
-        });
-    }
+    /***
+     * @param username : string - username of the trainer
+     * @param pass : string - password of the trainer
+     * @returns token or false if login failed - token is a JWT token
+     ***/
     static login(username, pass) {
         return __awaiter(this, void 0, void 0, function* () {
             let user = username;
@@ -164,23 +154,45 @@ class TreinadorController {
             let password_hashed = (trainer === null || trainer === void 0 ? void 0 : trainer.senha) ? trainer.senha : ``;
             let logged = bcrypt.compareSync(password, password_hashed);
             return new Promise((resolve, reject) => {
-                if (logged && trainer)
-                    jwt.sign({
+                if (logged && trainer) {
+                    let user = {
                         user: trainer.usuario,
                         CREF: trainer.CREF ? trainer.CREF : null,
                         nome: trainer.nome ? trainer.nome : null,
                         email: trainer.email ? trainer.email : null,
-                    }, config_2.secret_key, (err, token) => {
+                    };
+                    jwt.sign(user, config_2.secret_key, (err, token) => {
                         if (err)
                             reject('Internal Server Error');
                         else {
                             resolve(token);
                         }
                     });
+                }
                 else
                     resolve(false);
             });
         });
     }
 }
+function validateJWT(req, res, next) {
+    const token = req.cookies.token;
+    if (!token) {
+        res.status(401).send('Unauthorized: No token provided');
+        return;
+    }
+    jwt.verify(token, config_2.secret_key, (err, decoded) => {
+        if (err) {
+            res.status(401).send('Unauthorized: Invalid token');
+            res.clearCookie('token');
+            return;
+        }
+        else {
+            req.body.user = decoded.user;
+            req.body.trainer = decoded;
+            next();
+        }
+    });
+}
+exports.validateJWT = validateJWT;
 exports.default = TreinadorController;

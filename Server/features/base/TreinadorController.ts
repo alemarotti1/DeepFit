@@ -3,6 +3,7 @@ import db from '../../config';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
 import { secret_key } from '../../config';
+import * as express from 'express';
 
 
 
@@ -112,21 +113,12 @@ class TreinadorController {
 
     }
 
-    static async validateJWT(username : string, password : string, token : string) : Promise<boolean> {
-        /*return new Promise((resolve, reject) => {
-            jwt.verify(token, secret_key, (err, decoded) => {
-                if (err) resolve(false);
-                else {
-                    if(!decoded) resolve(false);
-                    
 
-                }
-            });
-        });*/
-        //TODO: implementar
-        return true;
-    }
-
+    /***
+     * @param username : string - username of the trainer
+     * @param pass : string - password of the trainer
+     * @returns token or false if login failed - token is a JWT token
+     ***/
     static async login(username : string, pass : string) : Promise<string | boolean> {
       let user : string = username;
       let password : string = pass ? pass : ``;
@@ -146,22 +138,47 @@ class TreinadorController {
       let logged : boolean = bcrypt.compareSync(password, password_hashed);
       
       return new Promise((resolve, reject) => {
-            if(logged && trainer) 
-                jwt.sign({
+            if(logged && trainer){
+                let user = {
                     user: trainer.usuario,
                     CREF: trainer.CREF ? trainer.CREF : null,
                     nome: trainer.nome ? trainer.nome : null,
                     email: trainer.email ? trainer.email : null,
-                }, secret_key, (err:any, token:any) => {
+                };
+                jwt.sign(user, secret_key, (err:any, token:any) => {
                     if(err) reject('Internal Server Error');
                     else {
                         resolve(token);
                     }
                 });
-        else resolve(false);
+            }
+            else resolve(false);
       });
     }
     
 }
 
+
+function validateJWT(req : express.Request, res : express.Response, next : express.NextFunction) {
+    const token = req.cookies.token;
+    if (!token) {
+        res.status(401).send('Unauthorized: No token provided');
+        return;
+    } 
+
+    jwt.verify(token, secret_key, (err : any, decoded:any) => {
+        if (err) {
+            res.status(401).send('Unauthorized: Invalid token');
+            res.clearCookie('token');
+            return;
+        } else {
+            req.body.user = decoded.user;
+            req.body.trainer = decoded;
+            next();
+        }
+    });
+    
+}
+
 export default TreinadorController;
+export { validateJWT };
