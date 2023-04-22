@@ -1,5 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.secret_key = exports.hashNumber = void 0;
 const client_1 = require("@prisma/client");
 const db = new client_1.PrismaClient();
+const hashNumber = 7;
+exports.hashNumber = hashNumber;
+const secret_key = "a0Ael9sCP8aHOtjj1IpS8uG0ShdY65ecoErrjbKdeFcxM4JJ7_1EuQiyhnDMvN1U81ZhyNdb8IAintf";
+exports.secret_key = secret_key;
 exports.default = db;

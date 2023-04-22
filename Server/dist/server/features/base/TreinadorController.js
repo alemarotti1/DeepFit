@@ -133,4 +133,20 @@ class TreinadorController {
             return true;
         });
     }
+    static validateJWT(username, password, token) {
+        return __awaiter(this, void 0, void 0, function* () {
+            /*return new Promise((resolve, reject) => {
+                jwt.verify(token, secret_key, (err, decoded) => {
+                    if (err) resolve(false);
+                    else {
+                        if(!decoded) resolve(false);
+                        
+    
+                    }
+                });
+            });*/
+            //TODO: implementar
+            return true;
+        });
+    }
 }

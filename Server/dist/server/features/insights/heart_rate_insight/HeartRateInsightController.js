@@ -45,7 +45,9 @@ class HeartRateInsightController {
             let token_acesso_relogio = "ya29.a0Ael9sCP8aHOtjj1IpS8uG0ShdY65ecoErrjbKdeFcxM4JJ7_1EuQiyhnDMvN1U81ZhyNdb8IAintf-SzlgxJylltJGZchrwZttsDSTn0VkXybhwx6B28e11R2T2usjOd5-nb0BGlsjcAnBiF6fKrFfWn0cpGaCgYKAXsSARMSFQF4udJhd08hJI7Hqr3LJRfrhOTWDA0163";
             let data;
             return new Promise((resolve, reject) => {
-                getDataFromGoogleFit.getDataFromGoogleFit(token_acesso_relogio, 1680318000000, 1681869086172, 60000, 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm').then((returned_data) => {
+                const start_time = new Date(desired_day).getTime();
+                const end_time = new Date(desired_day).getTime() + 86400000;
+                getDataFromGoogleFit.getDataFromGoogleFit(token_acesso_relogio, start_time, end_time, 60000, 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm').then((returned_data) => {
                     data = returned_data;
                     resolve(new HeartRateInsight_1.default(desired_day, user_id, client_token, data));
                 }).catch((err) => {

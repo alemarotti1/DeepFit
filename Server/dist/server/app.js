@@ -11,8 +11,10 @@ const insights_1 = __importDefault(require("./routes/insights"));
 const aluno_1 = __importDefault(require("./routes/aluno"));
 const auth_1 = __importDefault(require("./routes/auth"));
 const routes_1 = __importDefault(require("./routes"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cookie_parser_1.default)());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
