@@ -3,6 +3,8 @@ import * as bcrypt from 'bcrypt';
 import db, { hashNumber, secret_key } from '../config';
 import * as jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
+import TreinadorController from '../features/base/TreinadorController';
+
 
 
 
@@ -21,37 +23,17 @@ AuthRouter.post('/', async (req : express.Request, res : express.Response) => {
           console.log(req.body);
           return;
       }
-      let user : string = req.body.usuario;
-      let password : string = req.body.senha ? req.body.senha : ``;
-
-      
-      db.$connect();
-
-      const trainer = await db.treinador.findUnique({
-          where: {
-              usuario: user
-          }
+      await TreinadorController.login(req.body.usuario, req.body.senha).then((result) => {
+        if(result) {
+          res.cookie('token', result, { httpOnly: true });
+          res.status(200).send('Logged in');
+        } else {
+          res.status(401).send('Unauthorized');
+        }
+      }).catch((err) => {
+        res.status(500).send('Internal Server Error');
       });
-
       
-      let password_hashed = trainer?.senha ? trainer.senha : ``;
-
-      let logged : boolean = bcrypt.compareSync(password, password_hashed);
-      if(logged && trainer) 
-        jwt.sign({
-          user: trainer.usuario,
-          CREF: trainer.CREF ? trainer.CREF : null,
-          nome: trainer.nome ? trainer.nome : null,
-          email: trainer.email ? trainer.email : null,
-        }, secret_key, (err:any, token:any) => {
-          if(err) res.status(500).send('Internal Server Error');
-          else {
-            res.cookie('token', token, { httpOnly: true });
-            res.status(200).send('Logged in');
-          }
-      });
-      else
-        res.status(401).send('Unauthorized');
   } catch(err) {
       res.status(500).send('Internal Server Error');
       console.log(err);

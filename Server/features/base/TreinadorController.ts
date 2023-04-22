@@ -1,6 +1,8 @@
 import Treinador from '../../../general_classes/Treinador';
 import db from '../../config';
 import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
+import { secret_key } from '../../config';
 
 
 
@@ -110,6 +112,56 @@ class TreinadorController {
 
     }
 
+    static async validateJWT(username : string, password : string, token : string) : Promise<boolean> {
+        /*return new Promise((resolve, reject) => {
+            jwt.verify(token, secret_key, (err, decoded) => {
+                if (err) resolve(false);
+                else {
+                    if(!decoded) resolve(false);
+                    
 
+                }
+            });
+        });*/
+        //TODO: implementar
+        return true;
+    }
+
+    static async login(username : string, pass : string) : Promise<string | boolean> {
+      let user : string = username;
+      let password : string = pass ? pass : ``;
+
+
+      db.$connect();
+
+      const trainer = await db.treinador.findUnique({
+          where: {
+              usuario: user
+          }
+      });
+
+      
+      let password_hashed = trainer?.senha ? trainer.senha : ``;
+
+      let logged : boolean = bcrypt.compareSync(password, password_hashed);
+      
+      return new Promise((resolve, reject) => {
+            if(logged && trainer) 
+                jwt.sign({
+                    user: trainer.usuario,
+                    CREF: trainer.CREF ? trainer.CREF : null,
+                    nome: trainer.nome ? trainer.nome : null,
+                    email: trainer.email ? trainer.email : null,
+                }, secret_key, (err:any, token:any) => {
+                    if(err) reject('Internal Server Error');
+                    else {
+                        resolve(token);
+                    }
+                });
+        else resolve(false);
+      });
+    }
     
 }
+
+export default TreinadorController;

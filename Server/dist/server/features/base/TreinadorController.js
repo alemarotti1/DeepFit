@@ -38,6 +38,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Treinador_1 = __importDefault(require("../../../general_classes/Treinador"));
 const config_1 = __importDefault(require("../../config"));
 const bcrypt = __importStar(require("bcrypt"));
+const jwt = __importStar(require("jsonwebtoken"));
+const config_2 = require("../../config");
 class TreinadorController {
     static getTreinador(username, password) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -149,4 +151,36 @@ class TreinadorController {
             return true;
         });
     }
+    static login(username, pass) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let user = username;
+            let password = pass ? pass : ``;
+            config_1.default.$connect();
+            const trainer = yield config_1.default.treinador.findUnique({
+                where: {
+                    usuario: user
+                }
+            });
+            let password_hashed = (trainer === null || trainer === void 0 ? void 0 : trainer.senha) ? trainer.senha : ``;
+            let logged = bcrypt.compareSync(password, password_hashed);
+            return new Promise((resolve, reject) => {
+                if (logged && trainer)
+                    jwt.sign({
+                        user: trainer.usuario,
+                        CREF: trainer.CREF ? trainer.CREF : null,
+                        nome: trainer.nome ? trainer.nome : null,
+                        email: trainer.email ? trainer.email : null,
+                    }, config_2.secret_key, (err, token) => {
+                        if (err)
+                            reject('Internal Server Error');
+                        else {
+                            resolve(token);
+                        }
+                    });
+                else
+                    resolve(false);
+            });
+        });
+    }
 }
+exports.default = TreinadorController;

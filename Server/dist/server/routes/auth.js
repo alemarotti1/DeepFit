@@ -31,11 +31,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const bcrypt = __importStar(require("bcrypt"));
 const config_1 = __importStar(require("../config"));
-const jwt = __importStar(require("jsonwebtoken"));
+const TreinadorController_1 = __importDefault(require("../features/base/TreinadorController"));
 const AuthRouter = express.Router();
 AuthRouter.get('/', function (req, res) {
     //cannot GET
@@ -48,32 +51,17 @@ AuthRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
             console.log(req.body);
             return;
         }
-        let user = req.body.usuario;
-        let password = req.body.senha ? req.body.senha : ``;
-        config_1.default.$connect();
-        const trainer = yield config_1.default.treinador.findUnique({
-            where: {
-                usuario: user
+        yield TreinadorController_1.default.login(req.body.usuario, req.body.senha).then((result) => {
+            if (result) {
+                res.cookie('token', result, { httpOnly: true });
+                res.status(200).send('Logged in');
             }
+            else {
+                res.status(401).send('Unauthorized');
+            }
+        }).catch((err) => {
+            res.status(500).send('Internal Server Error');
         });
-        let password_hashed = (trainer === null || trainer === void 0 ? void 0 : trainer.senha) ? trainer.senha : ``;
-        let logged = bcrypt.compareSync(password, password_hashed);
-        if (logged && trainer)
-            jwt.sign({
-                user: trainer.usuario,
-                CREF: trainer.CREF ? trainer.CREF : null,
-                nome: trainer.nome ? trainer.nome : null,
-                email: trainer.email ? trainer.email : null,
-            }, config_1.secret_key, (err, token) => {
-                if (err)
-                    res.status(500).send('Internal Server Error');
-                else {
-                    res.cookie('token', token, { httpOnly: true });
-                    res.status(200).send('Logged in');
-                }
-            });
-        else
-            res.status(401).send('Unauthorized');
     }
     catch (err) {
         res.status(500).send('Internal Server Error');
