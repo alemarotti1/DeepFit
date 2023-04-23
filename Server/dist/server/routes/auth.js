@@ -52,13 +52,12 @@ AuthRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
             return;
         }
         yield TreinadorController_1.default.login(req.body.usuario, req.body.senha).then((result) => {
-            if (result) {
-                res.cookie('token', result, { httpOnly: true });
-                res.status(200).send('Logged in');
-            }
-            else {
+            if (!result) {
                 res.status(401).send('Unauthorized');
+                return;
             }
+            res.cookie('token', result, { httpOnly: true });
+            res.status(200).send('Logged in');
         }).catch((err) => {
             res.status(500).send('Internal Server Error');
         });

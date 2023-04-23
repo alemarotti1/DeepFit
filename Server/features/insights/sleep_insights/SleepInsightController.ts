@@ -14,7 +14,7 @@ class SleepInsightController {
             const sleep_data = await prisma.dado_sono.findFirstOrThrow({
                 where: {
                     AND: [
-                        {token_acesso: parseInt(user_id)},
+                        {token_acesso: user_id},
                         {data_coleta: desired_day},
                         {}
                     ]
