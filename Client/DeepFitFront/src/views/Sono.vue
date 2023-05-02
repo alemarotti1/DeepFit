@@ -1,5 +1,7 @@
 <template>
 
+<v-row>
+  <v-col>
     <TopToolbar title="Sono"/>
   
     <v-row class="mt-10 mb-5">
@@ -7,6 +9,8 @@
     </v-row>
     <v-row class="my-5">
       <BaseButton buttonText="Histórico" viewDestino=""/>
+    </v-row>
+    </v-col>
     </v-row>
 
 

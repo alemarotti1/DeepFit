@@ -1,21 +1,24 @@
 <template>
-    <TopToolbar title="Aluno"/>
+  <v-col>
+    <v-row class="my-0">
+      <TopToolbar title="Aluno" />
+    </v-row>
     <v-row class="my-5">
-        <ProfileCard nome="Pedro Santos" fotoUrl="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"/>
+      <ProfileCard nome="Pedro Santos" fotoUrl="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg" />
     </v-row>
     <v-row class="mt-10 mb-5">
-      <InsightMenu tipoInsight='todos' viewDestino="insights"/>
+      <InsightMenu tipoInsight='todos' viewDestino="insights" />
     </v-row>
-   
+
     <h3>Próximo treino:</h3>
     <v-row class="my-1">
-        <TreinoList/>
+      <TreinoList />
     </v-row>
     <v-row class="my-5">
-    <BaseButton buttonText="Editar Treino" viewDestino=""/>
-  </v-row>
-
-  </template>
+      <BaseButton buttonText="Editar Treino" viewDestino="" />
+    </v-row>
+  </v-col>
+</template>
 
 <script>
 import TopToolbar from '@/components/TopToolbar.vue';

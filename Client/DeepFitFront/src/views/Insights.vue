@@ -1,5 +1,6 @@
 <template>
-
+<v-row>
+<v-col>
     <TopToolbar title="Insights"/>
   
     <v-row class="mt-10 mb-5">
@@ -11,7 +12,8 @@
     <v-row class="my-5">
       <InsightMenu tipoInsight='frequencia' viewDestino="insight"/>
     </v-row>
-
+</v-col>
+</v-row>
   </template>
 
 <script>

@@ -1,6 +1,11 @@
 
 <template>
     <h1>Teste de Componentes</h1>
+    <p>CadastroForm</p>
+    <v-row class="my-5">
+        <CadastroForm/>
+    </v-row>
+
     <p>LoginForm</p>
     <v-row class="my-5">
         <LoginForm/>
@@ -57,6 +62,7 @@ import ChartFC from '@/components/ChartFC.vue';
 import LineChart from '@/components/LineChart.vue';
 import { chartDataFc } from '@/assets/dadosStub.js';
 import LoginForm from '@/components/LoginForm.vue';
+import CadastroForm from '@/components/CadastroForm.vue';
 
 
 export default {
@@ -68,7 +74,8 @@ export default {
     TreinoList,
     ChartFC,
     LineChart,
-    LoginForm
+    LoginForm,
+    CadastroForm
 
   },
   data() {
