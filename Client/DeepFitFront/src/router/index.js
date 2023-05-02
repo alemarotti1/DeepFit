@@ -8,6 +8,7 @@ const Insights = () => import('../views/Insights.vue')
 const Sono = () => import('../views/Sono.vue')
 const Aluno = () => import('../views/Aluno.vue')
 const IntensidadeFC = () => import('../views/IntensidadeFC.vue')
+const Login = () => import('../views/Login.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
   ]
 })

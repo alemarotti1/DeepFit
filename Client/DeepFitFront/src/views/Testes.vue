@@ -1,6 +1,10 @@
 
 <template>
     <h1>Teste de Componentes</h1>
+    <p>LoginForm</p>
+    <v-row class="my-5">
+        <LoginForm/>
+    </v-row>
     <p>Charts.js  LineChart</p>
     <v-row class="my-5">
         <LineChart  :chartData="chartDataFc"/>
@@ -52,6 +56,7 @@ import ChartFC from '@/components/ChartFC.vue';
 //import Chart from 'chart.js/auto'
 import LineChart from '@/components/LineChart.vue';
 import { chartDataFc } from '@/assets/dadosStub.js';
+import LoginForm from '@/components/LoginForm.vue';
 
 
 export default {
@@ -62,7 +67,8 @@ export default {
     InsightMenu,
     TreinoList,
     ChartFC,
-    LineChart
+    LineChart,
+    LoginForm
 
   },
   data() {
