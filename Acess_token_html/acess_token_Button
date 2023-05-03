@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Fit Sleep Data</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>   
+    function handleClientLoad() {
+      window.gapi.load('client:auth2', initClient);
+    }
+
+    function initClient() {
+      gapi.client.init({
+        apiKey: 'AIzaSyCHqclKqtq5y4bhUNAxmoBRveNfh8_caek',
+        clientId: '803696687289-2ia3t6gkmsfrrf4h86nqlaidt6ol5jo4.apps.googleusercontent.com',
+        plugin_name:'DeepFit',
+        discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/fitness/v1/rest'],
+        scope: 'https://www.googleapis.com/auth/fitness.sleep.read https://www.googleapis.com/auth/fitness.activity.read https://www.googleapis.com/auth/fitness.heart_rate.read',
+        fetch_basic_profile: false,
+        ux_mode: 'popup',
+        redirect_uri: 'postmessage',
+        response_type: 'permission',
+        prompt: 'select_account'
+      }).then(function () {
+        authorizeAndGetData();
+      });
+    }
+
+    function authorizeAndGetData() {
+        gapi.auth2.getAuthInstance().signIn().then(function () {
+        const accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+        console.log(accessToken)
+    });
+    }
+
+  </script>
+</head>
+<body>
+  <button onclick="handleClientLoad()">Authorize and Get Sleep Data</button>
+</body>
+</html>
