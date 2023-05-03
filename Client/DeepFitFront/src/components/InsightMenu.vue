@@ -3,8 +3,7 @@
     <v-card class="insight-menu" @click="navigateToView">
       <div class="d-flex flex-no-wrap justify-space-between">
         <div>
-          <v-card-title class="text-h6 font-weight-bold">{{selectedTitulo}}</v-card-title>
-          
+          <v-card-title class="text-h6 font-weight-bold">{{ selectedTitulo }}</v-card-title>
         </div>
 
         <div>
@@ -29,25 +28,25 @@ import bpm from '@/assets/bpm.svg'
 import tripleStripe from '@/assets/tripleStripe_green.svg'
 import singleStripe from '@/assets/singleStripe.svg'
 import heartRate from '@/assets/heartRate_green.svg'
-import workoutImage from './../assets/workoutImg.svg'
+// import workoutImage from './../assets/workoutImg.svg'
 
 export default {
   name: 'InsightMenu',
-//  data() {
-//    return {
-//      sonoImg: tripleStripe,
-//      intensidadeImg: heartRate,
-//      frequenciaImg: singleStripe,
-//      workoutImage: workoutImage
-//    }
-//  },
+  //  data() {
+  //    return {
+  //      sonoImg: tripleStripe,
+  //      intensidadeImg: heartRate,
+  //      frequenciaImg: singleStripe,
+  //      workoutImage: workoutImage
+  //    }
+  //  },
   props: {
     tipoInsight: {
       type: String,
       required: true
     },
     viewDestino: {
-      type: String,
+      type: String
       //required: true
     }
   },
@@ -57,9 +56,9 @@ export default {
         sono: tripleStripe,
         intensidade: heartRate,
         frequencia: singleStripe,
-        todos: tripleStripe,
-      };
-      return images[this.tipoInsight];
+        todos: tripleStripe
+      }
+      return images[this.tipoInsight]
     },
     selectedLogo() {
       const logos = {
@@ -67,39 +66,36 @@ export default {
         intensidade: bpm,
         frequencia: calendar,
         todos: ''
-      };
-      return logos[this.tipoInsight];
+      }
+      return logos[this.tipoInsight]
     },
     selectedTitulo() {
       const titulos = {
-        sono: "Sono",
-        intensidade: "Intensidade",
-        frequencia: "Frequência",
-        todos: "Ver Insights",
-      };
-      return titulos[this.tipoInsight];
-    },
+        sono: 'Sono',
+        intensidade: 'Intensidade',
+        frequencia: 'Frequência',
+        todos: 'Ver Insights'
+      }
+      return titulos[this.tipoInsight]
+    }
   },
   methods: {
     navigateToView(viewName) {
+      console.log(viewName)
       this.$router.push({ name: this.viewDestino })
     }
   }
-};
-
+}
 </script>
 
 <style scoped>
 .insight-menu {
   border-radius: 28px;
-    background: var(--green100);
-    color: var(--green-top);
-    padding-top: 8px;
-    padding-left: 12px;
-    padding-right: 12px;
-    padding-bottom: 4px;
+  background: var(--green100);
+  color: var(--green-top);
+  padding-top: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 4px;
 }
-
-
-
 </style>

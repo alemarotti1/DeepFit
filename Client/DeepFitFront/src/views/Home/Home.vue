@@ -87,7 +87,9 @@ export default {
     return {
       userName: 'João Gabriel',
       usersImage: usersImage,
-      workoutImage: workoutImage
+      workoutImage: workoutImage,
+      destinoAluno: 'aluno'
+
     }
   },
   methods: {
@@ -98,6 +100,7 @@ export default {
       console.log('clicou no nome do usuario')
     },
     usersCardClick() {
+      this.$router.push({ name: this.destinoAluno })
       console.log('clicou no card de usuarios')
     },
     exercisesCardClick() {

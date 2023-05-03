@@ -1,6 +1,20 @@
 
 <template>
     <h1>Teste de Componentes</h1>
+    <p>NovoAlunoForm</p>
+    <v-row class="my-5">
+        <NovoAlunoForm/>
+    </v-row>
+    
+    <p>CadastroForm</p>
+    <v-row class="my-5">
+        <CadastroForm/>
+    </v-row>
+
+    <p>LoginForm</p>
+    <v-row class="my-5">
+        <LoginForm/>
+    </v-row>
     <p>Charts.js  LineChart</p>
     <v-row class="my-5">
         <LineChart  :chartData="chartDataFc"/>
@@ -38,6 +52,9 @@
     <v-row class="my-5">
       <InsightMenu tipoInsight='frequencia' viewDestino="insight"/>
     </v-row>
+    <v-row class="my-5">
+      <CardExec nome='Card' viewDestino="exclist"/>
+    </v-row>
 
   </template>
 
@@ -51,7 +68,11 @@ import ChartFC from '@/components/ChartFC.vue';
 //import Chart from 'https://cdn.jsdelivr.net/npm/chart.js';
 //import Chart from 'chart.js/auto'
 import LineChart from '@/components/LineChart.vue';
+import CardExec from '@/components/CardExec.vue';
 import { chartDataFc } from '@/assets/dadosStub.js';
+import LoginForm from '@/components/LoginForm.vue';
+import CadastroForm from '@/components/CadastroForm.vue';
+import NovoAlunoForm from '@/components/NovoAlunoForm.vue';
 
 
 export default {
@@ -62,7 +83,11 @@ export default {
     InsightMenu,
     TreinoList,
     ChartFC,
-    LineChart
+    LineChart,
+    CardExec,
+    LoginForm,
+    CadastroForm,
+    NovoAlunoForm
 
   },
   data() {

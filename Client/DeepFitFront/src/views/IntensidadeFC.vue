@@ -1,5 +1,6 @@
 <template>
-
+<v-row>
+  <v-col>
   <TopToolbar title="Intensidade"/>
 
   <v-row class="mt-10 mb-5 mx-auto"  justify="center">
@@ -12,7 +13,8 @@
   <v-row class="my-5">
     <BaseButton buttonText="Editar Treino" viewDestino=""/>
   </v-row>
-
+</v-col>
+    </v-row>
 
 </template>
 
