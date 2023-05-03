@@ -67,7 +67,7 @@ const router = createRouter({
       path: '/addexec',
       name: 'addexec',
       component: AddExercicio
-    }
+    },
     {
       path: '/login',
       name: 'login',
@@ -82,7 +82,7 @@ const router = createRouter({
       path: '/novoaluno',
       name: 'novoaluno',
       component: NovoAluno
-    },
+    }
   ]
 })
 
