@@ -9,6 +9,8 @@ const Sono = () => import('../views/Sono.vue')
 const Aluno = () => import('../views/Aluno.vue')
 const IntensidadeFC = () => import('../views/IntensidadeFC.vue')
 const ExerciciosList = () => import('../views/ExerciciosList.vue')
+
+const AddExercicio = () => import('../views/AddExercicio.vue')
 const Login = () => import('../views/Login.vue')
 const Cadastro = () => import('../views/Cadastro.vue')
 const NovoAluno = () => import('../views/NovoAluno.vue')
@@ -60,6 +62,11 @@ const router = createRouter({
       path: '/exclist',
       name: 'exclist',
       component: ExerciciosList
+    },
+    {
+      path: '/addexec',
+      name: 'addexec',
+      component: AddExercicio
     }
     {
       path: '/login',
