@@ -38,6 +38,9 @@
     <v-row class="my-5">
       <InsightMenu tipoInsight='frequencia' viewDestino="insight"/>
     </v-row>
+    <v-row class="my-5">
+      <CardExec nome='Card' viewDestino="exclist"/>
+    </v-row>
 
   </template>
 
@@ -51,6 +54,7 @@ import ChartFC from '@/components/ChartFC.vue';
 //import Chart from 'https://cdn.jsdelivr.net/npm/chart.js';
 //import Chart from 'chart.js/auto'
 import LineChart from '@/components/LineChart.vue';
+import CardExec from '@/components/CardExec.vue';
 import { chartDataFc } from '@/assets/dadosStub.js';
 
 
@@ -62,7 +66,8 @@ export default {
     InsightMenu,
     TreinoList,
     ChartFC,
-    LineChart
+    LineChart,
+    CardExec
 
   },
   data() {
