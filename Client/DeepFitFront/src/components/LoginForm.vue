@@ -1,6 +1,6 @@
 <template>
     
-      <v-card class="mx-auto px-1 pb-8"  min-width="270" width="100%" height="100%" elevation="0">
+      <v-card class="mx-auto px-1 pb-8"  min-width="200" width="100%" height="100%" elevation="0">
         
         <v-card-title class="text-center text-wrap pa-10">Bem-vindo!</v-card-title>
         
@@ -17,7 +17,6 @@
             clearable
             label="Usuário"
             density='compact'
-            validate-on="blur"
           ></v-text-field>
   
           <v-text-field
@@ -32,7 +31,7 @@
             density='compact'
             placeholder="Digite sua senha"
             @click:append-inner="show = !show"
-            validate-on="blur"
+            validate-on="input"
           ></v-text-field>
   
           <v-spacer></v-spacer>
@@ -96,7 +95,7 @@
           this.loading = true
 
         try {
-          const response = await axios.post('/api/auth/login', {
+          const response = await axios.post('http://localhost:4000/auth', {
             usuario: this.usuario,
             senha: this.senha
           })
@@ -106,7 +105,7 @@
         
         } catch (error) {
           // handle error response here
-          console.error(error.response.data)
+          console.error(error)
           this.dialog = true
 
         } finally {

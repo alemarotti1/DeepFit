@@ -1,6 +1,6 @@
 <template>
     
-    <v-card class="mx-auto px-1 pb-8"  min-width="270" width="100%" height="100%" elevation="0">
+    <v-card class="mx-auto px-1 pb-8"  min-width="200" width="100%" height="100%" elevation="0">
       
       <v-card-title class="text-center text-wrap pa-10">Informe seus dados:</v-card-title>
       
@@ -79,7 +79,7 @@
           label="Senha"
           density='compact'
           placeholder="Digite sua senha"
-          validate-on="blur"
+          validate-on="input"
           @click:append-inner="show = !show"  
         ></v-text-field>
 

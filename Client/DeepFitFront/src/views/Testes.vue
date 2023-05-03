@@ -1,6 +1,11 @@
 
 <template>
     <h1>Teste de Componentes</h1>
+    <p>NovoAlunoForm</p>
+    <v-row class="my-5">
+        <NovoAlunoForm/>
+    </v-row>
+    
     <p>CadastroForm</p>
     <v-row class="my-5">
         <CadastroForm/>
@@ -63,6 +68,7 @@ import LineChart from '@/components/LineChart.vue';
 import { chartDataFc } from '@/assets/dadosStub.js';
 import LoginForm from '@/components/LoginForm.vue';
 import CadastroForm from '@/components/CadastroForm.vue';
+import NovoAlunoForm from '@/components/NovoAlunoForm.vue';
 
 
 export default {
@@ -75,7 +81,8 @@ export default {
     ChartFC,
     LineChart,
     LoginForm,
-    CadastroForm
+    CadastroForm,
+    NovoAlunoForm
 
   },
   data() {

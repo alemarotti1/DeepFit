@@ -1,8 +1,8 @@
 <template>
     
-    <v-card class="mx-auto px-1 pb-8"  min-width="270" width="100%" height="100%" elevation="0">
+    <v-card class="mx-auto px-1 pb-8"  min-width="200" width="100%" height="100%" elevation="0">
       
-      <v-card-title class="text-center text-wrap pa-10">Informe seus dados:</v-card-title>
+      <v-card-title class="text-center text-wrap pt-10 pb-5">Seu novo aluno</v-card-title>
       
       <v-form
         v-model="form"
@@ -15,79 +15,82 @@
           :rules="[rules.required]"
           class="my-0 py-0"
           clearable
-          label="Nome Sobrenome"
+          label="Nome"
           density='compact'
         ></v-text-field>
 
-        <v-row>
-            <v-col :cols="7">
+        <v-row class="my-0 py-0">
+            <v-col class="my-0 py-0" :cols="6">
+        <v-autocomplete
+            ref="genero"
+            v-model="genero"
+            :items="generos"
+            class="my-0 py-0"
+            label="Gênero"
+            placeholder="Selecione..."
+            density='compact'
+            required
+        ></v-autocomplete>
+      </v-col>
+        <v-col class="my-0 py-0" :cols="6">
         <v-text-field
-          v-model="cpf"
+          v-model="nascimento"
           :readonly="loading"
-          :rules="[rules.required, rules.validCpf]"
+          :rules="[rules.validDate]"
           class="my-0 py-0"
-          clearable
-          label="CPF"
+          label="Nascimento"
+          density='compact'
+          validate-on="blur"
+  
+        ></v-text-field>
+          </v-col> 
+          </v-row>
+        <v-row class="my-0 py-0">
+            <v-col class="my-0 py-0" :cols="6">
+        <v-text-field
+          v-model="peso"
+          suffix="kg"
+          placeholder="65.5"
+          :readonly="loading"
+          :rules="[rules.validDecimal]"
+          class="my-0 py-0"
+          label="Peso"
           density='compact'
           validate-on="blur"
         ></v-text-field>
         </v-col>
-        <v-col :cols="5">
+        <v-col class="my-0 py-0" :cols="6">
         <v-text-field
-          v-model="cref"
+          v-model="altura"
+          placeholder="1.70"
+          suffix="m"
           :readonly="loading"
-          :rules="[rules.required]"
+          :rules="[rules.validDecimal]"
           class="my-0 py-0"
-         
-          label="CREF"
+          label="Altura"
           density='compact'
+          validate-on="blur"
         ></v-text-field>
         </v-col>
         </v-row>
 
-        <v-text-field
-          v-model="email"
-          :readonly="loading"
-          :rules="[rules.required, rules.validEmail]"
-          type="email"
-          class="my-0 py-0"
-          clearable
-          label="Email"
-          density='compact'
-          validate-on="blur"
-        ></v-text-field>
+        <v-autocomplete
+            ref="objetivo"
+            v-model="objetivo"
+            :items="objetivos"
+            label="Objetivo"
+            placeholder="Selecione..."
+            density='compact'
+            required
+        ></v-autocomplete>
 
-        <v-text-field
-          v-model="usuario"
-          :readonly="loading"
-          :rules="[rules.required, rules.validUsername]"
-          class="my-0 py-0"
-          clearable
-          label="Nome de Usuário"
-          density='compact'
-          validate-on="blur"
-        ></v-text-field>
-       
-        <v-text-field
-          v-model="senha"
-          :append-inner-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="show ? 'text' : 'password'"
-          :rules="[rules.required, rules.validPassword]"
-          :readonly="loading"
-          class="my-0 py-0"
-          clearable
-          label="Senha"
-          density='compact'
-          placeholder="Digite sua senha"
-          validate-on="blur"
-          @click:append-inner="show = !show"  
-        ></v-text-field>
+        
 
         <v-spacer></v-spacer>
  
         <v-btn
           class="mt-16 text-white"
-          prepend-icon="mdi-plus-circle-multiple"
+          prepend-icon="mdi-account-multiple-plus-outline"
           :disabled="!form"
           :loading="loading"
           block
@@ -97,7 +100,7 @@
           rounded
           variant="elevated"
         >
-          Cadastrar
+          Salvar
         </v-btn>
       </v-form>
 
@@ -120,22 +123,22 @@
 
   export default {
     data: () => ({
-      viewDestino: "login",
+        generos: ['Feminino', 'Masculino', 'Outros'],
+        objetivos: ['condicionamento físico', 'definição muscular', 'hipertrofia', 'perda de peso', 'saúde e bem-estar'],
+      viewDestino: "aluno",
       form: false,
       show: false,
       nome: null,
-      cpf: null,
-      cref: null,
-      email: null,
-      usuario: null,
-      senha: null,
+      genero: null,
+      objetivo: null,
+      nascimento: null,
+      peso: null,
+      altura: null,
       loading: false,
       rules: {
           required: value => !!value || 'Campo obrigatório',
-          validCpf: (value) => /^\d{11}$/.test(value) || "CPF inválido",
-          validEmail: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || "Email inválido",
-          validPassword: (value) => /^\S{6,}$/.test(value) || "A senha deve ter 6 caracteres ou mais",
-          validUsername: (value) => /^[a-zA-Z0-9._-]+$/.test(value) || "Formato inválido"
+          validDate: value => /^\d{2}\/\d{2}\/\d{4}$|^$/.test(value) || "Data inválida (dd/mm/aaaa)",
+          validDecimal: (value) => /^(\d*\.)?\d+$|^(\d*,)?\d+$|^$/.test(value) || "Número inválido (##.##)",
         },
         dialog: false,
         cadastroRealizado: false
@@ -151,14 +154,15 @@
 
       try {
         const response = await axios.put('/api/auth/login', {
-          usuario: this.usuario,
-          senha: this.senha,
-          email: this.email,
           nome: this.nome,
-          cref: this.cref,
-          cpf: this.cpf
+          genero: this.genero,
+          nascimento: this.nascimento,
+          objetivo: this.nome,
+          peso: this.peso,
+          altura: this.altura
         })
         // handle success response here
+        // SEGUIR PARA PÁGINA DO ALUNO
         console.log(response.data)
         this.cadastroRealizado = true
         this.dialog = true
@@ -179,9 +183,9 @@
 
       dialogText() {
         if (this.cadastroRealizado) {
-            return "Cadastro realizado com sucesso! Siga para a página de login."
+            return "Cadastro realizado com sucesso!"
         } else {
-            return "Não foi possível realizar o cadastro com os dados informados. Tente novamente."
+            return "Não foi possível cadastrar o aluno. Tente novamente."
         }
       },
 
