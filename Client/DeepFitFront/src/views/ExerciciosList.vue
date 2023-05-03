@@ -7,7 +7,13 @@
     <br>
     <div class="pesquisa">
       
-      <input type="text" placeholder="Procurar Treino" v-model="pesquisa">
+      <div>
+        
+        <label>
+          <img src="../assets/Search.svg">
+          <input type="text" placeholder="Procurar Treino" v-model="pesquisa">
+        </label>
+      </div>
       <strong>{{ pesquisa }}</strong>
     </div>
     <v-row no-gutters class="justify-space-between mb-8">
@@ -19,6 +25,15 @@
     </v-col>
     </v-row>
 
+    <v-row class="my-5">
+      <CardExec nome='Card' viewDestino="exclist"/>
+    </v-row>
+    <v-row class="my-5">
+      <CardExec nome='Card' viewDestino="exclist"/>
+    </v-row>
+    <v-row class="my-5">
+      <CardExec nome='Card' viewDestino="exclist"/>
+    </v-row>
     <v-row class="my-5">
       <CardExec nome='Card' viewDestino="exclist"/>
     </v-row>
@@ -58,9 +73,7 @@ export default {
   }
   .pesquisa input {
     width: 80vw;
-    border: 1px solid #BFBFBF;
-    background-color: white;
-    box-shadow: 5px 5px 5px #aaaaaa4f;
+  
     border-radius: 10px;
     padding: 8px;
   }
@@ -77,4 +90,44 @@ export default {
     font-weight: bolder;
     font-size: larger;
   }
+
+  .addButton:hover {
+    width: 65px;
+    height: 65px;
+    transform: scale(0.98);
+  }
+
+  .addButton:active {
+            
+            /* Scaling button to 0.98 to its original size */
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+            /* Lowering the shadow */
+  }
+
+  .pesquisa div label {
+    display: flex;
+    border: 1px solid #BFBFBF;
+    background-color: white;
+    box-shadow: 5px 5px 5px #aaaaaa4f;
+    border-radius: 10px;
+    padding-left: 5px;
+  }
+/*
+  label::after {
+	font-family: FontAwesome;
+	float: left;
+	margin-left: -1.5em;
+	content: "\f002";
+	color: #929090;
+
+	left: 10px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+input::placeholder {
+    padding: 30px;
+}
+*/
 </style>
