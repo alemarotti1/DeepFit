@@ -4,14 +4,17 @@ import cors from 'cors';
 dotenv.config();
 
 
+import IndexRouter from './routes';
+import AuthRouter from './routes/auth';
+import cookieParser from 'cookie-parser';
+
 
 import TreinadorRouter from './routes/treinador';
 import InsightsRouter from './routes/insights';
 import AlunoRouter from './routes/aluno';
-
-import AuthRouter from './routes/auth';
-import IndexRouter from './routes';
-import cookieParser from 'cookie-parser';
+import ExercioRouter from './routes/exercicio';
+import RotinaRouter from './routes/rotina';
+import TreinoRouter from './routes/treino';
 
 
 
@@ -30,7 +33,9 @@ app.use('/auth', AuthRouter);
 app.use('/insights', InsightsRouter);
 app.use('/treinador', TreinadorRouter);
 app.use('/aluno', AlunoRouter);
-
+app.use('/exercicio', ExercioRouter);
+app.use('/rotina', RotinaRouter);
+app.use('/treino', TreinoRouter);
 
 
 const port = process.env.PORT || 4000;
