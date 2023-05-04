@@ -39,20 +39,22 @@
     </v-row>
   </div>
 
-  <button class="addButton">
-    +
-  </button>
+
+  <AddButton nome="button" viewDestino="addexec" />
 
 </template>
 
 <script>
 import TopToolbar from '@/components/TopToolbar.vue';
 import CardExec from '@/components/CardExec.vue';
+import AddButton from '@/components/AddButton.vue';
+
 
 export default {
   components: {
     TopToolbar,
-    CardExec
+    CardExec,
+    AddButton
   }
 }
 </script>
@@ -76,32 +78,6 @@ export default {
   
     border-radius: 10px;
     padding: 8px;
-  }
-  .addButton {
-    background: linear-gradient(274.42deg, #03989E 0%, #62DBC8 124.45%);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    margin: 0 auto;
-    right: 20px;
-    position: fixed;
-    bottom: 20px;
-    color: white;
-    font-weight: bolder;
-    font-size: larger;
-  }
-
-  .addButton:hover {
-    width: 65px;
-    height: 65px;
-    transform: scale(0.98);
-  }
-
-  .addButton:active {
-            
-            /* Scaling button to 0.98 to its original size */
-            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-            /* Lowering the shadow */
   }
 
   .pesquisa div label {

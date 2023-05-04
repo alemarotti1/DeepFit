@@ -16,7 +16,7 @@ export default new (class Config {
   async setup() {
     try {
       // FALTA PEGAR UMA URL PARA EXECUTAR AS CHAMADAS NO AXIOS
-      let baseURL = `API_BASE_URL`
+      let baseURL = `http://localhost:4000`
       const withCredentials = true
       const axiosSetup = {
         paramsSerializer: (params) => {
