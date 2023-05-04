@@ -60,7 +60,7 @@ const router = createRouter({
       path: '/exclist',
       name: 'exclist',
       component: ExerciciosList
-    }
+    },
     {
       path: '/login',
       name: 'login',

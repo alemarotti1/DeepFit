@@ -1,7 +1,8 @@
 <template>
     <v-card class="mx-auto" minWidth="300" elevation="0">
         <v-list>
-            <v-list-item rounded="xl" v-for="(exercicio, index) in exercicios" :key="index" @click="openDialog(exercicio)">
+            <v-list-item rounded="xl" variant="tonal" class="my-2"
+            v-for="(exercicio, index) in exercicios" :key="index" @click="openDialog(exercicio)">
                 <template v-slot:prepend>
                     <v-icon :icon="'mdi-dumbbell'"></v-icon>
                 </template>
