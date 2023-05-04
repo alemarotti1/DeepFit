@@ -7,7 +7,8 @@ import VueFab from 'vue-float-action-button'
 import api from '@/api/api.config'
 
 // FALTA TER PADRAO DO TOKEN QUE VAMOS USAR PARA ACESSAR A API
-api.setToken('XXXOURTOKENXXX', { type: 'BearerStatic' })
+// api.setToken('XXXOURTOKENXXX', { type: 'BearerStatic' })
+api.setToken()
 api.setup()
 
 import '@mdi/font/css/materialdesignicons.min.css'
@@ -28,7 +29,7 @@ const app = createApp(App)
 
 app.use(vuetify)
 
-app.use(VueFab);
+app.use(VueFab)
 
 // Vuex
 // app.use(store)
