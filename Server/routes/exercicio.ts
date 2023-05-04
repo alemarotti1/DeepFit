@@ -77,31 +77,7 @@ ExercicioRouter.put('/', validateJWT, async (req, res) => {
                 res.send(exercicio);
             }
         }
-        else{
-            let birth :string | null = req.body.nascimento ? req.body.nascimento : null;
-            if (birth) {
-                let birth_split = birth.includes('/') ? birth.split('/') : birth.split('-'); 
-                birth = new Date(parseInt(birth_split[2]), parseInt(birth_split[1])-1, parseInt(birth_split[0])).toISOString();
-            }
-            console.log(birth);
-            let aluno = await db.aluno.create({
-                data: {
-                    nome: req.body.nome ? req.body.nome : null,
-                    nascimento: birth,
-                    objetivo: req.body.objetivo ? req.body.objetivo : null,
-                    professor_usuario: {
-                        connect: {
-                            usuario: req.body.user
-                        }
-                    }
-                }
-            });
 
-
-
-            res.send(aluno);
-            
-        }
     } catch(err) {
         res.status(500).send('Internal Server Error');
         console.log(err);
