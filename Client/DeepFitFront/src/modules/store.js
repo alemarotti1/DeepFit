@@ -1,11 +1,15 @@
 import { createStore } from 'vuex'
-import users from '@/store/modules/users'
-import exercises from '@/store/modules/exercises'
+import auth from '@/store/modules/auth'
+import aluno from '@/store/modules/aluno'
+import treinador from '@/store/modules/treinador'
+import insights from '@/store/modules/insights'
 import { getField, updateField } from 'vuex-map-fields'
 
 const modules = {
-  users,
-  exercises
+  auth,
+  insights,
+  treinador,
+  aluno
 }
 
 const store = createStore({
