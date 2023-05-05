@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueFab from 'vue-float-action-button'
-// import store from './modules/store'
+import store from './store/index'
 
 import api from '@/api/api.config'
 
@@ -32,7 +32,7 @@ app.use(vuetify)
 app.use(VueFab)
 
 // Vuex
-// app.use(store)
+app.use(store)
 
 app.use(router)
 
