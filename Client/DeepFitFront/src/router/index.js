@@ -7,11 +7,13 @@ const InsightCard = () => import('@/components/InsightCard.vue')
 const Testes = () => import('@/views/Testes.vue')
 const Insights = () => import('@/views/Insights.vue')
 const Sono = () => import('@/views/Sono.vue')
-const Aluno = () => import('@/views/Aluno.vue')
+const AlunoPage = () => import('@/views/AlunoPage.vue')
 const IntensidadeFC = () => import('@/views/IntensidadeFC.vue')
-const ExerciciosList = () => import('@/views/ExerciciosList.vue')
-
+const ExerciciosList = () => import('@/views/Exercicios/ExerciciosList.vue')
 const AddExercicio = () => import('@/views/AddExercicio.vue')
+
+const TreinoList = () => import('@/views/TreinosHistorico/TreinosHistorico.vue')
+const AddTreino = () => import('@/views/AddTreino.vue')
 const LoginPage = () => import('@/views/LoginPage.vue')
 const Cadastro = () => import('@/views/Cadastro.vue')
 const NovoAluno = () => import('@/views/NovoAluno.vue')
@@ -52,7 +54,7 @@ const router = createRouter({
     {
       path: '/aluno',
       name: 'aluno',
-      component: Aluno
+      component: AlunoPage
     },
     {
       path: '/about',
@@ -85,6 +87,18 @@ const router = createRouter({
       name: 'novoaluno',
       component: NovoAluno
     },
+    {
+      path: '/treinos',
+      name: 'treinos',
+      component: TreinoList
+    },
+    {
+      path: '/addtreino',
+      name: 'addtreino',
+      component: AddTreino
+    },
+
+    // DEIXAR ESSES DOIS PATHS POR ULTIMO NA LISTA
     {
       path: '/error',
       name: 'error',
