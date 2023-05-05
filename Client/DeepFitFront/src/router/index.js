@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+const FallBackError = () => import('../views/Error/FallBackError.vue')
 const Home = () => import('../views/Home/Home.vue')
 const About = () => import('../views/AboutView.vue')
 const InsightCard = () => import('../components/InsightCard.vue')
@@ -16,17 +17,17 @@ const Cadastro = () => import('../views/Cadastro.vue')
 const NovoAluno = () => import('../views/NovoAluno.vue')
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL || '/'),
   routes: [
-    {
-      path: '/',
-      name: 'testes',
-      component: Testes
-    },
     {
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/testes',
+      name: 'testes',
+      component: Testes
     },
     {
       path: '/insightcard',
@@ -62,13 +63,14 @@ const router = createRouter({
       path: '/exclist',
       name: 'exclist',
       component: ExerciciosList
-    },    
+    },
     {
       path: '/addexec',
       name: 'addexec',
       component: AddExercicio
     },
-   {
+    {
+      alias: ['/'],
       path: '/login',
       name: 'login',
       component: Login
@@ -82,6 +84,16 @@ const router = createRouter({
       path: '/novoaluno',
       name: 'novoaluno',
       component: NovoAluno
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: FallBackError
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'notFound',
+      component: FallBackError
     }
   ]
 })
