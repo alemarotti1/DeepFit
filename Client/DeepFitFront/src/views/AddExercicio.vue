@@ -8,29 +8,42 @@
     <img src="../assets/Plus.svg" />
   </div>
   <br />
-  <div class="completo">
+  <v-row class="completo">
     <div class="infosExec">
-      <p>Nome do exercício</p>
+      <p class="mt-10">Nome do exercício</p>
 
       <input type="text" placeholder="Nome" v-model="nome" />
 
-      <br />
-      <br />
-      <p>Descrição</p>
+      <p class="mt-10">Descrição</p>
 
       <input type="text" placeholder="Descrição" v-model="descricao" />
     </div>
-
-    <button class="addButton" @click="navigateToView">Salvar</button>
-  </div>
+  </v-row>
+  <v-row class="mt-15">
+    <BaseButton @click="salvarExercicio" buttonText="Salvar" viewDestino="aluno" />
+  </v-row>
 </template>
 
 <script>
+import BaseButton from '@/components/BaseButton.vue'
 import TopToolbar from '@/components/TopToolbar.vue'
 
 export default {
   components: {
+    BaseButton,
     TopToolbar
+  },
+  data() {
+    return {
+      nome: '',
+      descricao: ''
+    }
+  },
+
+  methods: {
+    salvarExercicio() {
+      // salvar
+    }
   }
 }
 </script>
@@ -63,7 +76,7 @@ export default {
   display: flex;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 85%;
 }
 
 .infosExec input {
@@ -77,33 +90,5 @@ export default {
 
 .infosExec p {
   font-weight: bold;
-}
-
-.addButton {
-  background: linear-gradient(274.42deg, #03989e 0%, #62dbc8 124.45%);
-  border-radius: 80px;
-  width: 78vw;
-  height: 10vh;
-  margin: 0 auto;
-  bottom: 13px;
-  position: fixed;
-  color: white;
-
-  font-weight: medium;
-  font-size: larger;
-  opacity: 0.7;
-}
-
-.addButton:hover {
-  width: 290px;
-  height: 75px;
-  transform: scale(0.98);
-}
-
-.addButton:active {
-  /* Scaling button to 0.98 to its original size */
-  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-  /* Lowering the shadow */
-  opacity: 100%;
 }
 </style>
