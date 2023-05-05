@@ -7,6 +7,7 @@ const Testes = () => import('../views/Testes.vue')
 const Insights = () => import('../views/Insights.vue')
 const Sono = () => import('../views/Sono.vue')
 const Aluno = () => import('../views/Aluno.vue')
+const AlunosLista = () => import('../views/AlunosLista.vue')
 const IntensidadeFC = () => import('../views/IntensidadeFC.vue')
 
 const router = createRouter({
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: About
+    },
+    {
+      path: '/alunos',
+      name: 'alunos',
+      component: AlunosLista
     },
   ]
 })
