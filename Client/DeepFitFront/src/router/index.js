@@ -15,8 +15,8 @@ const AddExercicio = () => import('@/views/AddExercicio.vue')
 
 const TreinoList = () => import('@/views/TreinosHistorico/TreinosHistorico.vue')
 const AddTreino = () => import('@/views/AddTreino.vue')
-const LoginPage = () => import('@/views/LoginPage.vue')
-const Cadastro = () => import('@/views/Cadastro.vue')
+const LoginPage = () => import('@/views/Login/LoginPage.vue')
+const Cadastro = () => import('@/views/Cadastro/CadastroPage.vue')
 const NovoAluno = () => import('@/views/NovoAluno.vue')
 
 const router = createRouter({
