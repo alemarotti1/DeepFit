@@ -81,7 +81,6 @@
 <script>
 import usersImage from '@/assets/usersGroupImg.svg'
 import workoutImage from '@/assets/workoutImg.svg'
-import exerciseApi from '@/api/exercises'
 export default {
   name: 'HomeDefault',
   data() {
@@ -94,8 +93,7 @@ export default {
   },
   methods: {
     userIconClick() {
-      const exList = exerciseApi.list()
-      console.log('clicou no icone do usuario', exList)
+      console.log('clicou no icone do usuario')
     },
     userNameClick() {
       console.log('clicou no nome do usuario')
