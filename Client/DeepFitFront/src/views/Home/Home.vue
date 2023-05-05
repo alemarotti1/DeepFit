@@ -79,9 +79,9 @@
 </template>
 
 <script>
-import usersImage from './../../assets/usersGroupImg.svg'
-import workoutImage from './../../assets/workoutImg.svg'
-import exerciseApi from '../../api/exercises'
+import usersImage from '@/assets/usersGroupImg.svg'
+import workoutImage from '@/assets/workoutImg.svg'
+import exerciseApi from '@/api/exercises'
 export default {
   name: 'HomeDefault',
   data() {
