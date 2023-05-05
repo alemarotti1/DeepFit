@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import authApi from '@/api/auth'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   data: () => ({
@@ -77,8 +77,12 @@ export default {
       validUsernamme: (value) => /^[a-zA-Z0-9._-]+$/.test(value) || 'Formato inválido'
     }
   }),
-
+  computed: mapState({
+    logged: (state) => state.auth.logged,
+    logedUser: (state) => state.auth.logedUser
+  }),
   methods: {
+    ...mapActions('auth', ['login']),
     async onSubmit() {
       // implementar request
 
@@ -87,7 +91,7 @@ export default {
       this.loading = true
 
       try {
-        const response = await authApi.login({
+        const response = await this.login({
           usuario: this.usuario,
           senha: this.senha
         })
@@ -95,6 +99,7 @@ export default {
         console.log(response.data)
         if (response.status == 200 && response.cookie) {
           console.log(response)
+
           this.$router.push({ name: 'home' })
         }
       } catch (error) {

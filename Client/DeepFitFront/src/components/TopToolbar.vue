@@ -17,8 +17,10 @@
           </template>
 
           <v-list>
-            <v-list-item v-for="(item, i) in items" :key="i">
-              <v-list-item-title @click="item.click">{{ item.title }}</v-list-item-title>
+            <v-list-item v-for="(item, i) in visibleItems" :key="i">
+              <v-list-item-title v-if="item.visible" @click="item.click">{{
+                item.title
+              }}</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -28,6 +30,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'TopToolbar',
   props: {
@@ -36,26 +40,42 @@ export default {
       required: true
     }
   },
+  methods: {
+    ...mapActions('auth', ['logout'])
+  },
+  computed: {
+    ...mapState({
+      logged: (state) => state.auth.logged,
+      logedUser: (state) => state.auth.logedUser
+    }),
+    visibleItems() {
+      return this.items.filter((item) => item.visible)
+    }
+  },
 
   //TODO: personalizar itens do menu como props?
   data() {
     return {
       items: [
         {
+          visible: true,
           title: 'Home',
           click: () => {
             this.$router.push('home')
           }
         },
         {
+          visible: true,
           title: 'Novo Aluno',
           click: () => {
             this.$router.push('novoaluno')
           }
         },
         {
+          visible: this.logged,
           title: 'Deslogar',
           click: () => {
+            this.logout()
             this.$router.push('login')
           }
         }
