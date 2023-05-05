@@ -1,5 +1,5 @@
 import { getField, updateField } from 'vuex-map-fields'
-import usersApi from '@/api/users'
+import authApi from '@/api/auth'
 
 export const state = () => ({
   neverListed: true,
@@ -21,9 +21,13 @@ export const getters = {
 }
 
 export const actions = {
+  async registerNewUser({ dispatch }, user) {
+    await authApi.registerNewUser(user)
+    dispatch('list')
+  },
   async login({ commit }, user) {
     try {
-      const loggedUser = await usersApi.login(user)
+      const loggedUser = await authApi.login(user)
       commit('setLogedUser', loggedUser)
       commit('setLoged', true)
     } catch (error) {
@@ -33,7 +37,7 @@ export const actions = {
 
   async logout({ commit }, user) {
     try {
-      await usersApi.logout(user)
+      await authApi.logout(user)
       commit('setLogedUser', {
         id: null
       })
@@ -45,7 +49,7 @@ export const actions = {
 
   async list({ commit, state }, { force = false, params } = {}) {
     if (state.neverListed || force) {
-      const list = await usersApi.list(params)
+      const list = await authApi.list(params)
       commit('setList', list)
       commit('setNeverListed', false)
       return list
@@ -55,22 +59,22 @@ export const actions = {
   },
 
   async listOne(_, id) {
-    const user = await usersApi.get(id)
+    const user = await authApi.get(id)
     return user
   },
 
   async update({ dispatch }, user) {
-    await usersApi.update(user)
+    await authApi.update(user)
     dispatch('list')
   },
 
   async create({ dispatch }, user) {
-    await usersApi.create(user)
+    await authApi.create(user)
     dispatch('list')
   },
 
   async delete({ dispatch }, user) {
-    await usersApi.delete(user)
+    await authApi.delete(user)
     dispatch('list')
   }
 }

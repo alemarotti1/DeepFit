@@ -15,8 +15,8 @@ export default new (class Config {
 
   async setup() {
     try {
-      // FALTA PEGAR UMA URL PARA EXECUTAR AS CHAMADAS NO AXIOS
-      let baseURL = `API_BASE_URL`
+      // let baseURL = `http://localhost:4000`
+      let baseURL = `${import.meta.env.VITE_API_BASE_URL}` || `http://localhost:4001`
       const withCredentials = true
       const axiosSetup = {
         paramsSerializer: (params) => {

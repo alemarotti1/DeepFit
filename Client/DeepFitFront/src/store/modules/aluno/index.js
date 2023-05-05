@@ -1,5 +1,5 @@
 import { getField, updateField } from 'vuex-map-fields'
-import exercisesApi from '@/api/exercises'
+import alunoApi from '@/api/aluno'
 
 export const state = () => ({
   neverListed: true,
@@ -16,7 +16,7 @@ export const getters = {
 export const actions = {
   async list({ commit, state }, { force = false, params } = {}) {
     if (state.neverListed || force) {
-      const list = await exercisesApi.list(params)
+      const list = await alunoApi.list(params)
       commit('setList', list)
       commit('setNeverListed', false)
       return list
@@ -25,23 +25,23 @@ export const actions = {
     }
   },
 
-  async listOne(_, id) {
-    const exercise = await exercisesApi.get(id)
+  async listOne(_, tokenAcesso) {
+    const exercise = await alunoApi.getByToken(tokenAcesso)
     return exercise
   },
 
   async update({ dispatch }, exercise) {
-    await exercisesApi.update(exercise)
+    await alunoApi.update(exercise)
     dispatch('list')
   },
 
   async create({ dispatch }, exercise) {
-    await exercisesApi.create(exercise)
+    await alunoApi.create(exercise)
     dispatch('list')
   },
 
   async delete({ dispatch }, exercise) {
-    await exercisesApi.delete(exercise)
+    await alunoApi.delete(exercise)
     dispatch('list')
   }
 }

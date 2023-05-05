@@ -79,29 +79,18 @@
 </template>
 
 <script>
-import usersImage from './../../assets/usersGroupImg.svg'
-import workoutImage from './../../assets/workoutImg.svg'
+import { mapState, mapActions } from 'vuex'
+
+import usersImage from '@/assets/usersGroupImg.svg'
+import workoutImage from '@/assets/workoutImg.svg'
 export default {
   name: 'HomeDefault',
   data() {
     return {
       userName: 'João Gabriel',
       usersImage: usersImage,
-      workoutImage: workoutImage
-    }
-  },
-  methods: {
-    userIconClick() {
-      console.log('clicou no icone do usuario')
-    },
-    userNameClick() {
-      console.log('clicou no nome do usuario')
-    },
-    usersCardClick() {
-      console.log('clicou no card de usuarios')
-    },
-    exercisesCardClick() {
-      console.log('clicou no card de exercicios')
+      workoutImage: workoutImage,
+      destinoAluno: 'aluno'
     }
   },
   computed: {
@@ -117,6 +106,27 @@ export default {
         today.getDate()
       console.log(date)
       return date
+    },
+    ...mapState({
+      logged: (state) => state.auth.logged,
+      logedUser: (state) => state.auth.logedUser
+    })
+  },
+  methods: {
+    ...mapActions('auth', ['logout']),
+
+    userIconClick() {
+      console.log('clicou no icone do usuario')
+    },
+    userNameClick() {
+      console.log('clicou no nome do usuario')
+    },
+    usersCardClick() {
+      this.$router.push({ name: this.destinoAluno })
+      console.log('clicou no card de usuarios')
+    },
+    exercisesCardClick() {
+      console.log('clicou no card de exercicios')
     }
   }
 }
