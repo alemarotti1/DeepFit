@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import usersApi from '@/api/users'
+import authApi from '@/api/auth'
 
 export default {
   data: () => ({
@@ -140,7 +140,7 @@ export default {
       this.loading = true
 
       try {
-        const response = await usersApi.registerNewUser({
+        const response = await authApi.registerNewUser({
           usuario: this.usuario,
           senha: this.senha,
           email: this.email,
