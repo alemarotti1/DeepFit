@@ -3,25 +3,31 @@ import alunoApi from '@/api/aluno'
 
 export const state = () => ({
   neverListed: true,
-  list: []
+  alunos: []
 })
 
 export const getters = {
   getField,
-  list(state) {
-    return state.list
+  alunos(state) {
+    return state.alunos
   }
 }
 
 export const actions = {
   async list({ commit, state }, { force = false, params } = {}) {
-    if (state.neverListed || force) {
-      const list = await alunoApi.list(params)
-      commit('setList', list)
-      commit('setNeverListed', false)
-      return list
-    } else {
-      return state.list
+    try {
+      if (state.neverListed || force) {
+        const alunos = await alunoApi.list(params)
+        commit('setAlunos', alunos)
+        commit('setNeverListed', false)
+        return alunos
+      } else {
+        return state.alunos
+      }
+    }
+    catch (error) {
+      console.log(error);
+      return [];
     }
   },
 
@@ -49,8 +55,8 @@ export const actions = {
 export const mutations = {
   updateField,
 
-  setList(state, data) {
-    state.list = data
+  setAlunos(state, data) {
+    state.alunos = data
   },
 
   setNeverListed(state, data) {

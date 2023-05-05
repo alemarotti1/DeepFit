@@ -8,7 +8,7 @@
     <div class="pesquisa">
       <div>
         <label>
-          <img src="../assets/Search.svg" />
+          <img src="@/assets/Search.svg" />
           <input type="text" placeholder="Procurar Treino" v-model="pesquisa" />
         </label>
       </div>

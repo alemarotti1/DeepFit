@@ -6,7 +6,7 @@
         v-for="item in studentsData" 
         :key="item"
         class="d-flex flex-row mb-2 p-0" 
-        @click="() => { }"
+        @click="() => $router.push({ name: 'aluno', params: { id: item.id } })"
         link
       >
         <div class="d-flex flex-no-wrap justify-space-between">
@@ -32,35 +32,41 @@
 
 <script>
 import TopToolbar from '@/components/TopToolbar.vue';
-import ProfileCard from '@/components/ProfileCard.vue';
-import BaseButton from '@/components/BaseButton.vue';
-import TreinoList from '@/components/TreinoList.vue';
-import InsightMenu from '@/components/InsightMenu.vue';
+
+import { mapGetters, mapActions } from 'vuex';
 
 
 export default {
   components: {
-    TopToolbar,
-    ProfileCard,
-    BaseButton,
-    TreinoList,
-    InsightMenu
+    TopToolbar
   },
   data() {
     return {
+      trainerID: 0,
       studentsData: [
         {
+          id: 0,
           name: "Gabriel",
           age: 23,
           fotoUrl: "https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
         },
         {
+          id: 1,
           name: "Joana",
           age: 47,
           fotoUrl: "https://cdn.vuetifyjs.com/images/lists/1.jpg"
         }
       ]
     }
+  },
+  methods: {
+    ...mapActions('aluno', ['list']) 
+  },
+  created() {
+    this.list({ trainerID: this.trainerID, force: true});
+  },
+  computed: {
+    ...mapGetters('aluno', ['alunos'])
   }
 }
 </script>

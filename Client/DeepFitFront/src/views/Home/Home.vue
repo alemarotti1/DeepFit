@@ -116,16 +116,19 @@ export default {
     ...mapActions('auth', ['logout']),
 
     userIconClick() {
+      this.$router.push({ name: 'alunos' })
       console.log('clicou no icone do usuario')
     },
     userNameClick() {
+      this.$router.push({ name: 'alunos' })
       console.log('clicou no nome do usuario')
     },
     usersCardClick() {
-      this.$router.push({ name: this.destinoAluno })
+      this.$router.push({ name: 'alunos' })
       console.log('clicou no card de usuarios')
     },
     exercisesCardClick() {
+      this.$router.push({ name: 'exclist' })
       console.log('clicou no card de exercicios')
     }
   }
