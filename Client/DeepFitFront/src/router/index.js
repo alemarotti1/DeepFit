@@ -1,20 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const FallBackError = () => import('../views/Error/FallBackError.vue')
-const Home = () => import('../views/Home/Home.vue')
-const About = () => import('../views/AboutView.vue')
-const InsightCard = () => import('../components/InsightCard.vue')
-const Testes = () => import('../views/Testes.vue')
-const Insights = () => import('../views/Insights.vue')
-const Sono = () => import('../views/Sono.vue')
-const Aluno = () => import('../views/Aluno.vue')
-const IntensidadeFC = () => import('../views/IntensidadeFC.vue')
-const ExerciciosList = () => import('../views/ExerciciosList.vue')
+const FallBackError = () => import('@/views/Error/FallBackError.vue')
+const Home = () => import('@/views/Home/Home.vue')
+const About = () => import('@/views/AboutView.vue')
+const InsightCard = () => import('@/components/InsightCard.vue')
+const Testes = () => import('@/views/Testes.vue')
+const Insights = () => import('@/views/Insights.vue')
+const Sono = () => import('@/views/Sono.vue')
+const Aluno = () => import('@/views/Aluno.vue')
+const IntensidadeFC = () => import('@/views/IntensidadeFC.vue')
+const ExerciciosList = () => import('@/views/ExerciciosList.vue')
 
-const AddExercicio = () => import('../views/AddExercicio.vue')
-const Login = () => import('../views/Login.vue')
-const Cadastro = () => import('../views/Cadastro.vue')
-const NovoAluno = () => import('../views/NovoAluno.vue')
+const AddExercicio = () => import('@/views/AddExercicio.vue')
+const LoginPage = () => import('@/views/LoginPage.vue')
+const Cadastro = () => import('@/views/Cadastro.vue')
+const NovoAluno = () => import('@/views/NovoAluno.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL || '/'),
@@ -73,7 +73,7 @@ const router = createRouter({
       alias: ['/'],
       path: '/login',
       name: 'login',
-      component: Login
+      component: LoginPage
     },
     {
       path: '/cadastro',
