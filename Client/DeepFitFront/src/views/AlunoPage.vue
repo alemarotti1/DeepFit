@@ -18,7 +18,7 @@
       <TreinoList />
     </v-row>
     <v-row class="my-5">
-      <BaseButton buttonText="Editar Treino" viewDestino="treinos" />
+      <BaseButton buttonText="Editar Treinos" viewDestino="treinos" />
     </v-row>
   </v-col>
 </template>

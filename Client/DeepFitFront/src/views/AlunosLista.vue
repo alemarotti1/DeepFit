@@ -1,43 +1,41 @@
 <template>
   <TopToolbar title="Alunos" />
   <div class="pt-4">
-      <v-card
-        color="#f5f5f5"
-        v-for="item in studentsData" 
-        :key="item"
-        class="d-flex flex-row mb-2 p-0" 
-        @click="() => $router.push({ name: 'aluno', params: { id: item.id } })"
-        link
-      >
-        <div class="d-flex flex-no-wrap justify-space-between">
-          <v-avatar
-            class="ma-3"
-            size="110"
-            rounded="0"
-          >
-            <v-img :src="item.fotoUrl" cover />
-          </v-avatar>
-          <div>
-            <v-card-title class="text-h5">
-              {{ item.name }}
-            </v-card-title>
+    <v-card
+      color="#f5f5f5"
+      v-for="item in studentsData"
+      :key="item"
+      class="d-flex flex-row mb-2 p-0"
+      @click="() => $router.push({ name: 'aluno', params: { id: item.id } })"
+      link
+    >
+      <div class="d-flex flex-no-wrap justify-space-between">
+        <v-avatar class="ma-3" size="110" rounded="0">
+          <v-img :src="item.fotoUrl" cover />
+        </v-avatar>
+        <div>
+          <v-card-title class="text-h5">
+            {{ item.name }}
+          </v-card-title>
 
-            <v-card-subtitle>{{ item.age }} anos</v-card-subtitle>
-            <v-card-text>Clique para ver treinos e insights</v-card-text>
-          </div>
+          <v-card-subtitle>{{ item.age }} anos</v-card-subtitle>
+          <v-card-text>Clique para ver treinos e insights</v-card-text>
         </div>
-      </v-card>
+      </div>
+    </v-card>
   </div>
+  <AddButton nome="button" viewDestino="novoaluno" />
 </template>
 
 <script>
-import TopToolbar from '@/components/TopToolbar.vue';
+import TopToolbar from '@/components/TopToolbar.vue'
+import AddButton from '@/components/AddButton.vue'
 
-import { mapGetters, mapActions } from 'vuex';
-
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
+    AddButton,
     TopToolbar
   },
   data() {
@@ -46,24 +44,24 @@ export default {
       studentsData: [
         {
           id: 0,
-          name: "Gabriel",
+          name: 'Gabriel',
           age: 23,
-          fotoUrl: "https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp"
+          fotoUrl: 'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp'
         },
         {
           id: 1,
-          name: "Joana",
+          name: 'Joana',
           age: 47,
-          fotoUrl: "https://cdn.vuetifyjs.com/images/lists/1.jpg"
+          fotoUrl: 'https://cdn.vuetifyjs.com/images/lists/1.jpg'
         }
       ]
     }
   },
   methods: {
-    ...mapActions('aluno', ['list']) 
+    ...mapActions('aluno', ['list'])
   },
   created() {
-    this.list({ trainerID: this.trainerID, force: true});
+    this.list({ trainerID: this.trainerID, force: true })
   },
   computed: {
     ...mapGetters('aluno', ['alunos'])
