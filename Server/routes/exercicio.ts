@@ -7,17 +7,17 @@ const ExercicioRouter = express.Router();
 
 ExercicioRouter.post('/', async (req: Request, res: Response) => {
     // Extrair as informações do corpo da solicitação
-    const { nome, tipo, grupo_muscular, conjunto_serie,Treinador_usuario } = req.body;
+    const { nome, tipo, grupo_muscular, conjunto_serie, user } = req.body;
   
     try {
       // Criar o novo exercício usando o Prisma
-      const exercicio = await prisma.exercicio.create({
+      const exercicio = await db.exercicio.create({
         data: {
-          nome,
-          tipo,
-          grupo_muscular,
-          conjunto_serie,
-          Treinador_usuario
+          nome: nome,
+          tipo: tipo,
+          grupo_muscular: grupo_muscular,
+          conjunto_serie: conjunto_serie,
+          Treinador_usuario: user
         },
       });
   
@@ -39,7 +39,7 @@ ExercicioRouter.get('/',validateJWT, async (req, res) => {
 //todos os exercicios daquele treinador
     const trainer_id = req.body.user;
     console.log("trainerid: "+trainer_id);
-    const exercicios = await db.aluno.findMany({
+    const exercicios = await db.exercicio.findMany({
         where: {
             Treinador_usuario: trainer_id
         }
