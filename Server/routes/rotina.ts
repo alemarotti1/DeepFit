@@ -5,31 +5,12 @@ import { validateJWT } from '../features/base/TreinadorController';
 
 const AlunoRouter = express.Router();
 
-AlunoRouter.post('/', async (req, res) => {
-    const { nome, nascimento, objetivo, user } = req.body;
-  
-    try {
-      // Cria um novo registro de aluno no banco de dados
-      const novoAluno = await db.aluno.create({
-        data: {
-          nome: nome,
-          nascimento: nascimento,
-          objetivo: objetivo,
-          treinador_usuario: user,
-        },
-      });
-  
-      // Retorna o novo registro de aluno criado
-      return res.status(201).send(novoAluno);
-    } catch (error) {
-      // Se ocorrer um erro, retorna um erro 500
-      console.error(error);
-      return res.status(500).send('Erro ao criar o aluno');
-    }
-  });
-  
 
-AlunoRouter.get('/',validateJWT, async (req : express.Request, res : express.Response) => {
+AlunoRouter.post('/',validateJWT, async (req, res) => {
+    res.send('Hello World!');
+});
+
+AlunoRouter.get('/',validateJWT, async (req, res) => {
     db.$connect();
 
     const trainer_id = req.body.user;
@@ -45,7 +26,7 @@ AlunoRouter.get('/',validateJWT, async (req : express.Request, res : express.Res
     res.send(alunos);
 });
 
-AlunoRouter.get('/:tokenAcesso',validateJWT, async (req : express.Request, res : express.Response) => {
+AlunoRouter.get('/:tokenAcesso',validateJWT, async (req, res) => {
     db.$connect();
 
     const aluno = await db.aluno.findFirst({
@@ -59,7 +40,7 @@ AlunoRouter.get('/:tokenAcesso',validateJWT, async (req : express.Request, res :
     res.send(aluno);
 });
 
-AlunoRouter.put('/', validateJWT, async (req : express.Request, res : express.Response) => {
+AlunoRouter.put('/', validateJWT, async (req, res) => {
     try{
         db.$connect();
 
