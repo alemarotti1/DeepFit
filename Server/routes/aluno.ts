@@ -7,7 +7,7 @@ const AlunoRouter = express.Router();
 
 
 AlunoRouter.post('/', async (req, res) => {
-    const { nome, nascimento, objetivo, treinadorUsuario } = req.body;
+    const { nome, nascimento, objetivo, user } = req.body;
   
     try {
       // Cria um novo registro de aluno no banco de dados
@@ -16,7 +16,7 @@ AlunoRouter.post('/', async (req, res) => {
           nome: nome,
           nascimento: nascimento,
           objetivo: objetivo,
-          treinador_usuario: treinadorUsuario,
+          treinador_usuario: user,
         },
       });
   
