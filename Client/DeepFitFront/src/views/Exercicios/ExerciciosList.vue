@@ -12,26 +12,12 @@
           <input type="text" placeholder="Procurar Treino" v-model="pesquisa" />
         </label>
       </div>
-      <strong>{{ pesquisa }}</strong>
     </div>
-    <v-row no-gutters class="justify-space-between mb-8">
-      <v-col cols="auto">
-        <v-row no-gutters> </v-row>
-      </v-col>
-    </v-row>
-
-    <v-row class="my-5">
-      <CardExec nome="Card" viewDestino="exclist" />
-    </v-row>
-    <v-row class="my-5">
-      <CardExec nome="Card" viewDestino="exclist" />
-    </v-row>
-    <v-row class="my-5">
-      <CardExec nome="Card" viewDestino="exclist" />
-    </v-row>
-    <v-row class="my-5">
-      <CardExec nome="Card" viewDestino="exclist" />
-    </v-row>
+    <v-col v-if="!loading" cols="12">
+      <v-row no-gutters class="my-5" v-for="(item, index) in filteredList" :key="index">
+        <CardExec :nome="item.nome" :tempo="item.tempo" :fotoUrl="item.fotoUrl" />
+      </v-row>
+    </v-col>
   </div>
 
   <AddButton nome="button" viewDestino="addexec" />
@@ -41,12 +27,34 @@
 import TopToolbar from '@/components/TopToolbar.vue'
 import CardExec from '@/components/CardExec.vue'
 import AddButton from '@/components/AddButton.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     TopToolbar,
     CardExec,
     AddButton
+  },
+  data() {
+    return {
+      pesquisa: '',
+      loading: false
+    }
+  },
+  computed: {
+    ...mapGetters('exercicios', ['list']),
+    filteredList() {
+      return this.list(this.pesquisa)
+    }
+  },
+  methods: {
+    // ...mapActions('exercicios', { getList: 'list' })
+  },
+  beforeCreate() {
+    this.loading = true
+  },
+  created() {
+    this.loading = false
   }
 }
 </script>
