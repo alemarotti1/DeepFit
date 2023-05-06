@@ -6,11 +6,11 @@ import { validateJWT } from '../features/base/TreinadorController';
 const AlunoRouter = express.Router();
 
 
-AlunoRouter.post('/',validateJWT, async (req, res) => {
+AlunoRouter.post('/',validateJWT, async (req : express.Request, res : express.Response) => {
     res.send('Hello World!');
 });
 
-AlunoRouter.get('/',validateJWT, async (req, res) => {
+AlunoRouter.get('/',validateJWT, async (req : express.Request, res : express.Response) => {
     db.$connect();
 
     const trainer_id = req.body.user;
@@ -26,7 +26,7 @@ AlunoRouter.get('/',validateJWT, async (req, res) => {
     res.send(alunos);
 });
 
-AlunoRouter.get('/:tokenAcesso',validateJWT, async (req, res) => {
+AlunoRouter.get('/:tokenAcesso',validateJWT, async (req : express.Request, res : express.Response) => {
     db.$connect();
 
     const aluno = await db.aluno.findFirst({
@@ -40,7 +40,7 @@ AlunoRouter.get('/:tokenAcesso',validateJWT, async (req, res) => {
     res.send(aluno);
 });
 
-AlunoRouter.put('/', validateJWT, async (req, res) => {
+AlunoRouter.put('/', validateJWT, async (req : express.Request, res : express.Response) => {
     try{
         db.$connect();
 

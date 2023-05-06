@@ -1,4 +1,4 @@
-import express from "express";
+import * as express from "express";
 import HeartRateInsightController from "../features/insights/heart_rate_insight/HeartRateInsightController";
 
 
