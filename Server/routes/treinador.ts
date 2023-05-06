@@ -2,32 +2,6 @@ import * as express from 'express';
 
 const TreinadorRouter = express.Router();
 
-TreinadorRouter.post('/', async (req, res) => {
-    const { usuario, senha, email, CPF, nome, CREF } = req.body;
-  
-    try {
-      // Cria um novo registro de treinador no banco de dados
-      const novoTreinador = await db.treinador.create({
-        data: {
-          usuario: usuario,
-          senha: senha,
-          email: email,
-          CPF: CPF,
-          nome: nome,
-          CREF: CREF,
-        },
-      });
-  
-      // Retorna o novo registro de treinador criado
-      return res.status(201).send(novoTreinador);
-    } catch (error) {
-      // Se ocorrer um erro, retorna um erro 500
-      console.error(error);
-      return res.status(500).send('Erro ao criar o treinador');
-    }
-  });
-  
-
 TreinadorRouter.get('/:email', async (req, res) => {
     const { email } = req.params;
   

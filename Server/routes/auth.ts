@@ -29,11 +29,11 @@ AuthRouter.post('/', async (req : express.Request, res : express.Response) => {
         res.cookie('token', result, { httpOnly: true });
         res.status(200).send('Logged in');
         
-      }).catch((err) => {
+      }).catch((err : any) => {
         res.status(500).send('Internal Server Error');
       });
       
-  } catch(err) {
+  } catch(err : any) {
       res.status(500).send('Internal Server Error');
       console.log(err);
   }
@@ -82,14 +82,14 @@ AuthRouter.put('/', async (req :any, res :any) => {
           }]
         }).then(() => {
           res.status(200).send('Updated');
-        }).catch((err) => {
+        }).catch((err : any) => {
           res.status(500).send('Internal Server Error');
           console.log(err);
         });
       }
     
       
-    } catch(err) {
+    } catch(err : any) {
       res.status(500).send('Internal Server Error');
       console.log(err);
     }

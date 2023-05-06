@@ -19,13 +19,15 @@
           class="mb-3"
           elevation="0"
           style="
+            border-radius: 20px;
             background: linear-gradient(rgba(3, 152, 158, 0.2), rgba(255, 255, 255, 0)),
               center center / cover no-repeat;
           "
+          @click="usersCardClick"
         >
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
-              <v-card-title @click="usersCardClick" class="font-weight-medium text-subtitle-2">
+              <v-card-title class="font-weight-medium text-subtitle-2">
                 Alunos
                 <v-icon icon="mdi-chevron-right"> </v-icon>
               </v-card-title>
@@ -39,7 +41,7 @@
               </v-card-actions>
             </div>
 
-            <v-avatar class="ma-3" size="115" rounded="1">
+            <v-avatar style="background-color: #fff" class="ma-3" size="115" rounded="1">
               <v-img :src="usersImage"></v-img>
             </v-avatar>
           </div>
@@ -48,13 +50,15 @@
           class="mb-3"
           elevation="0"
           style="
+            border-radius: 20px;
             background: linear-gradient(rgba(3, 152, 158, 0.2), rgba(255, 255, 255, 0)),
               center center / cover no-repeat;
           "
+          @click="exercisesCardClick"
         >
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
-              <v-card-title @click="exercisesCardClick" class="font-weight-medium text-subtitle-2">
+              <v-card-title class="font-weight-medium text-subtitle-2">
                 Exercícios
                 <v-icon icon="mdi-chevron-right"> </v-icon>
               </v-card-title>
@@ -68,7 +72,7 @@
               </v-card-actions>
             </div>
 
-            <v-avatar class="ma-3" size="90" rounded="1">
+            <v-avatar style="background-color: #fff" class="ma-3" size="115" rounded="1">
               <v-img :src="workoutImage"></v-img>
             </v-avatar>
           </div>
@@ -79,9 +83,10 @@
 </template>
 
 <script>
-import usersImage from './../../assets/usersGroupImg.svg'
-import workoutImage from './../../assets/workoutImg.svg'
-import exerciseApi from '../../api/exercises'
+import { mapState, mapActions } from 'vuex'
+
+import usersImage from '@/assets/AlunosIMGGroup10297.svg'
+import workoutImage from '@/assets/ExercisesIMGHome.svg'
 export default {
   name: 'HomeDefault',
   data() {
@@ -90,22 +95,6 @@ export default {
       usersImage: usersImage,
       workoutImage: workoutImage,
       destinoAluno: 'aluno'
-    }
-  },
-  methods: {
-    userIconClick() {
-      const exList = exerciseApi.list()
-      console.log('clicou no icone do usuario', exList)
-    },
-    userNameClick() {
-      console.log('clicou no nome do usuario')
-    },
-    usersCardClick() {
-      this.$router.push({ name: this.destinoAluno })
-      console.log('clicou no card de usuarios')
-    },
-    exercisesCardClick() {
-      console.log('clicou no card de exercicios')
     }
   },
   computed: {
@@ -121,9 +110,33 @@ export default {
         today.getDate()
       console.log(date)
       return date
+    },
+    ...mapState({
+      logged: (state) => state.auth.logged,
+      logedUser: (state) => state.auth.logedUser
+    })
+  },
+  methods: {
+    ...mapActions('auth', ['logout']),
+
+    userIconClick() {
+      this.$router.push({ name: 'alunos' })
+      console.log('clicou no icone do usuario')
+    },
+    userNameClick() {
+      this.$router.push({ name: 'alunos' })
+      console.log('clicou no nome do usuario')
+    },
+    usersCardClick() {
+      this.$router.push({ name: 'alunos' })
+      console.log('clicou no card de usuarios')
+    },
+    exercisesCardClick() {
+      this.$router.push({ name: 'exclist' })
+      console.log('clicou no card de exercicios')
     }
   }
 }
 </script>
 
-<style></style>
+<style scoped></style>
