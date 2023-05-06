@@ -3,6 +3,8 @@ import authApi from '@/api/auth'
 
 export const state = () => ({
   neverListed: true,
+  counterEgg: 0,
+  activeEgg: false,
   list: [],
   logged: false,
   logedUser: {
@@ -15,15 +17,25 @@ export const getters = {
   list(state) {
     return state.list
   },
+  activeEgg(state) {
+    return state.activeEgg
+  },
+  counterEgg(state) {
+    return state.counterEgg
+  },
   logedUser(state) {
     if (state.logged) return state.logedUser
   }
 }
 
 export const actions = {
-  async registerNewUser({ dispatch }, user) {
+  async addCounterToEgg({ commit }) {
+    commit('setIncrementCounter')
+  },
+  async registerNewUser({ commit }, user) {
     await authApi.registerNewUser(user)
-    dispatch('list')
+
+    commit('setLoged', true)
   },
   async login({ commit }, user) {
     try {
@@ -82,6 +94,16 @@ export const actions = {
 export const mutations = {
   updateField,
 
+  setActiveEgg(state, data) {
+    state.list = data
+  },
+  setIncrementCounter(state) {
+    if (!state.activeEgg && state.counterEgg < 5) {
+      state.counterEgg += 1
+    } else {
+      state.activeEgg = true
+    }
+  },
   setList(state, data) {
     state.list = data
   },

@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto px-1 pb-8" min-width="200" width="100%" height="100%" elevation="0">
-    <v-card-title class="text-center text-wrap pa-10">Bem-vindo!</v-card-title>
+    <v-card-title @click="easterEgg" class="text-center text-wrap pa-10">Bem-vindo!</v-card-title>
 
     <v-form v-model="form" @submit.prevent="onSubmit" class="d-flex flex-column justify-end">
       <v-text-field
@@ -79,10 +79,18 @@ export default {
   }),
   computed: mapState({
     logged: (state) => state.auth.logged,
-    logedUser: (state) => state.auth.logedUser
+    logedUser: (state) => state.auth.logedUser,
+    activeEgg: (state) => state.auth.activeEgg
   }),
   methods: {
-    ...mapActions('auth', ['login']),
+    ...mapActions('auth', ['login', 'addCounterToEgg']),
+    easterEgg() {
+      if (this.activeEgg) {
+        this.$router.push('home')
+      } else {
+        this.addCounterToEgg()
+      }
+    },
     async onSubmit() {
       // implementar request
 
