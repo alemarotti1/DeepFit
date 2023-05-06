@@ -7,7 +7,7 @@ TreinadorRouter.post('/', async (req, res) => {
     
 });
 
-TreinadorRouter.get('/', async (req, res) => {
+TreinadorRouter.get('/', async (req : express.Request, res : express.Response) => {
     
 });
 
