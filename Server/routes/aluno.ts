@@ -5,15 +5,21 @@ import { validateJWT } from '../features/base/TreinadorController';
 
 const AlunoRouter = express.Router();
 
-AlunoRouter.post('/', async (req, res) => {
+AlunoRouter.post('/', validateJWT, async (req, res) => {
     const { nome, nascimento, objetivo, user } = req.body;
+
+    let birth :string | null = nascimento ? nascimento : null;
+            if (birth) {
+                let birth_split = birth.includes('/') ? birth.split('/') : birth.split('-'); 
+                birth = new Date(parseInt(birth_split[2]), parseInt(birth_split[1])-1, parseInt(birth_split[0])).toISOString();
+            }
   
     try {
       // Cria um novo registro de aluno no banco de dados
       const novoAluno = await db.aluno.create({
         data: {
           nome: nome,
-          nascimento: nascimento,
+          nascimento: birth,
           objetivo: objetivo,
           treinador_usuario: user,
         },

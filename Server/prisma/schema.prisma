@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -86,10 +86,11 @@ model performance_treino_serie {
 }
 
 model rotina {
-  nome_rotina Int
+  nome_rotina String @db.VarChar(255)
 
   token_acesso String
-  aluno        aluno  @relation(fields: [token_acesso], references: [token_acesso])
+  aluno        aluno    @relation(fields: [token_acesso], references: [token_acesso])
+  treino       treino[]
 
   @@id([nome_rotina, token_acesso])
   @@index([token_acesso], map: "fk_Rotina_Aluno1")
@@ -123,6 +124,7 @@ model treino {
 
   token_acesso String
   aluno        aluno  @relation(fields: [token_acesso], references: [token_acesso])
+  rotina       rotina @relation(fields: [nome_rotina, token_acesso], references: [nome_rotina, token_acesso])
 
   dias_atribuidos String? @db.VarChar(255)
 

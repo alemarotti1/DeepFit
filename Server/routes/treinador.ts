@@ -1,5 +1,6 @@
 import * as express from 'express';
 
+import db from '../config';
 const TreinadorRouter = express.Router();
 
 TreinadorRouter.get('/:email', async (req, res) => {

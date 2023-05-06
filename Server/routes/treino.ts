@@ -10,11 +10,11 @@ TreinoRouter.post('/', async (req, res) => {
   
     try {
         // Criar o novo exercício usando o Prisma
-        const treino = await prisma.treino.create({
+        const treino = await db.treino.create({
           data: {
-            nome_rotina,
-            tokenAcesso,
-            diasAtribuidos,
+            nome_rotina: nome_rotina,
+            token_acesso: tokenAcesso,
+            dias_atribuidos: diasAtribuidos,
           },
         });
     
@@ -29,14 +29,16 @@ TreinoRouter.get('/',validateJWT, async (req, res) => {
     db.$connect();
 
     const aluno_id = req.body.user;
-    const dias_atribuidos = req.body.days;
+    const dias_atribuidos : string = req.body.days;
 
-    dias_atribuidos
+
     console.log("aluno_id: "+aluno_id);
-    const alunos = await db.aluno.findMany({
+    const alunos = await db.treino.findMany({
         where: {
             dias_atribuidos: dias_atribuidos,
-            aluno_id:aluno_id
+            aluno: {
+                token_acesso: aluno_id
+              }
         }
     });
 
@@ -48,4 +50,4 @@ TreinoRouter.get('/',validateJWT, async (req, res) => {
 
 
 
-export default AlunoRouter;
+export default TreinoRouter;

@@ -3,30 +3,49 @@ import db from '../config';
 import { validateJWT } from '../features/base/TreinadorController';
 
 
-const AlunoRouter = express.Router();
+const RotinaRouter = express.Router();
 
 
-AlunoRouter.post('/',validateJWT, async (req, res) => {
+RotinaRouter.post('/',validateJWT, async (req, res) => {
     res.send('Hello World!');
 });
 
-AlunoRouter.get('/',validateJWT, async (req, res) => {
+RotinaRouter.get('/',validateJWT, async (req, res) => {
     db.$connect();
 
     const trainer_id = req.body.user;
-    console.log("trainerid: "+trainer_id);
-    const alunos = await db.aluno.findMany({
+    const token_acesso = req.body.token_acesso;
+
+    let aluno = null;
+    try{
+        aluno = await db.aluno.findFirst({
+            where: {
+                token_acesso: token_acesso,
+                treinador_usuario: trainer_id
+            }
+        });
+        if(!aluno) res.status(400).send("Aluno não encontrado");
+    }catch(err){
+        res.status(500).send("Erro ao buscar aluno");
+    }
+
+    if(aluno == null) res.status(400).send("Aluno não encontrado");
+
+    const rotinas = await db.rotina.findMany({
         where: {
-            treinador_usuario: trainer_id
+            aluno: {
+                token_acesso: token_acesso
+            }
         }
     });
 
+
     db.$disconnect();
 
-    res.send(alunos);
+    res.send(rotinas);
 });
 
-AlunoRouter.get('/:tokenAcesso',validateJWT, async (req, res) => {
+RotinaRouter.get('/:tokenAcesso/rotinas/:nomeRotina',validateJWT, async (req, res) => {
     db.$connect();
 
     const aluno = await db.aluno.findFirst({
@@ -35,12 +54,24 @@ AlunoRouter.get('/:tokenAcesso',validateJWT, async (req, res) => {
         }
     });
 
+    if(!aluno) res.status(400).send("Aluno não encontrado");
+
+    const rotina = await db.rotina.findFirst({
+        where: {
+            aluno: {
+                token_acesso: req.params.tokenAcesso
+            },
+            nome_rotina: req.params.nomeRotina
+        }
+    });
+
+
     db.$disconnect();
 
-    res.send(aluno);
+    res.send(rotina);
 });
 
-AlunoRouter.put('/', validateJWT, async (req, res) => {
+RotinaRouter.put('/', validateJWT, async (req, res) => {
     try{
         db.$connect();
 
@@ -99,4 +130,4 @@ AlunoRouter.put('/', validateJWT, async (req, res) => {
 
 
 
-export default AlunoRouter;
+export default RotinaRouter;

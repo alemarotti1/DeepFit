@@ -5,7 +5,7 @@ import { validateJWT } from '../features/base/TreinadorController';
 
 const ExercicioRouter = express.Router();
 
-ExercicioRouter.post('/', async (req: Request, res: Response) => {
+ExercicioRouter.post('/', async (req: express.Request, res: express.Response) => {
     // Extrair as informações do corpo da solicitação
     const { nome, tipo, grupo_muscular, conjunto_serie, user } = req.body;
   
@@ -29,12 +29,7 @@ ExercicioRouter.post('/', async (req: Request, res: Response) => {
     }
   });
   
-  // Iniciando o servidor na porta 3000
-  app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
-  });
-
-ExercicioRouter.get('/',validateJWT, async (req, res) => {
+ExercicioRouter.get('/',validateJWT, async (req: express.Request, res: express.Response) => {
     db.$connect();
 //todos os exercicios daquele treinador
     const trainer_id = req.body.user;
@@ -50,7 +45,7 @@ ExercicioRouter.get('/',validateJWT, async (req, res) => {
     res.send(exercicios);
 });
 
-ExercicioRouter.put('/', validateJWT, async (req, res) => {
+ExercicioRouter.put('/', validateJWT, async (req: express.Request, res: express.Response) => {
     try{
         db.$connect();
 
@@ -63,9 +58,10 @@ ExercicioRouter.put('/', validateJWT, async (req, res) => {
             });
             if(!exercicio) res.status(400).send("Exercicio não encontrado");
             else{
+                let id_exercicio : number =  req.body.id_exercicio;
                 let exercicio = await db.exercicio.update({
                     where: {
-                        nome: req.body.nome
+                        id_exercicio: id_exercicio
                     },
                     data: {
                         nome: req.body.nome,

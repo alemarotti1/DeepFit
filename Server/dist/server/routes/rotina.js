@@ -38,56 +38,61 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const config_1 = __importDefault(require("../config"));
 const TreinadorController_1 = require("../features/base/TreinadorController");
-const AlunoRouter = express.Router();
-AlunoRouter.post('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nome, nascimento, objetivo, user } = req.body;
-    let birth = nascimento ? nascimento : null;
-    if (birth) {
-        let birth_split = birth.includes('/') ? birth.split('/') : birth.split('-');
-        birth = new Date(parseInt(birth_split[2]), parseInt(birth_split[1]) - 1, parseInt(birth_split[0])).toISOString();
-    }
-    try {
-        // Cria um novo registro de aluno no banco de dados
-        const novoAluno = yield config_1.default.aluno.create({
-            data: {
-                nome: nome,
-                nascimento: birth,
-                objetivo: objetivo,
-                treinador_usuario: user,
-            },
-        });
-        // Retorna o novo registro de aluno criado
-        return res.status(201).send(novoAluno);
-    }
-    catch (error) {
-        // Se ocorrer um erro, retorna um erro 500
-        console.error(error);
-        return res.status(500).send('Erro ao criar o aluno');
-    }
+const RotinaRouter = express.Router();
+RotinaRouter.post('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send('Hello World!');
 }));
-AlunoRouter.get('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+RotinaRouter.get('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     config_1.default.$connect();
     const trainer_id = req.body.user;
-    console.log("trainerid: " + trainer_id);
-    const alunos = yield config_1.default.aluno.findMany({
+    const token_acesso = req.body.token_acesso;
+    let aluno = null;
+    try {
+        aluno = yield config_1.default.aluno.findFirst({
+            where: {
+                token_acesso: token_acesso,
+                treinador_usuario: trainer_id
+            }
+        });
+        if (!aluno)
+            res.status(400).send("Aluno não encontrado");
+    }
+    catch (err) {
+        res.status(500).send("Erro ao buscar aluno");
+    }
+    if (aluno == null)
+        res.status(400).send("Aluno não encontrado");
+    const rotinas = yield config_1.default.rotina.findMany({
         where: {
-            treinador_usuario: trainer_id
+            aluno: {
+                token_acesso: token_acesso
+            }
         }
     });
     config_1.default.$disconnect();
-    res.send(alunos);
+    res.send(rotinas);
 }));
-AlunoRouter.get('/:tokenAcesso', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+RotinaRouter.get('/:tokenAcesso/rotinas/:nomeRotina', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     config_1.default.$connect();
     const aluno = yield config_1.default.aluno.findFirst({
         where: {
             token_acesso: req.params.tokenAcesso
         }
     });
+    if (!aluno)
+        res.status(400).send("Aluno não encontrado");
+    const rotina = yield config_1.default.rotina.findFirst({
+        where: {
+            aluno: {
+                token_acesso: req.params.tokenAcesso
+            },
+            nome_rotina: req.params.nomeRotina
+        }
+    });
     config_1.default.$disconnect();
-    res.send(aluno);
+    res.send(rotina);
 }));
-AlunoRouter.put('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+RotinaRouter.put('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         config_1.default.$connect();
         if (req.body.token_acesso) {
@@ -140,4 +145,4 @@ AlunoRouter.put('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(
         config_1.default.$disconnect();
     }
 }));
-exports.default = AlunoRouter;
+exports.default = RotinaRouter;
