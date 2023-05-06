@@ -1,4 +1,3 @@
-import { getField, updateField } from 'vuex-map-fields'
 // import treinadorApi from '@/api/treinador'
 
 export const state = () => ({
@@ -6,27 +5,27 @@ export const state = () => ({
     {
       nome: 'Aquecimento',
       tempo: '5:00',
-      fotoUrl: 'src/assets/aquec.svg'
+      fotoUrl: './../../../assets/aquec.svg'
     },
     {
       nome: 'Polichinelos',
       tempo: '30x',
-      fotoUrl: 'src/assets/polichinelos.svg'
+      fotoUrl: '@/assets/polichinelos.svg'
     },
     {
       nome: 'Pular corda',
       tempo: '0:45',
-      fotoUrl: 'src/assets/corda.svg'
+      fotoUrl: './Client/DeepFitFront/src/assets/corda.svg'
     },
     {
       nome: 'Agachamento',
       tempo: '20x',
-      fotoUrl: 'src/assets/agach.svg'
+      fotoUrl: '/src/assets/agach.svg'
     },
     {
       nome: 'Elevação Arnold',
       tempo: '12x',
-      fotoUrl: 'src/assets/elevaarnold.svg'
+      fotoUrl: '../assets/elevaarnold.svg'
     },
     {
       nome: 'Flexões Inclinadas',
@@ -47,7 +46,6 @@ export const state = () => ({
 })
 
 export const getters = {
-  getField,
   list(state) {
     return (nome) => {
       if (state.list?.length && nome !== '') {
@@ -85,8 +83,6 @@ export const actions = {
 }
 
 export const mutations = {
-  updateField,
-
   setList(state, data) {
     state.list = data
   },

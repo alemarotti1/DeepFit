@@ -1,4 +1,3 @@
-import { getField, updateField } from 'vuex-map-fields'
 import alunoApi from '@/api/aluno'
 
 export const state = () => ({
@@ -7,7 +6,6 @@ export const state = () => ({
 })
 
 export const getters = {
-  getField,
   alunos(state) {
     return state.alunos
   }
@@ -24,10 +22,9 @@ export const actions = {
       } else {
         return state.alunos
       }
-    }
-    catch (error) {
-      console.log(error);
-      return [];
+    } catch (error) {
+      console.log(error)
+      return []
     }
   },
 
@@ -53,8 +50,6 @@ export const actions = {
 }
 
 export const mutations = {
-  updateField,
-
   setAlunos(state, data) {
     state.alunos = data
   },

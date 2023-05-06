@@ -1,4 +1,3 @@
-import { getField, updateField } from 'vuex-map-fields'
 import authApi from '@/api/auth'
 
 export const state = () => ({
@@ -13,7 +12,6 @@ export const state = () => ({
 })
 
 export const getters = {
-  getField,
   list(state) {
     return state.list
   },
@@ -92,8 +90,6 @@ export const actions = {
 }
 
 export const mutations = {
-  updateField,
-
   setActiveEgg(state, data) {
     state.list = data
   },
