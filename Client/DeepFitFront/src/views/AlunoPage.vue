@@ -4,10 +4,7 @@
       <TopToolbar title="Aluno" />
     </v-row>
     <v-row class="my-5">
-      <ProfileCard
-        nome="Pedro Santos"
-        fotoUrl="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"
-      />
+      <ProfileCard :nome="aluno.name" :fotoUrl="aluno.fotoUrl" />
     </v-row>
     <v-row class="mt-10 mb-5">
       <InsightMenu tipoInsight="todos" viewDestino="insights" />
@@ -29,6 +26,7 @@ import ProfileCard from '@/components/ProfileCard.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import TreinoList from '@/components/TreinoList.vue'
 import InsightMenu from '@/components/InsightMenu.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -37,6 +35,22 @@ export default {
     BaseButton,
     TreinoList,
     InsightMenu
+  },
+  methods: {
+    ...mapActions('aluno', ['list'])
+  },
+  computed: {
+    ...mapGetters('aluno', ['selectedAluno']),
+    aluno() {
+      return (
+        this.selectedAluno || {
+          id: 2,
+          age: 24,
+          name: 'Pedro Santos',
+          fotoUrl: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg'
+        }
+      )
+    }
   }
 }
 </script>

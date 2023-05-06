@@ -1,7 +1,11 @@
 <template>
   <TopToolbar title="Alunos" />
   <div class="pt-4">
+    <div v-if="!studentsData?.length">
+      <v-card-title class="text-h5"> Não possui alunos ainda. </v-card-title>
+    </div>
     <v-card
+      v-else
       elevation="0"
       style="
         border-radius: 10px;
@@ -11,7 +15,7 @@
       v-for="item in studentsData"
       :key="item"
       class="d-flex flex-row mb-2 p-0"
-      @click="() => $router.push({ name: 'aluno', params: { id: item.id } })"
+      @click="clickAluno(item)"
       link
     >
       <div class="d-flex flex-no-wrap justify-space-between">
@@ -45,31 +49,25 @@ export default {
   },
   data() {
     return {
-      trainerID: 0,
-      studentsData: [
-        {
-          id: 0,
-          name: 'Gabriel',
-          age: 23,
-          fotoUrl: 'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp'
-        },
-        {
-          id: 1,
-          name: 'Joana',
-          age: 47,
-          fotoUrl: 'https://cdn.vuetifyjs.com/images/lists/1.jpg'
-        }
-      ]
+      trainerID: 0
     }
   },
   methods: {
-    ...mapActions('aluno', ['list'])
+    ...mapActions('aluno', ['list', 'clickOpenAluno']),
+    async clickAluno(aluno) {
+      console.log(aluno)
+      await this.clickOpenAluno(aluno)
+      this.$router.push({ name: 'aluno' })
+    }
   },
   created() {
     this.list({ trainerID: this.trainerID, force: true })
   },
   computed: {
-    ...mapGetters('aluno', ['alunos'])
+    ...mapGetters('aluno', ['alunos']),
+    studentsData() {
+      return this.alunos?.length || []
+    }
   }
 }
 </script>
