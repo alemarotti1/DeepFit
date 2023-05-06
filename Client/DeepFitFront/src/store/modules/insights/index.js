@@ -1,4 +1,3 @@
-import { getField, updateField } from 'vuex-map-fields'
 import insightsApi from '@/api/insights'
 
 export const state = () => ({
@@ -9,7 +8,6 @@ export const state = () => ({
 })
 
 export const getters = {
-  getField,
   list(state) {
     return state.list
   },
@@ -50,8 +48,6 @@ export const actions = {
 }
 
 export const mutations = {
-  updateField,
-
   setList(state, data) {
     state.list = data
   },
