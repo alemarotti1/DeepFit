@@ -2,7 +2,12 @@
   <TopToolbar title="Alunos" />
   <div class="pt-4">
     <v-card
-      color="#f5f5f5"
+      elevation="0"
+      style="
+        border-radius: 10px;
+        background: linear-gradient(rgba(3, 152, 158, 0.2), rgba(255, 255, 255, 0)),
+          center center / cover no-repeat;
+      "
       v-for="item in studentsData"
       :key="item"
       class="d-flex flex-row mb-2 p-0"
