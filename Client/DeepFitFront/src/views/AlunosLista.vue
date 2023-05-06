@@ -1,11 +1,7 @@
 <template>
   <TopToolbar title="Alunos" />
-  <div class="pt-4">
-    <div v-if="!studentsData?.length">
-      <v-card-title class="text-h5"> Não possui alunos ainda. </v-card-title>
-    </div>
+  <div v-if="studentsData.length" class="pt-4">
     <v-card
-      v-else
       elevation="0"
       style="
         border-radius: 10px;
@@ -32,6 +28,9 @@
         </div>
       </div>
     </v-card>
+  </div>
+  <div v-else>
+    <v-card-title class="text-h5"> Não possui alunos ainda. </v-card-title>
   </div>
   <AddButton nome="button" viewDestino="novoaluno" />
 </template>
@@ -66,7 +65,8 @@ export default {
   computed: {
     ...mapGetters('aluno', ['alunos']),
     studentsData() {
-      return this.alunos?.length || []
+      if (this.alunos.length) return this.alunos
+      return []
     }
   }
 }
