@@ -5,7 +5,7 @@
   <br />
 
   <div class="addimg">
-    <img src="../assets/Plus.svg" />
+    <img src="@/assets/Plus.svg" />
   </div>
   <br />
   <v-row class="completo">
@@ -16,17 +16,18 @@
 
       <p class="mt-10">Descrição</p>
 
-      <input type="text" placeholder="Descrição" v-model="descricao" />
+      <input type="text" placeholder="Tempo / Repetições" v-model="tempo" />
     </div>
   </v-row>
   <v-row class="mt-15">
-    <BaseButton @click="salvarExercicio" buttonText="Salvar" viewDestino="aluno" />
+    <BaseButton @click="salvarExercicio" buttonText="Salvar" viewDestino="exclist" />
   </v-row>
 </template>
 
 <script>
 import BaseButton from '@/components/BaseButton.vue'
 import TopToolbar from '@/components/TopToolbar.vue'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -36,13 +37,19 @@ export default {
   data() {
     return {
       nome: '',
-      descricao: ''
+      tempo: '',
+      fotoUrl: 'src/assets/aquec.svg'
     }
   },
 
   methods: {
+    ...mapActions('exercicios', ['create']),
     salvarExercicio() {
-      // salvar
+      this.create({
+        nome: this.nome,
+        tempo: this.tempo,
+        fotoUrl: this.fotoUrl
+      })
     }
   }
 }
