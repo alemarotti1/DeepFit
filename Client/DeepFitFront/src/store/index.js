@@ -1,4 +1,4 @@
-import { createStore, createLogger } from 'vuex'
+import { createStore } from 'vuex'
 import auth from '@/store/modules/auth'
 import aluno from '@/store/modules/aluno'
 import treinador from '@/store/modules/treinador'
@@ -16,7 +16,7 @@ const modules = {
 const store = createStore({
   strict: true,
   modules: modules,
-  plugins: [createLogger()]
+  plugins: []
 })
 
 export default store
