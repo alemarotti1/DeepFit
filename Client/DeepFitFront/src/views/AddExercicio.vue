@@ -28,6 +28,7 @@
 import BaseButton from '@/components/BaseButton.vue'
 import TopToolbar from '@/components/TopToolbar.vue'
 import { mapActions } from 'vuex'
+import svgs from '@/assets/index.js'
 
 export default {
   components: {
@@ -38,7 +39,7 @@ export default {
     return {
       nome: '',
       tempo: '',
-      fotoUrl: 'src/assets/aquec.svg'
+      fotoUrl: svgs['AquecimentoSVG'].component
     }
   },
 

@@ -1,46 +1,56 @@
 // import treinadorApi from '@/api/treinador'
+// AquecimentoSVG
+// PolichinelosSVG
+// PularCordaSVG
+// AgachamentoSVG
+// ElevacaoArnoldSVG
+// FlexoesInclinadasSVG
+// FlexoesSVG
+// CobraStretchSVG
+import svgs from '@/assets/index.js'
 
 export const state = () => ({
+  // ...svgs,
   list: [
     {
       nome: 'Aquecimento',
       tempo: '5:00',
-      fotoUrl: './../../../assets/aquec.svg'
+      fotoUrl: svgs['AquecimentoSVG'].component
     },
     {
       nome: 'Polichinelos',
       tempo: '30x',
-      fotoUrl: '@/assets/polichinelos.svg'
+      fotoUrl: svgs['PolichinelosSVG'].component
     },
     {
       nome: 'Pular corda',
       tempo: '0:45',
-      fotoUrl: './Client/DeepFitFront/src/assets/corda.svg'
+      fotoUrl: svgs['PularCordaSVG'].component
     },
     {
       nome: 'Agachamento',
       tempo: '20x',
-      fotoUrl: '/src/assets/agach.svg'
+      fotoUrl: svgs['AgachamentoSVG'].component
     },
     {
       nome: 'Elevação Arnold',
       tempo: '12x',
-      fotoUrl: '../assets/elevaarnold.svg'
+      fotoUrl: svgs['ElevacaoArnoldSVG'].component
     },
     {
       nome: 'Flexões Inclinadas',
       tempo: '15x',
-      fotoUrl: 'src/assets/flexoes.svg'
+      fotoUrl: svgs['FlexoesInclinadasSVG'].component
     },
     {
       nome: 'Flexões',
       tempo: '10x',
-      fotoUrl: 'src/assets/flexoes0.svg'
+      fotoUrl: svgs['FlexoesSVG'].component
     },
     {
       nome: 'Cobra Stretch',
       tempo: '1:00',
-      fotoUrl: 'src/assets/cobra.svg'
+      fotoUrl: svgs['CobraStretchSVG'].component
     }
   ]
 })
