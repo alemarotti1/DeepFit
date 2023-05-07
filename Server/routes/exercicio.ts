@@ -5,9 +5,9 @@ import { validateJWT } from '../features/base/TreinadorController';
 
 const ExercicioRouter = express.Router();
 
-ExercicioRouter.post('/', async (req: express.Request, res: express.Response) => {
+ExercicioRouter.post('/', validateJWT ,async (req: express.Request, res: express.Response) => {
     // Extrair as informações do corpo da solicitação
-    const { nome, tipo, grupo_muscular, conjunto_serie, user } = req.body;
+    const { nome, tipo, grupo_muscular, user } = req.body;
   
     try {
       // Criar o novo exercício usando o Prisma
@@ -16,8 +16,7 @@ ExercicioRouter.post('/', async (req: express.Request, res: express.Response) =>
           nome: nome,
           tipo: tipo,
           grupo_muscular: grupo_muscular,
-          conjunto_serie: conjunto_serie,
-          Treinador_usuario: user
+          Treinador_usuario: user,
         },
       });
   
@@ -44,6 +43,31 @@ ExercicioRouter.get('/',validateJWT, async (req: express.Request, res: express.R
 
     res.send(exercicios);
 });
+
+ExercicioRouter.get('/:idExercicio',validateJWT, async (req: express.Request, res: express.Response) => {
+    db.$connect();
+//todos os exercicios daquele treinador
+    const trainer_id = req.body.user;
+    console.log("trainerid: "+trainer_id);
+
+    try{
+        const exercicios = await db.exercicio.findFirst({
+            where: {
+                Treinador_usuario: trainer_id,
+                id_exercicio: parseInt(req.params.idExercicio)
+            }
+        });
+        res.send(exercicios);
+    }catch(err:any){
+        res.status(500).send('Internal Server Error');
+        console.log(err);
+    }
+    db.$disconnect();
+
+    
+});
+
+
 
 ExercicioRouter.put('/', validateJWT, async (req: express.Request, res: express.Response) => {
     try{

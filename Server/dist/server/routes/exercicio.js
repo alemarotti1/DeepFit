@@ -39,9 +39,9 @@ const express = __importStar(require("express"));
 const config_1 = __importDefault(require("../config"));
 const TreinadorController_1 = require("../features/base/TreinadorController");
 const ExercicioRouter = express.Router();
-ExercicioRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+ExercicioRouter.post('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // Extrair as informações do corpo da solicitação
-    const { nome, tipo, grupo_muscular, conjunto_serie, user } = req.body;
+    const { nome, tipo, grupo_muscular, user } = req.body;
     try {
         // Criar o novo exercício usando o Prisma
         const exercicio = yield config_1.default.exercicio.create({
@@ -49,8 +49,7 @@ ExercicioRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, functi
                 nome: nome,
                 tipo: tipo,
                 grupo_muscular: grupo_muscular,
-                conjunto_serie: conjunto_serie,
-                Treinador_usuario: user
+                Treinador_usuario: user,
             },
         });
         // Enviar o exercício criado como resposta à solicitação
@@ -73,6 +72,26 @@ ExercicioRouter.get('/', TreinadorController_1.validateJWT, (req, res) => __awai
     });
     config_1.default.$disconnect();
     res.send(exercicios);
+}));
+ExercicioRouter.get('/:idExercicio', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    //todos os exercicios daquele treinador
+    const trainer_id = req.body.user;
+    console.log("trainerid: " + trainer_id);
+    try {
+        const exercicios = yield config_1.default.exercicio.findFirst({
+            where: {
+                Treinador_usuario: trainer_id,
+                id_exercicio: parseInt(req.params.idExercicio)
+            }
+        });
+        res.send(exercicios);
+    }
+    catch (err) {
+        res.status(500).send('Internal Server Error');
+        console.log(err);
+    }
+    config_1.default.$disconnect();
 }));
 ExercicioRouter.put('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
