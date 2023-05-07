@@ -178,7 +178,7 @@ class TreinadorController {
 function validateJWT(req, res, next) {
     let token = req.cookies.token;
     if (!token) {
-        token = req.body.token;
+        token = req.headers.token;
         if (!token) {
             res.status(401).send('Unauthorized: No token provided');
             return;
