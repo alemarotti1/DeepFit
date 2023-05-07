@@ -40,14 +40,30 @@ const config_1 = __importDefault(require("../config"));
 const TreinadorController_1 = require("../features/base/TreinadorController");
 const TreinoRouter = express.Router();
 TreinoRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { nome_rotina, tokenAcesso, diasAtribuidos } = req.body;
+    const { nome_rotina, token_acesso, dias_atribuidos, nome_treino } = req.body;
+    if (!(nome_rotina && token_acesso && dias_atribuidos && nome_treino)) {
+        res.status(400).send("Bad Request");
+        return;
+    }
     try {
         // Criar o novo exercício usando o Prisma
         const treino = yield config_1.default.treino.create({
             data: {
-                nome_rotina: nome_rotina,
-                token_acesso: tokenAcesso,
-                dias_atribuidos: diasAtribuidos,
+                rotina: {
+                    connect: {
+                        nome_rotina_token_acesso: {
+                            nome_rotina: nome_rotina,
+                            token_acesso: token_acesso,
+                        },
+                    },
+                },
+                aluno: {
+                    connect: {
+                        token_acesso: token_acesso,
+                    },
+                },
+                dias_atribuidos: dias_atribuidos,
+                nome_treino: nome_treino,
             },
         });
         // Enviar o exercício criado como resposta à solicitação
@@ -56,22 +72,115 @@ TreinoRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function*
     catch (error) {
         // Se houver um erro ao criar o exercício, envie uma resposta de erro com código 500
         res.status(500).json({ error: 'Não foi possível criar o exercício' });
+        console.log(error);
     }
 }));
 TreinoRouter.get('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     config_1.default.$connect();
-    const aluno_id = req.body.user;
-    const dias_atribuidos = req.body.days;
-    console.log("aluno_id: " + aluno_id);
-    const alunos = yield config_1.default.treino.findMany({
+    const treinador = req.body.user;
+    const treinos = yield config_1.default.treino.findMany({
         where: {
-            dias_atribuidos: dias_atribuidos,
             aluno: {
-                token_acesso: aluno_id
+                professor_usuario: {
+                    usuario: treinador
+                }
             }
         }
     });
     config_1.default.$disconnect();
-    res.send(alunos);
+    res.send(treinos);
+}));
+TreinoRouter.get('/:tokenAcessoAluno/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    const treinador = req.body.user;
+    const treinos = yield config_1.default.treino.findMany({
+        where: {
+            aluno: {
+                professor_usuario: {
+                    usuario: treinador
+                },
+                token_acesso: req.params.tokenAcessoAluno
+            }
+        }
+    });
+    config_1.default.$disconnect();
+    res.send(treinos);
+}));
+TreinoRouter.get('/:tokenAcessoAluno/:nomeRotina', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    const treinador = req.body.user;
+    const treinos = yield config_1.default.treino.findMany({
+        where: {
+            aluno: {
+                professor_usuario: {
+                    usuario: treinador
+                },
+                token_acesso: req.params.tokenAcessoAluno
+            },
+            nome_rotina: req.params.nomeRotina
+        }
+    });
+    config_1.default.$disconnect();
+    res.send(treinos);
+}));
+TreinoRouter.get('/:tokenAcessoAluno/:nomeRotina/:nomeTreino', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    const treinador = req.body.user;
+    const treinos = yield config_1.default.treino.findMany({
+        where: {
+            aluno: {
+                professor_usuario: {
+                    usuario: treinador
+                },
+                token_acesso: req.params.tokenAcessoAluno
+            },
+            nome_rotina: req.params.nomeRotina,
+            nome_treino: req.params.nomeTreino
+        }
+    });
+    config_1.default.$disconnect();
+    res.send(treinos);
+}));
+TreinoRouter.patch('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { dias_atribuidos, nome_treino, id_treino } = req.body;
+    if (!(dias_atribuidos && nome_treino && id_treino)) {
+        res.status(400).send("Bad Request");
+        return;
+    }
+    try {
+        const treino = yield config_1.default.treino.update({
+            where: {
+                id_treino: id_treino,
+            },
+            data: {
+                dias_atribuidos: dias_atribuidos,
+                nome_treino: nome_treino,
+            },
+        });
+        res.status(201).json(treino);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Não foi possível criar o exercício' });
+        console.log(error);
+    }
+}));
+TreinoRouter.delete('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id_treino } = req.body;
+    if (!(id_treino)) {
+        res.status(400).send("Bad Request");
+        return;
+    }
+    try {
+        const treino = yield config_1.default.treino.delete({
+            where: {
+                id_treino: id_treino,
+            },
+        });
+        res.status(201).json(treino);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Não foi possível criar o exercício' });
+        console.log(error);
+    }
 }));
 exports.default = TreinoRouter;

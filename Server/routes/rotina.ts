@@ -131,22 +131,25 @@ RotinaRouter.delete('/',validateJWT, async (req, res) => {
             }
         });
         if(!aluno) res.status(400).send("Aluno não encontrado");
+
+        const rotina = await db.rotina.delete({
+            where: {
+                nome_rotina_token_acesso: {
+                    nome_rotina: req.body.nome_rotina,
+                    token_acesso: req.body.token_acesso
+                }
+            }
+        });
+        res.status(200).json(rotina);
+    
     }catch(err){
         res.status(500).send("Internal Server Error");
         console.log(err);
         return;
     }
 
-    const rotina = await db.rotina.delete({
-        where: {
-            nome_rotina_token_acesso: {
-                nome_rotina: req.body.nome_rotina,
-                token_acesso: req.body.token_acesso
-            }
-        }
-    });
-
-    res.status(200).json(rotina);
+    
+    
 });
 
 

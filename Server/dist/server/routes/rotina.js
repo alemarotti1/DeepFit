@@ -143,20 +143,20 @@ RotinaRouter.delete('/', TreinadorController_1.validateJWT, (req, res) => __awai
         });
         if (!aluno)
             res.status(400).send("Aluno não encontrado");
+        const rotina = yield config_1.default.rotina.delete({
+            where: {
+                nome_rotina_token_acesso: {
+                    nome_rotina: req.body.nome_rotina,
+                    token_acesso: req.body.token_acesso
+                }
+            }
+        });
+        res.status(200).json(rotina);
     }
     catch (err) {
         res.status(500).send("Internal Server Error");
         console.log(err);
         return;
     }
-    const rotina = yield config_1.default.rotina.delete({
-        where: {
-            nome_rotina_token_acesso: {
-                nome_rotina: req.body.nome_rotina,
-                token_acesso: req.body.token_acesso
-            }
-        }
-    });
-    res.status(200).json(rotina);
 }));
 exports.default = RotinaRouter;

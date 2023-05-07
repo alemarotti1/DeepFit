@@ -120,8 +120,9 @@ model treinador {
 
 model treino {
   id_treino   Int    @id @default(autoincrement())
-  nome_rotina String @db.VarChar(255)
+  nome_treino String @db.VarChar(255)
 
+  nome_rotina String @db.VarChar(255)
   token_acesso String
   aluno        aluno  @relation(fields: [token_acesso], references: [token_acesso])
   rotina       rotina @relation(fields: [nome_rotina, token_acesso], references: [nome_rotina, token_acesso])
