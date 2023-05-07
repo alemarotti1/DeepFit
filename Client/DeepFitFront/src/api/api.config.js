@@ -9,8 +9,8 @@ export default new (class Config {
     this.axios = null
   }
 
-  setToken(token, { type = 'Bearer' } = {}) {
-    this._token = `${type} ${token}`
+  setToken() {
+    this._token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWxlbWFyb3R0aSIsIkNSRUYiOm51bGwsIm5vbWUiOiJKb8OjbyBkYXMgbmV2ZXMiLCJlbWFpbCI6bnVsbCwiaWF0IjoxNjgzNDk5NDA2fQ._csFM7QZmu0aAqLLtO-qA7JQuu2v8nQ4qzDw-PHb5ws`
   }
 
   async setup() {
@@ -28,8 +28,10 @@ export default new (class Config {
       this.axios = axios.create(axiosSetup)
       this.axios.interceptors.request.use(
         (request) => {
+          if (this._token) {
+            request.headers = { token: this._token }
+          }
           // FALTA TER PADRAO DO TOKEN QUE VAMOS USAR PARA ACESSAR A API
-          // if (this._token.startsWith('BearerStatic')) {
           //   request.headers.BearerStatic = this._token.replace('BearerStatic', '')
           // } else {
           //   request.headers.Authorization = this._token
