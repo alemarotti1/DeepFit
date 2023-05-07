@@ -5,7 +5,7 @@ const Home = () => import('@/views/Home/Home.vue')
 const About = () => import('@/views/AboutView.vue')
 const InsightCard = () => import('@/components/InsightCard.vue')
 const Testes = () => import('@/views/Testes.vue')
-const Insights = () => import('@/views/Insights.vue')
+const InsightsPage = () => import('@/views/InsightsPage.vue')
 const Sono = () => import('@/views/Sono.vue')
 const AlunoPage = () => import('@/views/AlunoPage.vue')
 const AlunosLista = () => import('../views/AlunosLista.vue')
@@ -40,7 +40,7 @@ const router = createRouter({
     {
       path: '/insights',
       name: 'insights',
-      component: Insights
+      component: InsightsPage
     },
     {
       path: '/sono',
@@ -66,7 +66,8 @@ const router = createRouter({
       path: '/alunos',
       name: 'alunos',
       component: AlunosLista
-    }, {
+    },
+    {
       path: '/exclist',
       name: 'exclist',
       component: ExerciciosList
