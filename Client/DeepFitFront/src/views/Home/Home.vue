@@ -13,7 +13,8 @@
         <v-icon @click="userIconClick" icon="mdi-account-outline" size="large"> </v-icon>
       </v-col>
     </v-row>
-    <v-row no-gutters class="my-8">
+    <v-img :src="calendarSVG"></v-img>
+    <v-row no-gutters class="my-2">
       <v-col cols="12">
         <v-card
           class="mb-3"
@@ -87,12 +88,14 @@ import { mapState, mapActions } from 'vuex'
 
 import usersImage from '@/assets/AlunosIMGGroup10297.svg'
 import workoutImage from '@/assets/ExercisesIMGHome.svg'
+import calendarSVG from '../../assets/CalendarSVG.svg'
 export default {
   name: 'HomeDefault',
   data() {
     return {
       usersImage: usersImage,
-      workoutImage: workoutImage
+      workoutImage: workoutImage,
+      calendarSVG: calendarSVG
     }
   },
   computed: {
