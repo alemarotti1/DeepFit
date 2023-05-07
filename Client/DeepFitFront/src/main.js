@@ -8,7 +8,7 @@ import api from '@/api/api.config'
 
 // FALTA TER PADRAO DO TOKEN QUE VAMOS USAR PARA ACESSAR A API
 // api.setToken('XXXOURTOKENXXX', { type: 'BearerStatic' })
-api.setToken()
+// api.setToken()
 api.setup()
 
 import '@mdi/font/css/materialdesignicons.min.css'

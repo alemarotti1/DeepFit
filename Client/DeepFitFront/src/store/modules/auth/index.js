@@ -7,7 +7,7 @@ export const state = () => ({
   list: [],
   logged: false,
   logedUser: {
-    id: null
+    usuario: null
   }
 })
 
@@ -30,30 +30,39 @@ export const actions = {
   async addCounterToEgg({ commit }) {
     commit('setIncrementCounter')
   },
-  async registerNewUser({ commit }, user) {
-    await authApi.registerNewUser(user)
-
-    commit('setLoged', true)
+  async registerNewUser(_, user) {
+    try {
+      const response = await authApi.registerNewUser(user)
+      return response
+    } catch (error) {
+      console.log(error)
+      return error
+    }
   },
   async login({ commit }, user) {
     try {
-      const loggedUser = await authApi.login(user)
-      commit('setLogedUser', loggedUser)
+      const response = await authApi.login(user)
+      commit('setLogedUser', { usuario: user.usuario })
       commit('setLoged', true)
+      return response
     } catch (error) {
       console.error(error)
+      return error
     }
   },
 
   async logout({ commit }, user) {
     try {
-      await authApi.logout(user)
+      // const response = await authApi.logout(user)
+      console.log('deslogando:', { user })
       commit('setLogedUser', {
-        id: null
+        usuario: null
       })
-      commit('setLoged', true)
+      commit('setLoged', false)
+      return state.logedUser
     } catch (error) {
       console.error(error)
+      return error
     }
   },
 

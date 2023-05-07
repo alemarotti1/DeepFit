@@ -2,17 +2,17 @@ import api from './api.config'
 
 export default new (class {
   async registerNewUser(user) {
-    const { data } = await api.axios.put('auth', { user })
+    const { data } = await api.axios.put('auth', user)
     return data
   }
 
   async login(user) {
-    const { data } = await api.axios.post('auth', { user })
+    const { data } = await api.axios.post('auth', user)
     return data
   }
 
   async logout(user) {
-    const { data } = await api.axios.get('usesrs/logout', { user })
+    const { data } = await api.axios.get('usesrs/logout', user)
     return data
   }
 
