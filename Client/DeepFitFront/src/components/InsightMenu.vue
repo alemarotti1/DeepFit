@@ -80,8 +80,7 @@ export default {
     }
   },
   methods: {
-    navigateToView(viewName) {
-      console.log(viewName)
+    navigateToView() {
       this.$router.push({ name: this.viewDestino })
     }
   }

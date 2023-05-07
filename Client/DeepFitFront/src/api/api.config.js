@@ -17,7 +17,7 @@ export default new (class Config {
     try {
       // let baseURL = `http://localhost:4000`
       let baseURL = `${import.meta.env.VITE_API_BASE_URL}` || `http://localhost:4001`
-      const withCredentials = true
+      const withCredentials = false
       const axiosSetup = {
         paramsSerializer: (params) => {
           return qs.stringify(params)
@@ -29,11 +29,11 @@ export default new (class Config {
       this.axios.interceptors.request.use(
         (request) => {
           // FALTA TER PADRAO DO TOKEN QUE VAMOS USAR PARA ACESSAR A API
-          if (this._token.startsWith('BearerStatic')) {
-            request.headers.BearerStatic = this._token.replace('BearerStatic', '')
-          } else {
-            request.headers.Authorization = this._token
-          }
+          // if (this._token.startsWith('BearerStatic')) {
+          //   request.headers.BearerStatic = this._token.replace('BearerStatic', '')
+          // } else {
+          //   request.headers.Authorization = this._token
+          // }
           return request
         },
         (error) => {
@@ -58,12 +58,14 @@ export default new (class Config {
           if (response?.status === 400) {
             // EXEMPLO DE CHAMADA DE UMA FUNCAO DENTRO DOS MODULOS DE USUARIO ONDE TEMOS O STATUS DO USUARIO: logged, logedUser, list
             // NESSE CASO CHAMAOS A FUNCAO logout
-            // store.dispatch('users/logout')
-            router.push({ name: 'home' })
-            return
-          }
-          if (response?.status === 401) {
+            router.push({ name: 'error' })
+            console.error('ERRO CONHECIDO 400')
             return { status: 401, message: response.data?.error }
+          }
+          if (response?.status === 404) {
+            router.push({ name: 'error' })
+            console.error('ERRO CONHECIDO 404')
+            return { status: 404, message: response.data?.error }
           }
           if (Object.keys(response?.data || {})?.length > 0) {
             const error = new Error()

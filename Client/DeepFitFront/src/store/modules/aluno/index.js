@@ -67,10 +67,12 @@ export const actions = {
     dispatch('list')
   },
 
-  async create({ dispatch, commit }, aluno) {
-    // await alunoApi.create(aluno)
+  async create({ dispatch, commit }, { aluno, treinadorUsuario }) {
+    // await alunoApi.create(aluno, treinadorUsuario)
+    console.log('criando usuario:', { aluno }, 'para o treinador:', treinadorUsuario)
     commit('addAluno', aluno)
     dispatch('list')
+    return aluno
   },
 
   async delete({ dispatch }, aluno) {

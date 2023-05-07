@@ -18,7 +18,7 @@
 
           <v-list>
             <v-list-item v-for="(item, i) in visibleItems" :key="i">
-              <v-list-item-title v-if="item.visible" @click="item.click">{{
+              <v-list-item-title v-if="item.visible()" @click="item.click">{{
                 item.title
               }}</v-list-item-title>
             </v-list-item>
@@ -49,7 +49,7 @@ export default {
       logedUser: (state) => state.auth.logedUser
     }),
     visibleItems() {
-      return this.items.filter((item) => item.visible)
+      return this.items.filter((item) => item.visible())
     }
   },
 
@@ -58,24 +58,42 @@ export default {
     return {
       items: [
         {
-          visible: true,
+          visible: () => {
+            if (this.$router.currentRoute._rawValue.path === '/home') return false
+            return true
+          },
           title: 'Home',
           click: () => {
             this.$router.push('home')
           }
         },
         {
-          visible: true,
+          visible: () => {
+            if (this.$router.currentRoute._rawValue.path === '/novoaluno') return false
+            return true
+          },
           title: 'Novo Aluno',
           click: () => {
             this.$router.push('novoaluno')
           }
         },
         {
-          visible: this.logged,
+          visible: () => {
+            if (this.$router.currentRoute._rawValue.path === '/alunos') return false
+            return true
+          },
+          title: 'Alunos',
+          click: () => {
+            this.$router.push('alunos')
+          }
+        },
+        {
+          visible: () => {
+            return this.logged
+          },
           title: 'Deslogar',
           click: () => {
-            this.logout()
+            this.logout(this.logedUser)
             this.$router.push('login')
           }
         }

@@ -103,12 +103,14 @@ export default {
           usuario: this.usuario,
           senha: this.senha
         })
-        // handle success response here
-        console.log(response.data)
-        if (response.status == 200 && response.cookie) {
-          console.log(response)
 
+        console.log(response)
+        console.log(response.status)
+        if (response.status === 200) {
           this.$router.push({ name: 'home' })
+        }
+        if (response.status === 401) {
+          this.dialog = true
         }
       } catch (error) {
         // handle error response here

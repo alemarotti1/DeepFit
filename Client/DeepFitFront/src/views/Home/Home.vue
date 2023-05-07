@@ -6,7 +6,7 @@
           <span class="text-caption">Bem vindo(a)</span>
         </v-row>
         <v-row no-gutters>
-          <span @click="userNameClick" class="font-weight-bold text-h4">{{ userName }}</span>
+          <span class="font-weight-bold text-h4">{{ userName }}</span>
         </v-row>
       </v-col>
       <v-col cols="auto">
@@ -91,10 +91,8 @@ export default {
   name: 'HomeDefault',
   data() {
     return {
-      userName: 'João Gabriel',
       usersImage: usersImage,
-      workoutImage: workoutImage,
-      destinoAluno: 'aluno'
+      workoutImage: workoutImage
     }
   },
   computed: {
@@ -108,32 +106,34 @@ export default {
           : '0' + (today.getMonth() + 1)) +
         '-' +
         today.getDate()
-      console.log(date)
+
       return date
     },
     ...mapState({
       logged: (state) => state.auth.logged,
       logedUser: (state) => state.auth.logedUser
-    })
+    }),
+    userName() {
+      if (this.logged) {
+        return this.logedUser.usuario
+      }
+      return 'João Gabriel'
+    }
   },
   methods: {
     ...mapActions('auth', ['logout']),
 
     userIconClick() {
       this.$router.push({ name: 'alunos' })
-      console.log('clicou no icone do usuario')
     },
     userNameClick() {
       this.$router.push({ name: 'alunos' })
-      console.log('clicou no nome do usuario')
     },
     usersCardClick() {
       this.$router.push({ name: 'alunos' })
-      console.log('clicou no card de usuarios')
     },
     exercisesCardClick() {
       this.$router.push({ name: 'exclist' })
-      console.log('clicou no card de exercicios')
     }
   }
 }

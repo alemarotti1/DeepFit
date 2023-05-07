@@ -96,7 +96,7 @@
 
     <v-dialog v-model="dialog" max-width="300">
       <v-card>
-        <v-card-text> {{ this.dialogText() }} </v-card-text>
+        <v-card-text> {{ dialogText() }} </v-card-text>
         <v-card-actions class="d-flex justify-center">
           <v-btn rounded="xl" variant="tonal" color="grey darken-2" @click="direcionar">OK</v-btn>
         </v-card-actions>
@@ -149,14 +149,15 @@ export default {
           cpf: this.cpf
         })
         // handle success response here
-        console.log(response.data)
-        this.cadastroRealizado = true
+        if (response.status === 200) {
+          this.cadastroRealizado = true
+        }
         this.dialog = true
       } catch (error) {
         // handle error response here
-        console.error(error.response.data)
+        console.error(error)
         //this.cadastroRealizado = false
-        this.cadastroRealizado = true // true PARA TESTES
+        this.cadastroRealizado = false // true PARA TESTES
         this.dialog = true
       } finally {
         this.loading = false
