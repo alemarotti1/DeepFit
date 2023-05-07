@@ -9,9 +9,21 @@
           <span class="font-weight-bold text-h4">{{ userName }}</span>
         </v-row>
       </v-col>
-      <v-col cols="auto">
-        <v-icon @click="userIconClick" icon="mdi-account-outline" size="large"> </v-icon>
-      </v-col>
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-col cols="auto">
+            <v-icon v-bind="props" icon="mdi-account-outline" size="large"> </v-icon>
+          </v-col>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="(item, i) in visibleUserFunctions" :key="i">
+            <v-list-item-title v-if="item.visible()" @click="item.click">{{
+              item.title
+            }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-row>
     <v-img :src="calendarSVG"></v-img>
     <v-row no-gutters class="my-2">
@@ -99,10 +111,39 @@ export default {
     return {
       usersImage: usersImage,
       workoutImage: workoutImage,
-      calendarSVG: calendarSVG
+      calendarSVG: calendarSVG,
+      userFunctions: [
+        {
+          visible: () => {
+            return this.logged
+          },
+          title: 'Deslogar',
+          click: () => {
+            this.logout(this.logedUser)
+            this.$router.push('login')
+          }
+        }
+      ]
     }
   },
   computed: {
+    visibleUserFunctions() {
+      const filtered = this.userFunctions.filter((item) => item.visible())
+      if (filtered.length) {
+        return filtered
+      }
+      return [
+        {
+          visible: () => {
+            return true
+          },
+          title: 'Novo Aluno',
+          click: () => {
+            this.$router.push('novoaluno')
+          }
+        }
+      ]
+    },
     getDate() {
       const today = new Date()
       const date =
@@ -132,10 +173,6 @@ export default {
   methods: {
     ...mapActions('auth', ['logout']),
 
-    userIconClick() {
-      // possibilidade de deslogar
-      // this.$router.push({ name: 'alunos' })
-    },
     userNameClick() {
       this.$router.push({ name: 'alunos' })
     },
