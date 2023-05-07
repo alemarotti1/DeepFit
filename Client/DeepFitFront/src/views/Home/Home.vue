@@ -6,7 +6,7 @@
           <span class="text-caption">Bem vindo(a)</span>
         </v-row>
         <v-row no-gutters>
-          <span @click="userNameClick" class="font-weight-bold text-h4">{{ userName }}</span>
+          <span class="font-weight-bold text-h4">{{ userName }}</span>
         </v-row>
       </v-col>
       <v-col cols="auto">
@@ -91,10 +91,8 @@ export default {
   name: 'HomeDefault',
   data() {
     return {
-      userName: 'João Gabriel',
       usersImage: usersImage,
-      workoutImage: workoutImage,
-      destinoAluno: 'aluno'
+      workoutImage: workoutImage
     }
   },
   computed: {
@@ -114,7 +112,13 @@ export default {
     ...mapState({
       logged: (state) => state.auth.logged,
       logedUser: (state) => state.auth.logedUser
-    })
+    }),
+    userName() {
+      if (this.logged) {
+        return this.logedUser.usuario
+      }
+      return 'João Gabriel'
+    }
   },
   methods: {
     ...mapActions('auth', ['logout']),
