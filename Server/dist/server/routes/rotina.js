@@ -40,51 +40,86 @@ const config_1 = __importDefault(require("../config"));
 const TreinadorController_1 = require("../features/base/TreinadorController");
 const RotinaRouter = express.Router();
 RotinaRouter.post('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send('Hello World!');
-}));
-RotinaRouter.get('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     config_1.default.$connect();
-    const trainer_id = req.body.user;
-    const token_acesso = req.body.token_acesso;
+    if (!(req.body.nome_rotina && req.body.token_acesso)) {
+        res.status(400).send("Bad Request");
+        return;
+    }
     let aluno = null;
     try {
         aluno = yield config_1.default.aluno.findFirst({
             where: {
-                token_acesso: token_acesso,
-                treinador_usuario: trainer_id
+                token_acesso: req.body.token_acesso,
+                treinador_usuario: req.body.user
             }
         });
         if (!aluno)
             res.status(400).send("Aluno não encontrado");
     }
     catch (err) {
-        res.status(500).send("Erro ao buscar aluno");
+        res.status(500).send("Internal Server Error");
+        console.log(err);
+        return;
     }
-    if (aluno == null)
-        res.status(400).send("Aluno não encontrado");
-    const rotinas = yield config_1.default.rotina.findMany({
-        where: {
-            aluno: {
-                token_acesso: token_acesso
-            }
+    const rotina = yield config_1.default.rotina.create({
+        data: {
+            nome_rotina: req.body.nome_rotina,
+            token_acesso: req.body.token_acesso,
         }
     });
     config_1.default.$disconnect();
-    res.send(rotinas);
+    res.status(201).json(rotina);
 }));
-RotinaRouter.get('/:tokenAcesso/rotinas/:nomeRotina', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+RotinaRouter.get('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    const trainer_id = req.body.user;
+    let alunos = null;
+    try {
+        alunos = yield config_1.default.aluno.findMany({
+            where: {
+                treinador_usuario: trainer_id
+            },
+            include: {
+                rotina: true
+            }
+        });
+    }
+    catch (err) {
+        res.status(500).send("Internal Server Error");
+        console.log(err);
+        return;
+    }
+    config_1.default.$disconnect();
+    res.send(alunos);
+}));
+RotinaRouter.get('/:tokenAcessoAluno/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     config_1.default.$connect();
     const aluno = yield config_1.default.aluno.findFirst({
         where: {
-            token_acesso: req.params.tokenAcesso
+            token_acesso: req.params.tokenAcessoAluno
+        },
+        include: {
+            rotina: true
         }
     });
-    if (!aluno)
+    config_1.default.$disconnect();
+    res.send(aluno === null || aluno === void 0 ? void 0 : aluno.rotina);
+}));
+RotinaRouter.get('/:tokenAcessoAluno/:nomeRotina', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    const aluno = yield config_1.default.aluno.findFirst({
+        where: {
+            token_acesso: req.params.tokenAcessoAluno
+        }
+    });
+    if (!aluno) {
         res.status(400).send("Aluno não encontrado");
+        return;
+    }
     const rotina = yield config_1.default.rotina.findFirst({
         where: {
             aluno: {
-                token_acesso: req.params.tokenAcesso
+                token_acesso: req.params.tokenAcessoAluno
             },
             nome_rotina: req.params.nomeRotina
         }
@@ -92,57 +127,36 @@ RotinaRouter.get('/:tokenAcesso/rotinas/:nomeRotina', TreinadorController_1.vali
     config_1.default.$disconnect();
     res.send(rotina);
 }));
-RotinaRouter.put('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+RotinaRouter.delete('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    config_1.default.$connect();
+    if (!(req.body.nome_rotina && req.body.token_acesso)) {
+        res.status(400).send("Bad Request");
+        return;
+    }
+    let aluno = null;
     try {
-        config_1.default.$connect();
-        if (req.body.token_acesso) {
-            let aluno = config_1.default.aluno.findFirst({
-                where: {
-                    token_acesso: req.body.token_acesso
-                }
-            });
-            if (!aluno)
-                res.status(400).send("Aluno não encontrado");
-            else {
-                let aluno = yield config_1.default.aluno.update({
-                    where: {
-                        token_acesso: req.body.token_acesso
-                    },
-                    data: {
-                        nome: req.body.nome,
-                        nascimento: req.body.nascimento,
-                        objetivo: req.body.objetivo,
-                    }
-                });
-                res.send(aluno);
+        aluno = yield config_1.default.aluno.findFirst({
+            where: {
+                token_acesso: req.body.token_acesso,
+                treinador_usuario: req.body.user
             }
-        }
-        else {
-            let birth = req.body.nascimento ? req.body.nascimento : null;
-            if (birth) {
-                let birth_split = birth.includes('/') ? birth.split('/') : birth.split('-');
-                birth = new Date(parseInt(birth_split[2]), parseInt(birth_split[1]) - 1, parseInt(birth_split[0])).toISOString();
-            }
-            console.log(birth);
-            let aluno = yield config_1.default.aluno.create({
-                data: {
-                    nome: req.body.nome ? req.body.nome : null,
-                    nascimento: birth,
-                    objetivo: req.body.objetivo ? req.body.objetivo : null,
-                    professor_usuario: {
-                        connect: {
-                            usuario: req.body.user
-                        }
-                    }
-                }
-            });
-            res.send(aluno);
-        }
+        });
+        if (!aluno)
+            res.status(400).send("Aluno não encontrado");
     }
     catch (err) {
-        res.status(500).send('Internal Server Error');
+        res.status(500).send("Internal Server Error");
         console.log(err);
-        config_1.default.$disconnect();
+        return;
     }
+    const rotina = yield config_1.default.rotina.delete({
+        where: {
+            nome_rotina_token_acesso: {
+                nome_rotina: req.body.nome_rotina,
+                token_acesso: req.body.token_acesso
+            }
+        }
+    });
+    res.status(200).json(rotina);
 }));
 exports.default = RotinaRouter;
