@@ -14,8 +14,8 @@ export default new (class {
     return data
   }
 
-  async create(user) {
-    const { data } = await api.axios.post(`/aluno`, user)
+  async create(aluno, treinadorUsuario) {
+    const { data } = await api.axios.post(`/aluno`, { ...aluno, user: treinadorUsuario })
     return data
   }
 
