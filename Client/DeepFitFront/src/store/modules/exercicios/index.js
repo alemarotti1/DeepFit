@@ -10,7 +10,6 @@
 import svgs from '@/assets/index.js'
 
 export const state = () => ({
-  // ...svgs,
   list: [
     {
       nome: 'Aquecimento',
@@ -84,6 +83,7 @@ export const actions = {
   async create({ dispatch, commit }, exercise) {
     commit('addToList', exercise)
     dispatch('list')
+    return true
   },
 
   async delete({ dispatch, commit }, exercise) {

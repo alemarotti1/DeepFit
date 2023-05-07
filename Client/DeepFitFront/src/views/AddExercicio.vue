@@ -20,7 +20,7 @@
     </div>
   </v-row>
   <v-row class="mt-15">
-    <BaseButton @click="salvarExercicio" buttonText="Salvar" viewDestino="exclist" />
+    <BaseButton @click="salvarExercicio" buttonText="Salvar" />
   </v-row>
 </template>
 
@@ -45,12 +45,19 @@ export default {
 
   methods: {
     ...mapActions('exercicios', ['create']),
-    salvarExercicio() {
-      this.create({
-        nome: this.nome,
-        tempo: this.tempo,
-        fotoUrl: this.fotoUrl
-      })
+    async salvarExercicio() {
+      try {
+        const response = await this.create({
+          nome: this.nome,
+          tempo: this.tempo,
+          fotoUrl: this.fotoUrl
+        })
+        if (response) {
+          this.$router.replace('exclist')
+        }
+      } catch (error) {
+        this.$router.push('error')
+      }
     }
   }
 }
