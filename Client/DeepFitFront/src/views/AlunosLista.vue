@@ -54,7 +54,6 @@ export default {
   methods: {
     ...mapActions('aluno', ['list', 'clickOpenAluno']),
     async clickAluno(aluno) {
-      console.log(aluno)
       await this.clickOpenAluno(aluno)
       this.$router.push({ name: 'aluno' })
     }
