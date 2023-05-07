@@ -16,6 +16,7 @@ const aluno_1 = __importDefault(require("./routes/aluno"));
 const exercicio_1 = __importDefault(require("./routes/exercicio"));
 const rotina_1 = __importDefault(require("./routes/rotina"));
 const treino_1 = __importDefault(require("./routes/treino"));
+const serie_1 = __importDefault(require("./routes/serie"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
@@ -32,6 +33,7 @@ app.use('/aluno', aluno_1.default);
 app.use('/exercicio', exercicio_1.default);
 app.use('/rotina', rotina_1.default);
 app.use('/treino', treino_1.default);
+app.use('/serie', serie_1.default);
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);

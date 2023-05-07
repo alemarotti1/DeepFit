@@ -15,6 +15,7 @@ import AlunoRouter from './routes/aluno';
 import ExercioRouter from './routes/exercicio';
 import RotinaRouter from './routes/rotina';
 import TreinoRouter from './routes/treino';
+import SerieRouter from './routes/serie';
 
 
 
@@ -36,6 +37,8 @@ app.use('/aluno', AlunoRouter);
 app.use('/exercicio', ExercioRouter);
 app.use('/rotina', RotinaRouter);
 app.use('/treino', TreinoRouter);
+app.use('/serie', SerieRouter);
+
 
 
 const port = process.env.PORT || 4000;

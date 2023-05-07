@@ -29,10 +29,13 @@ model conjunto_serie {
   exercicio    exercicio @relation(fields: [id_exercicio], references: [id_exercicio])
   id_exercicio Int
 
-  id_treino      Int
+  id_treino Int
+  treino    treino @relation(fields: [id_treino], references: [id_treino])
+
   qtd_series     Int?
   tempo_descanso Int?
   qtd_repeticoes Int?
+  carga          Int?
 
   @@id([id_exercicio, id_treino])
 }
@@ -122,7 +125,7 @@ model treino {
   id_treino   Int    @id @default(autoincrement())
   nome_treino String @db.VarChar(255)
 
-  nome_rotina String @db.VarChar(255)
+  nome_rotina  String @db.VarChar(255)
   token_acesso String
   aluno        aluno  @relation(fields: [token_acesso], references: [token_acesso])
   rotina       rotina @relation(fields: [nome_rotina, token_acesso], references: [nome_rotina, token_acesso])
@@ -130,6 +133,8 @@ model treino {
   dias_atribuidos String? @db.VarChar(255)
 
   secao_treino secao_treino[]
+
+  conjunto_serie conjunto_serie[]
 
   @@index([nome_rotina, token_acesso], map: "fk_Treino_Rotina1")
 }
