@@ -9,11 +9,24 @@
           <span class="font-weight-bold text-h4">{{ userName }}</span>
         </v-row>
       </v-col>
-      <v-col cols="auto">
-        <v-icon @click="userIconClick" icon="mdi-account-outline" size="large"> </v-icon>
-      </v-col>
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-col cols="auto">
+            <v-icon v-bind="props" icon="mdi-account-outline" size="large"> </v-icon>
+          </v-col>
+        </template>
+
+        <v-list>
+          <v-list-item v-for="(item, i) in visibleUserFunctions" :key="i">
+            <v-list-item-title v-if="item.visible()" @click="item.click">{{
+              item.title
+            }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-row>
-    <v-row no-gutters class="my-8">
+    <v-img :src="calendarSVG"></v-img>
+    <v-row no-gutters class="my-2">
       <v-col cols="12">
         <v-card
           class="mb-3"
@@ -32,7 +45,9 @@
                 <v-icon icon="mdi-chevron-right"> </v-icon>
               </v-card-title>
 
-              <v-card-subtitle class="text-caption">4 alunos hoje</v-card-subtitle>
+              <v-card-subtitle class="text-caption"
+                >{{ alunos.length }} alunos hoje</v-card-subtitle
+              >
 
               <v-card-actions>
                 <v-btn @click="usersCardClick" style="background: #fff" rounded>
@@ -63,7 +78,9 @@
                 <v-icon icon="mdi-chevron-right"> </v-icon>
               </v-card-title>
 
-              <v-card-subtitle class="text-caption">30 exercícios cadastrados</v-card-subtitle>
+              <v-card-subtitle class="text-caption"
+                >{{ exercicios.length }} exercícios cadastrados</v-card-subtitle
+              >
 
               <v-card-actions>
                 <v-btn @click="exercisesCardClick" style="background: #fff" rounded>
@@ -87,15 +104,46 @@ import { mapState, mapActions } from 'vuex'
 
 import usersImage from '@/assets/AlunosIMGGroup10297.svg'
 import workoutImage from '@/assets/ExercisesIMGHome.svg'
+import calendarSVG from '../../assets/CalendarSVG.svg'
 export default {
   name: 'HomeDefault',
   data() {
     return {
       usersImage: usersImage,
-      workoutImage: workoutImage
+      workoutImage: workoutImage,
+      calendarSVG: calendarSVG,
+      userFunctions: [
+        {
+          visible: () => {
+            return this.logged
+          },
+          title: 'Deslogar',
+          click: () => {
+            this.logout(this.logedUser)
+            this.$router.push('login')
+          }
+        }
+      ]
     }
   },
   computed: {
+    visibleUserFunctions() {
+      const filtered = this.userFunctions.filter((item) => item.visible())
+      if (filtered.length) {
+        return filtered
+      }
+      return [
+        {
+          visible: () => {
+            return true
+          },
+          title: 'Novo Aluno',
+          click: () => {
+            this.$router.push('novoaluno')
+          }
+        }
+      ]
+    },
     getDate() {
       const today = new Date()
       const date =
@@ -111,7 +159,9 @@ export default {
     },
     ...mapState({
       logged: (state) => state.auth.logged,
-      logedUser: (state) => state.auth.logedUser
+      logedUser: (state) => state.auth.logedUser,
+      alunos: (state) => state.aluno.alunos,
+      exercicios: (state) => state.exercicios.list
     }),
     userName() {
       if (this.logged) {
@@ -123,9 +173,6 @@ export default {
   methods: {
     ...mapActions('auth', ['logout']),
 
-    userIconClick() {
-      this.$router.push({ name: 'alunos' })
-    },
     userNameClick() {
       this.$router.push({ name: 'alunos' })
     },
