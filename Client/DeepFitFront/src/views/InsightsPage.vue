@@ -12,6 +12,9 @@
         <InsightMenu tipoInsight="intensidade" viewDestino="intensidadefc" />
       </v-row>
       <v-row class="my-5">
+        <InsightMenu tipoInsight="condicionamento" viewDestino="condicionamento" />
+      </v-row>
+      <v-row class="my-5">
         <!-- Nao existe Page para esse caso ainda -->
         <!-- <InsightMenu tipoInsight="frequencia" viewDestino="insightfrequencia" /> -->
         <InsightMenu tipoInsight="frequencia" @click="snackbar = true" />
