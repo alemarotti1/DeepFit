@@ -59,7 +59,7 @@ export default {
     }
   },
   created() {
-    this.list({ trainerID: this.trainerID, force: true })
+    this.list({ params: { trainerID: this.trainerID }, force: true })
   },
   computed: {
     ...mapGetters('aluno', ['alunos']),

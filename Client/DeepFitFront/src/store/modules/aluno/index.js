@@ -1,7 +1,7 @@
 import alunoApi from '@/api/aluno'
 
 export const state = () => ({
-  neverListed: false,
+  neverListed: true,
   alunos: [
     {
       id: 0,
@@ -40,10 +40,11 @@ export const getters = {
 }
 
 export const actions = {
-  async list({ state }, { force = false } = {}) {
+  async list({ state }, { force = false, params } = {}) {
     try {
       if (state.neverListed || force) {
-        // const alunos = await alunoApi.list(params)
+        const alunos = await alunoApi.list(params)
+        console.log({ alunos })
         // commit('setAlunos', alunos)
         // commit('setNeverListed', false)
         // return alunos

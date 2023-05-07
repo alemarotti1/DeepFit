@@ -2,7 +2,7 @@ import api from './api.config'
 
 export default new (class {
   async list(params) {
-    const { data } = await api.axios.get('/aluno', { params })
+    const data = await api.axios.get('/aluno', params)
     return data
   }
 
