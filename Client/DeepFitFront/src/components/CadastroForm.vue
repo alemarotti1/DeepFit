@@ -149,10 +149,9 @@ export default {
           cpf: this.cpf
         })
         // handle success response here
-        if (response.error) {
-          console.log('erro passou na view')
+        if (response.status === 200) {
+          this.cadastroRealizado = true
         }
-        this.cadastroRealizado = true
         this.dialog = true
       } catch (error) {
         // handle error response here

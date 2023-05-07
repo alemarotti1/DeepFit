@@ -105,7 +105,13 @@ export default {
         })
 
         console.log(response)
-        this.$router.push({ name: 'home' })
+        console.log(response.status)
+        if (response.status === 200) {
+          this.$router.push({ name: 'home' })
+        }
+        if (response.status === 401) {
+          this.dialog = true
+        }
       } catch (error) {
         // handle error response here
         console.error(error)
