@@ -57,5 +57,25 @@ class HeartRateInsightController {
             });
         });
     }
+    static loadAllInsights(token_aluno, token_relogio) {
+        return __awaiter(this, void 0, void 0, function* () {
+            //get now time in unix milis
+            const now = new Date();
+            const now_time = now.getTime();
+            //get the last 30 days
+            const last_30_days = {};
+            for (let i = 30; i > 0; i--) {
+                const time = now_time - i * 86400000;
+                const date = new Date(time);
+                //get the midnight of the day in unix milis
+                const midnight = date.setHours(0, 0, 0, 0);
+                last_30_days[midnight.toString()] = midnight;
+            }
+            console.log(last_30_days);
+            //get the data from google fit for each day
+            const data = {};
+            return last_30_days;
+        });
+    }
 }
 exports.default = HeartRateInsightController;

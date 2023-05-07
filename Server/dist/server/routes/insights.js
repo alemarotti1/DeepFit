@@ -22,6 +22,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -56,6 +65,35 @@ InsightsRouter.get('/heart_rate_insight/:numeroAluno', function (req, res) {
     const numero_aluno = req.params.numeroAluno;
     HeartRateInsightController_1.default.getInsight("0", req.body.usuarioTreinador, numero_aluno, token_relogio).then((required_insight) => {
         res.send(required_insight);
+    });
+});
+InsightsRouter.post('/load/', function (req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const token_relogio = req.body.token_relogio || "0";
+        const token_aluno = req.body.token_aluno || "0";
+        if (token_aluno == "0") {
+            res.status(400).send("Aluno não informado");
+            return;
+        }
+        if (token_relogio == "0") {
+            res.status(400).send("Relógio não autorizado");
+            return;
+        }
+        // db.$connect();
+        // //check if aluno exists
+        // const aluno = await db.aluno.findFirst({
+        //   where: {
+        //     token_acesso: token_aluno
+        //   }
+        // });
+        // if (!aluno) {
+        //   res.status(403).send("Não autorizado");
+        //   return;
+        // }
+        //get data from the api
+        const heart_rate_data = yield HeartRateInsightController_1.default.loadAllInsights(token_aluno, token_relogio);
+        // db.$disconnect();
+        res.send(heart_rate_data);
     });
 });
 exports.default = InsightsRouter;

@@ -28,6 +28,31 @@ class HeartRateInsightController {
         
         
     }
+
+
+    static async loadAllInsights(token_aluno : string, token_relogio : string) : Promise<any> {
+        //get now time in unix milis
+        const now = new Date();
+        const now_time = now.getTime();
+        
+        //get the last 30 days
+        const last_30_days : Record<string, number> = {};
+        for (let i = 30; i > 0; i--) {
+            const time = now_time - i * 86400000;
+            const date = new Date(time);
+            //get the midnight of the day in unix milis
+            const midnight = date.setHours(0, 0, 0, 0);
+            last_30_days[midnight.toString()] = midnight;
+        }
+
+        console.log(last_30_days);
+        //get the data from google fit for each day
+
+        const data = {};
+        
+
+        return last_30_days;
+    }
 }
 
 export default HeartRateInsightController;

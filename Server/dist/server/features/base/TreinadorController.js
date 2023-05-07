@@ -176,10 +176,13 @@ class TreinadorController {
     }
 }
 function validateJWT(req, res, next) {
-    const token = req.cookies.token;
+    let token = req.cookies.token;
     if (!token) {
-        res.status(401).send('Unauthorized: No token provided');
-        return;
+        token = req.body.token;
+        if (!token) {
+            res.status(401).send('Unauthorized: No token provided');
+            return;
+        }
     }
     jwt.verify(token, config_2.secret_key, (err, decoded) => {
         if (err) {
