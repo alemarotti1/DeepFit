@@ -33,7 +33,9 @@
                 <v-icon icon="mdi-chevron-right"> </v-icon>
               </v-card-title>
 
-              <v-card-subtitle class="text-caption">4 alunos hoje</v-card-subtitle>
+              <v-card-subtitle class="text-caption"
+                >{{ alunos.length }} alunos hoje</v-card-subtitle
+              >
 
               <v-card-actions>
                 <v-btn @click="usersCardClick" style="background: #fff" rounded>
@@ -64,7 +66,9 @@
                 <v-icon icon="mdi-chevron-right"> </v-icon>
               </v-card-title>
 
-              <v-card-subtitle class="text-caption">30 exercícios cadastrados</v-card-subtitle>
+              <v-card-subtitle class="text-caption"
+                >{{ exercicios.length }} exercícios cadastrados</v-card-subtitle
+              >
 
               <v-card-actions>
                 <v-btn @click="exercisesCardClick" style="background: #fff" rounded>
@@ -114,7 +118,9 @@ export default {
     },
     ...mapState({
       logged: (state) => state.auth.logged,
-      logedUser: (state) => state.auth.logedUser
+      logedUser: (state) => state.auth.logedUser,
+      alunos: (state) => state.aluno.alunos,
+      exercicios: (state) => state.exercicios.list
     }),
     userName() {
       if (this.logged) {
@@ -127,7 +133,8 @@ export default {
     ...mapActions('auth', ['logout']),
 
     userIconClick() {
-      this.$router.push({ name: 'alunos' })
+      // possibilidade de deslogar
+      // this.$router.push({ name: 'alunos' })
     },
     userNameClick() {
       this.$router.push({ name: 'alunos' })
