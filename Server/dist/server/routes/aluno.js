@@ -140,4 +140,21 @@ AlunoRouter.put('/', TreinadorController_1.validateJWT, (req, res) => __awaiter(
         config_1.default.$disconnect();
     }
 }));
+AlunoRouter.delete('/:tokenAcesso', TreinadorController_1.validateJWT, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        config_1.default.$connect();
+        let aluno = yield config_1.default.aluno.delete({
+            where: {
+                token_acesso: req.params.tokenAcesso
+            }
+        });
+        res.send(aluno);
+        config_1.default.$disconnect();
+    }
+    catch (err) {
+        res.status(500).send('Internal Server Error');
+        console.log(err);
+        config_1.default.$disconnect();
+    }
+}));
 exports.default = AlunoRouter;

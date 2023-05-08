@@ -122,6 +122,26 @@ AlunoRouter.put('/', validateJWT, async (req : express.Request, res : express.Re
     }
 });
 
+AlunoRouter.delete('/:tokenAcesso', validateJWT, async (req : express.Request, res : express.Response) => {
+    try{
+        db.$connect();
+
+        let aluno = await db.aluno.delete({
+            where: {
+                token_acesso: req.params.tokenAcesso
+            }
+        });
+
+        res.send(aluno);    
+        db.$disconnect();
+    }catch(err){
+        res.status(500).send('Internal Server Error');
+        console.log(err);
+        db.$disconnect();
+    }
+
+});
+
 
 
 export default AlunoRouter;
