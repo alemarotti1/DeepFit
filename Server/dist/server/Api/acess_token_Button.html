@@ -30,12 +30,22 @@
         gapi.auth2.getAuthInstance().signIn().then(function () {
         const accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
         console.log(accessToken)
+          <input type="text" id="token-acesso" name="token-acesso">
+          fetch("https://deep-fit.onrender.com/insight/load/", {
+          method: "POST", 
+          body: JSON.stringify({
+            "token_relogio":accessToken
+            "token_aluno": document.getElementById("token-acesso").value()
+          })
+        });
     });
     }
 
   </script>
 </head>
 <body>
+  <label for="id">Token acesso:</label>
+  <input type="text" id="token-acesso" name="token-acesso">
   <button onclick="handleClientLoad()">Authorize and Get Sleep Data</button>
 </body>
 </html>
