@@ -56,7 +56,7 @@ AuthRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 res.status(401).send('Unauthorized');
                 return;
             }
-            res.cookie('token', result, { httpOnly: true });
+            res.cookie('token', result, { httpOnly: true, sameSite: 'none' });
             res.status(200).send('Logged in');
         }).catch((err) => {
             res.status(500).send('Internal Server Error');

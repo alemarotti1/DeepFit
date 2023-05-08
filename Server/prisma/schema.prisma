@@ -21,8 +21,19 @@ model aluno {
   dado_sono             dado_sono[]
   dados_corporais_aluno dados_corporais_aluno[]
   rotina                rotina[]
+  heart_data            heart_data[]
 
   @@id([token_acesso])
+}
+
+model heart_data {
+  token_acesso String
+  aluno        aluno  @relation(fields: [token_acesso], references: [token_acesso])
+
+  data_coleta DateTime @db.Timestamp(0)
+  bpm         Int?     @db.Int
+
+  @@id([token_acesso, data_coleta])
 }
 
 model conjunto_serie {

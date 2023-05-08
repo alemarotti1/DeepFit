@@ -37,6 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const HeartRateInsightController_1 = __importDefault(require("../features/insights/heart_rate_insight/HeartRateInsightController"));
+const config_1 = __importDefault(require("../config"));
 const InsightsRouter = express.Router();
 InsightsRouter.get('/', function (req, res) {
     //TODO IMPLEMENT THIS
@@ -79,20 +80,25 @@ InsightsRouter.post('/load/', function (req, res) {
             res.status(400).send("Relógio não autorizado");
             return;
         }
-        // db.$connect();
-        // //check if aluno exists
-        // const aluno = await db.aluno.findFirst({
-        //   where: {
-        //     token_acesso: token_aluno
-        //   }
-        // });
-        // if (!aluno) {
-        //   res.status(403).send("Não autorizado");
-        //   return;
-        // }
+        config_1.default.$connect();
+        //check if aluno exists
+        const aluno = yield config_1.default.aluno.findFirst({
+            where: {
+                token_acesso: token_aluno
+            }
+        });
+        if (!aluno) {
+            res.status(403).send("Não autorizado");
+            return;
+        }
         //get data from the api
         const heart_rate_data = yield HeartRateInsightController_1.default.loadAllInsights(token_aluno, token_relogio);
-        // db.$disconnect();
+        //save data to the database
+        for (let day in heart_rate_data) {
+            const heart_rate_day = heart_rate_data[day];
+            let day_date = new Date();
+        }
+        config_1.default.$disconnect();
         res.send(heart_rate_data);
     });
 });

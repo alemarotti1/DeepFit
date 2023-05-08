@@ -42,16 +42,43 @@ class HeartRateInsightController {
             const date = new Date(time);
             //get the midnight of the day in unix milis
             const midnight = date.setHours(0, 0, 0, 0);
-            last_30_days[midnight.toString()] = midnight;
+            const date_dd_mm_yyyy = new Date(midnight).toLocaleDateString('pt-BR');
+            last_30_days[date_dd_mm_yyyy] = midnight;
         }
 
         console.log(last_30_days);
         //get the data from google fit for each day
-
-        const data = {};
+        console.log("getting data from google fit");
         
+        const data : Record<string, any> = {};
+        for (const day in last_30_days) {
+            const start_time = last_30_days[day];
+            const end_time = last_30_days[day] + 86400000;
+            try{
+                const data_watch = await getDataFromGoogleFit.getDataFromGoogleFit(token_relogio, start_time, end_time, 60000, 'derived:com.google.heart_rate.bpm:com.google.android.gms:merge_heart_rate_bpm');
+                data[day] = data_watch;    
+            }catch(err){
+                console.log(err);
+            }
+            
+        }
 
-        return last_30_days;
+        const mean_heart_rate : Record<string, number> = {};
+        for(const day in data){
+            let sum = 0;
+            let count = 0;
+            for(const heart_rate in data[day]){
+                if(data[day][heart_rate]["value"].length > 0){
+                    sum += data[day][heart_rate]["value"][0]["fpVal"];
+                    count++;
+                }
+            }
+            let val = sum/count;
+            if(val)
+                mean_heart_rate[day] = val;
+        }
+
+        return mean_heart_rate;
     }
 }
 

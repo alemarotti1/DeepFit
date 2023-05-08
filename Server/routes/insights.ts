@@ -60,27 +60,32 @@ InsightsRouter.post('/load/', async function(req : any, res : any) {
     return;
   }
 
-  // db.$connect();
+  db.$connect();
 
-  // //check if aluno exists
+  //check if aluno exists
 
-  // const aluno = await db.aluno.findFirst({
-  //   where: {
-  //     token_acesso: token_aluno
-  //   }
-  // });
+  const aluno = await db.aluno.findFirst({
+    where: {
+      token_acesso: token_aluno
+    }
+  });
 
-  // if (!aluno) {
-  //   res.status(403).send("Não autorizado");
-  //   return;
-  // }
+  if (!aluno) {
+    res.status(403).send("Não autorizado");
+    return;
+  }
 
 
   //get data from the api
-
   const heart_rate_data = await HeartRateInsightController.loadAllInsights(token_aluno, token_relogio);
   
-  // db.$disconnect();
+  //save data to the database
+
+  for(let day in heart_rate_data) {
+    const heart_rate_day = heart_rate_data[day];
+    let day_date = new Date();
+  }
+  db.$disconnect();
   res.send(heart_rate_data);
 });
   
