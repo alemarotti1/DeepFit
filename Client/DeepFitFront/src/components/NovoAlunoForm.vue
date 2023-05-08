@@ -167,8 +167,8 @@ export default {
         }
         const response = await this.create({
           aluno,
-          user: 'alemarotti'
-          // user: this.logedUser?.usuario
+          // user: 'alemarotti'
+          user: this.logedUser?.usuario
         })
         // handle success response here
         // SEGUIR PARA PÁGINA DO ALUNO

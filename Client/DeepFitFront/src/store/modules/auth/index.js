@@ -53,8 +53,8 @@ export const actions = {
 
   async logout({ commit }, user) {
     try {
-      // const response = await authApi.logout(user)
-      console.log('deslogando:', { user })
+      const response = await authApi.logout(user)
+      console.log('deslogando:', { user, response })
       commit('setLogedUser', {
         usuario: null
       })

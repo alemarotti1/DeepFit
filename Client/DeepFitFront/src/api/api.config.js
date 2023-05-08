@@ -9,8 +9,12 @@ export default new (class Config {
     this.axios = null
   }
 
-  setToken() {
-    this._token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWxlbWFyb3R0aSIsIkNSRUYiOm51bGwsIm5vbWUiOiJKb8OjbyBkYXMgbmV2ZXMiLCJlbWFpbCI6bnVsbCwiaWF0IjoxNjgzNDk5NDA2fQ._csFM7QZmu0aAqLLtO-qA7JQuu2v8nQ4qzDw-PHb5ws`
+  setToken(token) {
+    // this._token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWxlbWFyb3R0aSIsIkNSRUYiOm51bGwsIm5vbWUiOiJKb8OjbyBkYXMgbmV2ZXMiLCJlbWFpbCI6bnVsbCwiaWF0IjoxNjgzNDk5NDA2fQ._csFM7QZmu0aAqLLtO-qA7JQuu2v8nQ4qzDw-PHb5ws`
+    this._token = token
+    if (!token) {
+      this.axios.defaults.withCredentials = false
+    }
   }
 
   async setup() {
@@ -28,7 +32,9 @@ export default new (class Config {
       this.axios = axios.create(axiosSetup)
       this.axios.interceptors.request.use(
         (request) => {
+          console.log({ meutoken: this._token })
           if (this._token) {
+            // this.axios.defaults.withCredentials = true
             request.headers = { token: this._token }
           }
           // FALTA TER PADRAO DO TOKEN QUE VAMOS USAR PARA ACESSAR A API

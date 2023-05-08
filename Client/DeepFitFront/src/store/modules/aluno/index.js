@@ -3,21 +3,21 @@ import alunoApi from '@/api/aluno'
 export const state = () => ({
   neverListed: true,
   alunos: [
-    {
-      nascimento: convertNascimento('12/12/1976'),
-      nome: 'Gabriel',
-      objetivo: 'saúde e bem-estar'
-    },
-    {
-      nascimento: convertNascimento('12/12/2000'),
-      nome: 'Joana',
-      objetivo: 'hipertrofia'
-    },
-    {
-      nascimento: convertNascimento('12/12/2002'),
-      nome: 'Pedro Santos',
-      objetivo: 'perda de peso'
-    }
+    // {
+    //   nascimento: convertNascimento('12/12/1976'),
+    //   nome: 'Gabriel',
+    //   objetivo: 'saúde e bem-estar'
+    // },
+    // {
+    //   nascimento: convertNascimento('12/12/2000'),
+    //   nome: 'Joana',
+    //   objetivo: 'hipertrofia'
+    // },
+    // {
+    //   nascimento: convertNascimento('12/12/2002'),
+    //   nome: 'Pedro Santos',
+    //   objetivo: 'perda de peso'
+    // }
   ],
   selectedAluno: {
     nascimento: convertNascimento('12/12/1976'),
