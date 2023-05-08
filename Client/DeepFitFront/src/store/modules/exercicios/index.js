@@ -58,7 +58,7 @@ export const getters = {
   list(state) {
     return (nome) => {
       if (state.list?.length && nome !== '') {
-        return state.list.filter((item) => item.nome.includes(nome))
+        return state.list.filter((item) => item.nome.toLowerCase().includes(nome.toLowerCase()))
       }
       return state.list
     }
