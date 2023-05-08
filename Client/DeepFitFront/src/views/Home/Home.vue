@@ -167,11 +167,15 @@ export default {
       if (this.logged) {
         return this.logedUser.usuario
       }
-      return 'João Gabriel'
+      return 'Treinador'
     }
+  },
+  created() {
+    this.list({ force: true })
   },
   methods: {
     ...mapActions('auth', ['logout']),
+    ...mapActions('aluno', ['list']),
 
     userNameClick() {
       this.$router.push({ name: 'alunos' })

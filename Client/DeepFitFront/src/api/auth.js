@@ -8,12 +8,19 @@ export default new (class {
 
   async login(user) {
     const data = await api.axios.post('auth', user)
+    console.log('fora', { data })
+    if (data && data.status === 200) {
+      console.log('entrei', { data })
+      api.setToken(data.data)
+    }
     return data
   }
 
   async logout(user) {
-    const data = await api.axios.get('usesrs/logout', user)
-    return data
+    // const data = await api.axios.get('usesrs/logout', user)
+    api.setToken(null)
+
+    return user
   }
 
   async list(params) {
