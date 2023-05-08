@@ -17,6 +17,7 @@ const exercicio_1 = __importDefault(require("./routes/exercicio"));
 const rotina_1 = __importDefault(require("./routes/rotina"));
 const treino_1 = __importDefault(require("./routes/treino"));
 const serie_1 = __importDefault(require("./routes/serie"));
+const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
@@ -33,7 +34,10 @@ app.use('/aluno', aluno_1.default);
 app.use('/exercicio', exercicio_1.default);
 app.use('/rotina', rotina_1.default);
 app.use('/treino', treino_1.default);
-app.use('/serie', serie_1.default);
+app.use('/serie', serie_1.default); //C:\dev\web_apps\DeepFit\server\dist\Api\acess_token_Button.html
+app.get('/autorizarAcesso', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '/Api/acess_token_Button.html'));
+});
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`[server]: Server is running at http://localhost:${port}`);

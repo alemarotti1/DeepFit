@@ -16,6 +16,7 @@ import ExercioRouter from './routes/exercicio';
 import RotinaRouter from './routes/rotina';
 import TreinoRouter from './routes/treino';
 import SerieRouter from './routes/serie';
+import path from 'path';
 
 
 
@@ -37,9 +38,11 @@ app.use('/aluno', AlunoRouter);
 app.use('/exercicio', ExercioRouter);
 app.use('/rotina', RotinaRouter);
 app.use('/treino', TreinoRouter);
-app.use('/serie', SerieRouter);
+app.use('/serie', SerieRouter);//C:\dev\web_apps\DeepFit\server\dist\Api\acess_token_Button.html
 
-
+app.get('/autorizarAcesso', (req : Request, res : Response) => {
+  res.sendFile(path.join(__dirname, '/Api/acess_token_Button.html'));
+});
 
 const port = process.env.PORT || 4000;
 
