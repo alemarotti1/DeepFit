@@ -9,9 +9,11 @@ const InsightsPage = () => import('@/views/InsightsPage.vue')
 const Sono = () => import('@/views/Sono.vue')
 const AlunoPage = () => import('@/views/AlunoPage.vue')
 const AlunosLista = () => import('../views/AlunosLista.vue')
+const CondicionamentoFC = () => import('@/views/CondicionamentoFC.vue')
 const IntensidadeFC = () => import('@/views/IntensidadeFC.vue')
 const ExerciciosList = () => import('@/views/Exercicios/ExerciciosList.vue')
 const AddExercicio = () => import('@/views/AddExercicio.vue')
+const AccessToken = () => import('@/views/AccessToken/AccessToken.vue')
 
 const TreinoList = () => import('@/views/TreinosHistorico/TreinosHistorico.vue')
 const AddTreino = () => import('@/views/AddTreino.vue')
@@ -33,6 +35,11 @@ const router = createRouter({
       component: Testes
     },
     {
+      path: '/accesstoken',
+      name: 'accesstoken',
+      component: AccessToken
+    },
+    {
       path: '/insightcard',
       name: 'insightcard',
       component: InsightCard
@@ -51,6 +58,11 @@ const router = createRouter({
       path: '/intensidadefc',
       name: 'intensidadefc',
       component: IntensidadeFC
+    },
+    {
+      path: '/condicionamento',
+      name: 'condicionamento',
+      component: CondicionamentoFC
     },
     {
       path: '/aluno',

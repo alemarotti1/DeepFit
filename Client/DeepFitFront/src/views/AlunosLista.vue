@@ -8,7 +8,7 @@
         background: linear-gradient(rgba(3, 152, 158, 0.2), rgba(255, 255, 255, 0)),
           center center / cover no-repeat;
       "
-      v-for="item in studentsData"
+      v-for="(item, index) in studentsData"
       :key="item"
       class="d-flex flex-row mb-2 p-0"
       @click="clickAluno(item)"
@@ -16,15 +16,17 @@
     >
       <div class="d-flex flex-no-wrap justify-space-between">
         <v-avatar class="ma-3" size="110" rounded="0">
-          <v-img :src="item.fotoUrl" cover />
+          <v-img :src="fotos[index % 3]" cover />
         </v-avatar>
         <div>
           <v-card-title class="text-h5">
-            {{ item.name }}
+            {{ item.nome }}
           </v-card-title>
 
-          <v-card-subtitle>{{ item.age }} anos</v-card-subtitle>
-          <v-card-text>Clique para ver treinos e insights</v-card-text>
+          <v-card-subtitle>{{ age(item.nascimento) }} anos</v-card-subtitle>
+          <span class="text-caption">Objetivo: {{ item.objetivo }}</span
+          ><br />
+          <span class="text-body-1">Ver treinos e insights</span>
         </div>
       </div>
     </v-card>
@@ -48,7 +50,11 @@ export default {
   },
   data() {
     return {
-      trainerID: 0
+      fotos: [
+        'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp',
+        'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+        'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg'
+      ]
     }
   },
   methods: {
@@ -56,10 +62,13 @@ export default {
     async clickAluno(aluno) {
       await this.clickOpenAluno(aluno)
       this.$router.push({ name: 'aluno' })
+    },
+    age(nascimento) {
+      return Math.floor((new Date() - Date.parse(nascimento)) / 31536000000)
     }
   },
   created() {
-    this.list({ trainerID: this.trainerID, force: true })
+    this.list({ force: true })
   },
   computed: {
     ...mapGetters('aluno', ['alunos']),

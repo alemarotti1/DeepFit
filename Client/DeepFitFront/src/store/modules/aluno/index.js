@@ -1,30 +1,30 @@
 import alunoApi from '@/api/aluno'
 
 export const state = () => ({
-  neverListed: false,
+  neverListed: true,
   alunos: [
     {
       id: 0,
-      name: 'Gabriel',
+      nome: 'Gabriel',
       age: 23,
       fotoUrl: 'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp'
     },
     {
       id: 1,
-      name: 'Joana',
+      nome: 'Joana',
       age: 47,
       fotoUrl: 'https://cdn.vuetifyjs.com/images/lists/1.jpg'
     },
     {
       id: 2,
       age: 24,
-      name: 'Pedro Santos',
+      nome: 'Pedro Santos',
       fotoUrl: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg'
     }
   ],
   selectedAluno: {
     id: 0,
-    name: 'Gabriel',
+    nome: 'Gabriel',
     age: 23,
     fotoUrl: 'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp'
   }
@@ -40,14 +40,14 @@ export const getters = {
 }
 
 export const actions = {
-  async list({ state }, { force = false } = {}) {
+  async list({ state, commit }, { force = false, params } = {}) {
     try {
       if (state.neverListed || force) {
-        // const alunos = await alunoApi.list(params)
-        // commit('setAlunos', alunos)
-        // commit('setNeverListed', false)
-        // return alunos
-        return state.alunos
+        const { data } = await alunoApi.list(params)
+        console.log({ data })
+        commit('setAlunos', data)
+        commit('setNeverListed', false)
+        return data
       } else {
         return state.alunos
       }

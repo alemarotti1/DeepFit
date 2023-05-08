@@ -24,6 +24,7 @@
 <script>
 import moon from '@/assets/moon.svg'
 import calendar from '@/assets/calendar.svg'
+import condicionamentofc from '@/assets/condicionamentofc.svg'
 import bpm from '@/assets/bpm.svg'
 import tripleStripe from '@/assets/tripleStripe_green.svg'
 import singleStripe from '@/assets/singleStripe.svg'
@@ -55,6 +56,7 @@ export default {
       const images = {
         sono: tripleStripe,
         intensidade: heartRate,
+        condicionamento: tripleStripe,
         frequencia: singleStripe,
         todos: tripleStripe
       }
@@ -64,6 +66,7 @@ export default {
       const logos = {
         sono: moon,
         intensidade: bpm,
+        condicionamento: condicionamentofc,
         frequencia: calendar,
         todos: ''
       }
@@ -73,6 +76,7 @@ export default {
       const titulos = {
         sono: 'Sono',
         intensidade: 'Intensidade',
+        condicionamento: 'Condicionamento',
         frequencia: 'Frequência',
         todos: 'Ver Insights'
       }
