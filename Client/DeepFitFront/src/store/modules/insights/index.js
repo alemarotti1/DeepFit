@@ -3,6 +3,7 @@ import insightsApi from '@/api/insights'
 export const state = () => ({
   neverListed: true,
   list: [],
+  dadosCondicionamento: [],
   heartRate: {},
   sleep: {}
 })
@@ -10,6 +11,9 @@ export const state = () => ({
 export const getters = {
   list(state) {
     return state.list
+  },
+  dadosCondicionamento(state) {
+    return state.dadosCondicionamento
   },
   heartRate(state) {
     return state.heartRate
@@ -29,6 +33,13 @@ export const actions = {
     } else {
       return state.list
     }
+  },
+  async getCondicionamento({ commit }, tokenAluno = '') {
+    const token_acesso = tokenAluno
+    const data = await insightsApi.condicionamentoDados({ token_acesso })
+    const dadosCondicionamento = data[0]?.heart_data
+    commit('setDadosCondicionamento', dadosCondicionamento)
+    return dadosCondicionamento
   },
   async heartRateInsights({ commit }, { params } = {}) {
     const heartRate = await insightsApi.heartRate(params)
@@ -55,11 +66,14 @@ export const mutations = {
   setNeverListed(state, data) {
     state.neverListed = data
   },
+  setDadosCondicionamento(state, data) {
+    state.dadosCondicionamento = data
+  },
   setHeartRate(state, data) {
-    state.list = data
+    state.heartRate = data
   },
   setSleep(state, data) {
-    state.list = data
+    state.sleep = data
   }
 }
 

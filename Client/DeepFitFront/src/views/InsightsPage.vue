@@ -9,10 +9,10 @@
         <InsightMenu tipoInsight="sono" @click="snackbar = true" />
       </v-row>
       <v-row class="my-5">
-        <InsightMenu tipoInsight="intensidade" viewDestino="intensidadefc" />
+        <InsightMenu tipoInsight="intensidade" @click="openIntensidade" />
       </v-row>
       <v-row class="my-5">
-        <InsightMenu tipoInsight="condicionamento" viewDestino="condicionamento" />
+        <InsightMenu tipoInsight="condicionamento" @click="openCondicionamento" />
       </v-row>
       <v-row class="my-5">
         <!-- Nao existe Page para esse caso ainda -->
@@ -32,6 +32,7 @@
 <script>
 import TopToolbar from '@/components/TopToolbar.vue'
 import InsightMenu from '@/components/InsightMenu.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -40,8 +41,30 @@ export default {
   },
   data: () => ({
     snackbar: false,
-    text: `Ainda em desenvolvimento.`
-  })
+    text: `Sem dados suficientes para insight.`
+  }),
+  computed: {
+    ...mapGetters('aluno', ['selectedAluno']),
+    ...mapGetters('auth', ['logedUser'])
+  },
+  methods: {
+    ...mapActions('insights', ['getCondicionamento']),
+    openIntensidade() {
+      if (this.logedUser.usuario === 'alemarotti') {
+        this.$router.push('intensidadefc')
+      } else {
+        this.snackbar = true
+      }
+    },
+    openCondicionamento() {
+      if (this.logedUser.usuario === 'alemarotti') {
+        this.getCondicionamento(this.selectedAluno?.token_acesso)
+        this.$router.push('condicionamento')
+      } else {
+        this.snackbar = true
+      }
+    }
+  }
 }
 </script>
 
