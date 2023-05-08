@@ -4,7 +4,10 @@
       <TopToolbar title="Aluno" />
     </v-row>
     <v-row class="my-5">
-      <ProfileCard :nome="aluno.name" :fotoUrl="aluno.fotoUrl" />
+      <ProfileCard
+        :nome="aluno.nome"
+        :fotoUrl="fotoUrl || 'https://picsum.photos/500/300?image=39'"
+      />
     </v-row>
     <v-row class="mt-10 mb-5">
       <InsightMenu tipoInsight="todos" viewDestino="insights" />
@@ -29,6 +32,11 @@ import InsightMenu from '@/components/InsightMenu.vue'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+  props: {
+    fotoUrl: {
+      type: String
+    }
+  },
   components: {
     TopToolbar,
     ProfileCard,
@@ -44,10 +52,9 @@ export default {
     aluno() {
       return (
         this.selectedAluno || {
-          id: 2,
-          age: 24,
-          name: 'Pedro Santos',
-          fotoUrl: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg'
+          nascimento: '16/09/1998',
+          nome: 'Pedro Santos',
+          fotoUrl: 'https://picsum.photos/500/300?image=35'
         }
       )
     }

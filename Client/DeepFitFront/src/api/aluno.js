@@ -2,8 +2,7 @@ import api from './api.config'
 
 export default new (class {
   async list(params) {
-    console.log({ ...params, token: api._token })
-    const data = await api.axios.get('/aluno', { ...params, token: api._token })
+    const data = await api.axios.get('/aluno', { ...params })
     return data
   }
 
@@ -16,7 +15,7 @@ export default new (class {
   }
 
   async create(aluno, treinadorUsuario) {
-    const { data } = await api.axios.post(`/aluno`, { ...aluno, user: treinadorUsuario })
+    const data = await api.axios.post(`/aluno`, { ...aluno, user: treinadorUsuario })
     return data
   }
 

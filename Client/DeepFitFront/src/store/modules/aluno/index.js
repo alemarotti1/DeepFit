@@ -4,31 +4,33 @@ export const state = () => ({
   neverListed: true,
   alunos: [
     {
-      id: 0,
+      nascimento: convertNascimento('12/12/1976'),
       nome: 'Gabriel',
-      age: 23,
-      fotoUrl: 'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp'
+      objetivo: 'saúde e bem-estar'
     },
     {
-      id: 1,
+      nascimento: convertNascimento('12/12/2000'),
       nome: 'Joana',
-      age: 47,
-      fotoUrl: 'https://cdn.vuetifyjs.com/images/lists/1.jpg'
+      objetivo: 'hipertrofia'
     },
     {
-      id: 2,
-      age: 24,
+      nascimento: convertNascimento('12/12/2002'),
       nome: 'Pedro Santos',
-      fotoUrl: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg'
+      objetivo: 'perda de peso'
     }
   ],
   selectedAluno: {
-    id: 0,
+    nascimento: convertNascimento('12/12/1976'),
     nome: 'Gabriel',
-    age: 23,
-    fotoUrl: 'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp'
+    objetivo: 'saúde e bem-estar'
   }
 })
+
+function convertNascimento(valorEmString) {
+  let d = valorEmString.split('/')
+  let dat = new Date(d[2] + '/' + d[1] + '/' + d[0])
+  return dat
+}
 
 export const getters = {
   alunos(state) {
@@ -48,6 +50,7 @@ export const actions = {
         commit('setAlunos', data)
         commit('setNeverListed', false)
         return data
+        // return state.alunos
       } else {
         return state.alunos
       }
@@ -67,9 +70,8 @@ export const actions = {
     dispatch('list')
   },
 
-  async create({ dispatch, commit }, { aluno, treinadorUsuario }) {
-    // await alunoApi.create(aluno, treinadorUsuario)
-    console.log('criando usuario:', { aluno }, 'para o treinador:', treinadorUsuario)
+  async create({ dispatch, commit }, { aluno, user: treinadorUsuario }) {
+    await alunoApi.create(aluno, treinadorUsuario)
     commit('addAluno', aluno)
     dispatch('list')
     return aluno

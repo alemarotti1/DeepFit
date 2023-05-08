@@ -11,7 +11,7 @@
         <InsightCard :insight="dadosInsight" />
       </v-row>
       <v-row class="my-5">
-        <BaseButton buttonText="Editar Treino" viewDestino="" />
+        <BaseButton buttonText="Editar Treino" viewDestino="treinos" />
       </v-row>
     </v-col>
   </v-row>
@@ -35,9 +35,9 @@ export default {
     return {
       dadosInsight: {
         titulo: 'Frequência Basal',
-        resumo: 'acima do recomendável',
+        resumo: 'em decrescimento',
         valor: '71bpm',
-        texto: 'Após acordar a frequência cardíaca do aluno tem sido abaixo da máxima.',
+        texto: 'Após acordar a frequência cardíaca do aluno tem sido abaixo da média passada.',
         sugestao:
           'Isso significa que o condicionamento físico desse aluno está melhorando a longo prazo.',
         positivo: true

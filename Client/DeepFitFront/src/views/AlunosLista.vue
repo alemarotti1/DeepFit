@@ -16,7 +16,7 @@
     >
       <div class="d-flex flex-no-wrap justify-space-between">
         <v-avatar class="ma-3" size="110" rounded="0">
-          <v-img :src="fotos[index % 3]" cover />
+          <v-img :src="fotos[index % 5]" cover />
         </v-avatar>
         <div>
           <v-card-title class="text-h5">
@@ -51,9 +51,11 @@ export default {
   data() {
     return {
       fotos: [
-        'https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp',
-        'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-        'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg'
+        'https://picsum.photos/500/300?image=39',
+        'https://picsum.photos/500/300?image=47',
+        'https://picsum.photos/500/300?image=32',
+        'https://picsum.photos/500/300?image=54',
+        'https://picsum.photos/500/300?image=21'
       ]
     }
   },

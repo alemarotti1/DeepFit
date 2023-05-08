@@ -24,12 +24,32 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+
+      <v-list-item class="my-2" @click="newExercise" rounded="xl"
+        variant="tonal">
+        <template v-slot:prepend>
+          <v-icon :icon="'mdi-plus'"></v-icon>
+        </template>
+
+        <template v-slot:default>
+          <v-list-item-content>
+            <v-list-item-title>Adicionar exercício</v-list-item-title>
+          </v-list-item-content>
+        </template>
+        
+      </v-list-item>
+
     </v-list>
     <v-dialog v-model="dialog" max-width="300">
       <v-card>
-        <v-card-title>{{ selectedExercise.name }}</v-card-title>
+        
+        
         <v-card-text>
           <v-form>
+            <v-text-field
+                v-model="selectedExercise.name"
+                label="Nome do Exercício"
+              ></v-text-field>
             <div class="d-flex">
               <v-text-field
                 v-model="selectedExercise.series"
@@ -41,6 +61,7 @@
             <v-text-field v-model="selectedExercise.carga" label="Carga"></v-text-field>
             <v-card-actions class="d-flex justify-center">
               <v-btn rounded="xl" class="salvar-button" @click="saveExercise">Salvar</v-btn>
+              <v-btn rounded="xl" color="red darken-1" class="delete-button" @click="deleteExercise">Excluir</v-btn>
               <v-btn rounded="xl" variant="tonal" color="grey darken-2" @click="closeDialog"
                 >Cancelar</v-btn
               >
@@ -56,27 +77,52 @@
 export default {
   name: 'TreinoList',
   props: {
+    
     exercicios: {
       type: () => Array,
       required: true,
       default: [
         {
           name: 'Agachamento',
-          series: 3,
-          reps: 10,
-          carga: 100
+          series: 4,
+          reps: 12,
+          carga: 35
         },
         {
-          name: 'Supino',
-          series: 3,
-          reps: 8,
-          carga: 80
+          name: 'Afundo',
+          series: 4,
+          reps: 12,
+          carga: 25
+        },
+        {
+          name: 'Supino máquina',
+          series: 4,
+          reps: 12,
+          carga: 25
         },
         {
           name: 'Remada',
           series: 3,
           reps: 12,
-          carga: 60
+          carga: 30
+        },
+        {
+          name: 'Puxada alta',
+          series: 3,
+          reps: 12,
+          carga: 36
+        },
+        {
+          name: 'Bíceps rosca direta',
+          series: 4,
+          reps: 12,
+          carga: 12
+        },
+        {
+          name: 'Tríceps polia',
+          series: 4,
+          reps: 12,
+          carga: 15
         }
       ]
     }
@@ -84,6 +130,7 @@ export default {
   methods: {
     openDialog(exercicio) {
       this.selectedExercise = JSON.parse(JSON.stringify(exercicio))
+      this.index = this.exercicios.findIndex((e) => e.name === this.selectedExercise.name)
       this.dialog = true
     },
     closeDialog() {
@@ -91,13 +138,40 @@ export default {
     },
     saveExercise() {
       // precisa chamar o componente pai para alterar a prop exercicios
-      const index = this.exercicios.findIndex((e) => e.name === this.selectedExercise.name)
-      this.exercicios.splice(index, 1, this.selectedExercise)
+      if (this.isNew) {
+        const newExercise = {
+          name: this.selectedExercise.name,
+          series: this.selectedExercise.series,
+          reps: this.selectedExercise.reps,
+          carga: this.selectedExercise.carga
+        }
+        this.exercicios.push(newExercise)
+        this.isNew = false
+      } else {
+        this.exercicios.splice(this.index, 1, this.selectedExercise)
+      }
       this.closeDialog()
+    },
+    newExercise() {
+      this.selectedExercise = {
+        name: '',
+        series: 0,
+        reps: 0,
+        carga: 0
+      }
+      this.isNew = true
+      this.dialog = true
+    },
+    deleteExercise() {
+    this.exercicios.splice(this.index, 1)
+    this.closeDialog()
     }
   },
+  
   data() {
     return {
+      index: null,
+      isNew: false,
       dialog: false,
       selectedExercise: null
     }

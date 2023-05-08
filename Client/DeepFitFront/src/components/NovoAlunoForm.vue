@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   data: () => ({
@@ -119,7 +119,7 @@ export default {
       'perda de peso',
       'saúde e bem-estar'
     ],
-    viewDestino: 'aluno',
+    viewDestino: 'alunos',
     form: false,
     show: false,
     nome: null,
@@ -138,6 +138,12 @@ export default {
     dialog: false,
     cadastroRealizado: false
   }),
+  computed: {
+    ...mapState({
+      logged: (state) => state.auth.logged,
+      logedUser: (state) => state.auth.logedUser
+    })
+  },
 
   methods: {
     ...mapActions('aluno', ['create']),
@@ -150,13 +156,19 @@ export default {
       this.loading = true
 
       try {
-        const response = await this.create({
+        const aluno = {
+          // banco nao suporta todas informacoes
+          // peso: this.peso,
+          // altura: this.altura,
+          // genero: this.genero,
           nome: this.nome,
-          genero: this.genero,
           nascimento: this.nascimento,
-          objetivo: this.nome,
-          peso: this.peso,
-          altura: this.altura
+          objetivo: this.objetivo
+        }
+        const response = await this.create({
+          aluno,
+          user: 'alemarotti'
+          // user: this.logedUser?.usuario
         })
         // handle success response here
         // SEGUIR PARA PÁGINA DO ALUNO
@@ -186,7 +198,7 @@ export default {
 
     direcionar() {
       if (this.cadastroRealizado) {
-        this.$router.push({ name: this.viewDestino })
+        this.$router.replace({ name: this.viewDestino })
       } else {
         this.dialog = false
       }
