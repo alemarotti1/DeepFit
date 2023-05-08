@@ -42,7 +42,7 @@ class HeartRateInsightController {
             const date = new Date(time);
             //get the midnight of the day in unix milis
             const midnight = date.setHours(0, 0, 0, 0);
-            const date_dd_mm_yyyy = new Date(midnight).toLocaleDateString('pt-BR');
+            const date_dd_mm_yyyy = new Date(midnight).toISOString();
             last_30_days[date_dd_mm_yyyy] = midnight;
         }
 

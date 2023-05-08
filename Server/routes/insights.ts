@@ -83,10 +83,91 @@ InsightsRouter.post('/load/', async function(req : any, res : any) {
 
   for(let day in heart_rate_data) {
     const heart_rate_day = heart_rate_data[day];
-    let day_date = new Date();
+    let day_date : string = day;
+    
+    //check if the data for this day already exists
+    const heart_rate_day_db = await db.heart_data.findFirst({
+      where: {
+        token_acesso: token_aluno,
+        data_coleta: day_date
+      }
+    });
+
+    try{
+      if (heart_rate_day_db) {
+        //update the data
+        await db.heart_data.update({
+          where: {
+            token_acesso_data_coleta: {
+              token_acesso: token_aluno,
+              data_coleta: day_date
+            }
+          },
+          data: {
+            bpm: parseInt(heart_rate_day),
+          }
+        });
+      } else {
+        //create the data
+        await db.heart_data.create({
+          data: {
+            data_coleta: day_date,
+            aluno: {
+              connect: {
+                token_acesso: token_aluno
+              }
+            },
+            bpm: parseInt(heart_rate_day),
+          }
+        });
+      }
+    }catch(err){
+      console.log(err);
+      res.status(500).send("Erro ao salvar dados");
+      return;
+    }
+
+
   }
   db.$disconnect();
   res.send(heart_rate_data);
+});
+
+
+InsightsRouter.get('/load/basal/:numeroAluno', validateJWT, async function(req : any, res : any) {
+  const token_aluno = req.params.numeroAluno;
+
+  if (token_aluno == "0") {
+    res.status(400).send("Aluno não informado");
+    return;
+  }
+
+  db.$connect();
+  let data : any = null;
+  try{
+    data = await db.aluno.findMany({
+      where:{
+        AND: [
+          {
+            token_acesso: token_aluno,
+            treinador_usuario: req.body.user,
+          }
+        ],
+      },
+      include: {
+        heart_data: true
+      }
+    });
+    res.send(data);
+  }catch(err){
+    console.log(err);
+    res.status(500).send("Erro ao carregar dados");
+    return;
+  }
+  db.$disconnect();
+
+  
+
 });
   
 export default InsightsRouter;

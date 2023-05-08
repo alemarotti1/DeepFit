@@ -37,6 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = __importStar(require("express"));
 const HeartRateInsightController_1 = __importDefault(require("../features/insights/heart_rate_insight/HeartRateInsightController"));
+const TreinadorController_1 = require("../features/base/TreinadorController");
 const config_1 = __importDefault(require("../config"));
 const InsightsRouter = express.Router();
 InsightsRouter.get('/', function (req, res) {
@@ -96,10 +97,85 @@ InsightsRouter.post('/load/', function (req, res) {
         //save data to the database
         for (let day in heart_rate_data) {
             const heart_rate_day = heart_rate_data[day];
-            let day_date = new Date();
+            let day_date = day;
+            //check if the data for this day already exists
+            const heart_rate_day_db = yield config_1.default.heart_data.findFirst({
+                where: {
+                    token_acesso: token_aluno,
+                    data_coleta: day_date
+                }
+            });
+            try {
+                if (heart_rate_day_db) {
+                    //update the data
+                    yield config_1.default.heart_data.update({
+                        where: {
+                            token_acesso_data_coleta: {
+                                token_acesso: token_aluno,
+                                data_coleta: day_date
+                            }
+                        },
+                        data: {
+                            bpm: parseInt(heart_rate_day),
+                        }
+                    });
+                }
+                else {
+                    //create the data
+                    yield config_1.default.heart_data.create({
+                        data: {
+                            data_coleta: day_date,
+                            aluno: {
+                                connect: {
+                                    token_acesso: token_aluno
+                                }
+                            },
+                            bpm: parseInt(heart_rate_day),
+                        }
+                    });
+                }
+            }
+            catch (err) {
+                console.log(err);
+                res.status(500).send("Erro ao salvar dados");
+                return;
+            }
         }
         config_1.default.$disconnect();
         res.send(heart_rate_data);
+    });
+});
+InsightsRouter.get('/load/basal/:numeroAluno', TreinadorController_1.validateJWT, function (req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const token_aluno = req.params.numeroAluno;
+        if (token_aluno == "0") {
+            res.status(400).send("Aluno não informado");
+            return;
+        }
+        config_1.default.$connect();
+        let data = null;
+        try {
+            data = yield config_1.default.aluno.findMany({
+                where: {
+                    AND: [
+                        {
+                            token_acesso: token_aluno,
+                            treinador_usuario: req.body.user,
+                        }
+                    ],
+                },
+                include: {
+                    heart_data: true
+                }
+            });
+            res.send(data);
+        }
+        catch (err) {
+            console.log(err);
+            res.status(500).send("Erro ao carregar dados");
+            return;
+        }
+        config_1.default.$disconnect();
     });
 });
 exports.default = InsightsRouter;
