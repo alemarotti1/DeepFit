@@ -27,7 +27,7 @@ AuthRouter.post('/', async (req : express.Request, res : express.Response) => {
         if(!result) {res.status(401).send('Unauthorized'); return;}
         
         res.cookie('token', result, { httpOnly: true, sameSite: 'none' });
-        res.status(200).send('Logged in');
+        res.status(200).send(result);
         
       }).catch((err : any) => {
         res.status(500).send('Internal Server Error');

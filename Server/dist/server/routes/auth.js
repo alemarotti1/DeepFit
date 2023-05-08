@@ -57,7 +57,7 @@ AuthRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 return;
             }
             res.cookie('token', result, { httpOnly: true, sameSite: 'none' });
-            res.status(200).send('Logged in');
+            res.status(200).send(result);
         }).catch((err) => {
             res.status(500).send('Internal Server Error');
         });
