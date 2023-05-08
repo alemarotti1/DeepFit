@@ -163,7 +163,7 @@ export default {
           // genero: this.genero,
           nome: this.nome,
           nascimento: this.nascimento,
-          objetivo: this.nome
+          objetivo: this.objetivo
         }
         const response = await this.create({
           aluno,
